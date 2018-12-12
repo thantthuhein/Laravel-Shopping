@@ -25,6 +25,7 @@
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
+                            <a href="{{ route('cart')}}" class="btn btn-primary">Add To Cart</a>
                             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info">Edit</a>
                             <button class="btn btn-danger">Delete</button>
                         </form>

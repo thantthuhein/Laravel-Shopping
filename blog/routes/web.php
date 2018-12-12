@@ -2,7 +2,7 @@
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('products', "ProductController");
-    Route::get('/', "ProductController@index");
+    Route::get('/', "ProductCon troller@index");
 });
 
 Route::resource('categories', "CategoryController");
