@@ -2,9 +2,9 @@
 
 @section('content')
     <h3>
-        <a href="#">
+        <p>
             {{ $product->name }}
-        </a>
+        </p>
     </h3>
 
     <p>
@@ -20,5 +20,5 @@
     </ul>
 
     <hr>
-    <a href="{{ url('products') }}" class="btn btn-primary">Products</a>
+    <a href="{{ url('products') }}" class="btn btn-primary">Back To Products</a>
 @endsection

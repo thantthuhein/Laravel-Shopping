@@ -7,6 +7,7 @@ use App\Product;
 use App\Category;
 use App\Student;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\ProductStore;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->get();
+        $products = Product::paginate(12);
         return view('products.index', ['products' => $products]);
     }
 
@@ -38,10 +39,18 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductStore $request)
     {
+        // $request->validate([
+        //     'name' => 'required',
+        //     'description' => 'required',
+        //     'price' => 'required',
+        //     'quantity' => 'required'
+        // ]);
+
         $product = Product::create( $request->all() );
 
+        // dd($product->categories()->sync($request->category_id));
         $product->categories()->sync($request->category_id);
         
         return redirect('products');
@@ -71,6 +80,7 @@ class ProductController extends Controller
 
         $selected_categories = $product->categories->pluck('id')->all();
 
+        
         return view('products.edit', [
             'product' => $product,
             'categories' => $categories,

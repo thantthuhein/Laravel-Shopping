@@ -8,5 +8,7 @@
     <div class="container mt-5">
         @yield('content')
     </div>
+
+    <script src="js/app.js"></script>
 </body>
 </html>

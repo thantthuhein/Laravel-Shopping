@@ -2,9 +2,12 @@
 
 @section('content')
     <a href="{{ url('products/create') }}" class="btn btn-primary">Create New Product</a>
-    
+
     <hr>
-    
+    <div class="d-flex justify-content-center">
+        {{ $products->links()}}
+    </div>
+    <br>
     <div class="container">
         <div class="row">
             @foreach($products as $product)
@@ -16,12 +19,18 @@
                     </h3>
                     
                     <p>
-                        {{ $product->description }}
+                        {{ substr($product->description, 0, 50) . '...' }}
+                        <a href="{{ route('products.show', $product->id) }} ">see more</a>
                     </p>
                     <p>Price - <span class="badge badge-success">$ {{  $product->price }}</span></p>
                     <p>Quantity - <span class="badge badge-danger">{{ $product->quantity }}</span></p>
-                    
-                    
+                    <p>
+                        @foreach($product->categories as $category)
+                            {{ $category->name }}
+                            <br>
+                        @endforeach
+                    </p>
+
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
@@ -31,6 +40,9 @@
                         <hr>        
                 </div>
             @endforeach
+        </div>
+        <div class="d-flex justify-content-center">
+            {{ $products->links()}}
         </div>
     </div>
 @endsection
