@@ -2,7 +2,7 @@
 Route::group(['middleware' => ['auth']], function() {
 });
 
-Route::get('test', function() {
+Route::get('/test', function() {
     return view('test');
 });
 
@@ -16,5 +16,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('cart', "CartController@cart");
-Route::get('list', "CartController@list");
+Route::get('cart', "CartController@list");
 
