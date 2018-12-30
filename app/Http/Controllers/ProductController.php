@@ -47,7 +47,6 @@ class ProductController extends Controller
         //     'price' => 'required',
         //     'quantity' => 'required'
         // ]);
-
         $product = Product::create( $request->all() );
 
         // dd($product->categories()->sync($request->category_id));
@@ -95,7 +94,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductStore $request, Product $product)
     {
         $product->update( $request->all() );
         $product->categories()->sync($request->category_id);
