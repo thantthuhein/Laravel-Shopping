@@ -13,8 +13,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    @if ( auth()->user()->isAdmin == 1) 
+                        Admin Profile
+                        <a class="btn btn-primary" href=" {{url('dashboard')}} ">Admin Dashboard</a>
+                    @else
+                        User Profile
+                        <a class="btn btn-primary" href=" {{url('/')}} ">Back to Home</a>
+                    @endif
                 </div>
             </div>
         </div>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href=" {{asset('css/dashboard.css')}} ">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+  <div id="wrapper">
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="#">
+            Menu
+          </a>
+        </li>
+        <li>
+          <a href=" {{url('dashboard')}} "><i class="fas fa-chart-bar"></i> Dashboard</a>
+        </li>
+        <li>
+          <a href=" {{url('dashboard/categories')}} "><i class="fas fa-book-open"></i> Categories</a>
+        </li>
+        <li>
+          <a href=" {{url('dashboard/users')}} "><i class="fas fa-users ml-0"></i> Users</a>
+        </li>
+      </ul>
+
+    </div>
+
+    <div id="page-content-wrapper pt-0">
+      <div class="top-bar">
+        <nav class="navbar navbar-expand navbar-light p-0 ml-5">
+          <a class="navbar-brand text-light p-2" href="#menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+          </a>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link h3 text-light" href=" {{url('dashboard')}} ">DASHBOARD</a>
+              </li>
+              @guest
+                <li class="nav-item mt-1">
+                    <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                <li class="nav-item mt-1">
+                    @if (Route::has('register'))
+                        <a class="nav-link text-light" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @endif
+                </li>
+                  @else
+                <li class="nav-item mt-1 dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+              @endguest
+              </ul>
+              <form class="form-inline mr-4 my-2 my-lg-0 ml-2">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="container-fluid mt-5 ml-4">
+      @yield('content')
+    </div>
+  </div>
+
+  
+
+  {{-- bootstrap cdn  --}} {{-- jquery cdn --}}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+</body>
+</html>

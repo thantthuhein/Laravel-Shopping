@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Product;
+
+use App\Category;
+
+use DB;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +27,24 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function admin()
+    {
+        $products = Product::all();
+        return view('admin/dashboard', ['products' => $products]);
+    }
+
+    public function categories()
+    {
+        $categories = Category::all();
+        return view('admin/categories', ['categories' => $categories]);
+    }
+
+    public function users()
+    {
+        $users = DB::table('users')->get();
+        return view('admin/users', ['users' => $users]);
+    }
+
     public function index()
     {
         return view('home');

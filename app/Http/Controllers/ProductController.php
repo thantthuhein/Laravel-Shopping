@@ -16,9 +16,19 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function example()
+    {
+        return view('example');
+    }
+
+    public function home()
+    {
+        return view('home');
+    }
+
     public function index()
     {
-        $products = Product::paginate(12);
+        $products = Product::paginate(8)->latest();
         return view('products.index', ['products' => $products]);
     }
 
@@ -52,7 +62,7 @@ class ProductController extends Controller
         // dd($product->categories()->sync($request->category_id));
         $product->categories()->sync($request->category_id);
         
-        return redirect('products');
+        return redirect('dashboard');
     }
 
     /**
@@ -98,7 +108,7 @@ class ProductController extends Controller
     {
         $product->update( $request->all() );
         $product->categories()->sync($request->category_id);
-        return redirect('products');
+        return redirect('dashboard/products');
     }
 
     /**
@@ -110,6 +120,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->back();
     }
 }

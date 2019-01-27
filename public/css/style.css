@@ -1,9 +1,2 @@
-.product_name {
-  text-decoration: none !important;
-}
-.navigation {
-  background-color: #3490dc;
-}
-.shadow {
-  box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.75);
-}
+@import url("https://fonts.googleapis.com/css?family=Quicksand");body{font-family:'Quicksand', sans-serif}.navbar-laravel{background-color:#fff;-webkit-box-shadow:0 2px 4px rgba(0, 0, 0, 0.04);box-shadow:0 2px 4px rgba(0, 0, 0, 0.04)}.product_name{text-decoration:none!important}.navigation{background-color:#3490dc}.shadow{-webkit-box-shadow:0px 0px 6px 1px rgba(0, 0, 0, 0.75);box-shadow:0px 0px 6px 1px rgba(0, 0, 0, 0.75)}.top-bar{background-color:#10175c;height:60px}.footer{background-color:#12023e;padding:40px 0}
+/*# sourceMappingURL=style.css.map */
