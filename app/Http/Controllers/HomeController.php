@@ -41,7 +41,7 @@ class HomeController extends Controller
 
     public function users()
     {
-        $users = DB::table('users')->get();
+        $users = DB::table('users')->latest()->get();
         return view('admin/users', ['users' => $users]);
     }
 

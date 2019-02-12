@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 
 @section('content')
     <h3>Edit Product - {{ $product->name }}</h3>

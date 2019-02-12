@@ -1,11 +1,9 @@
-@extends('layout')
+@extends('layouts.layout')
 
 @section('content')
-    <h3>Create New Product</h3>
-    
+    <div class="container mt-5">
+        <h3>Create New Product</h3>
     <hr>
-
-    
     {{ Form::open(['route' => 'products.store', 'method' => "POST"]) }}
 
         @include('products.form')
@@ -21,4 +19,5 @@
         <button class="btn btn-primary">Create New Product</button>
 
     {{ Form::close() }}
+    </div>
 @endsection

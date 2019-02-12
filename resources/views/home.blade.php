@@ -14,11 +14,9 @@
                         </div>
                     @endif
                     @if ( auth()->user()->isAdmin == 1) 
-                        Admin Profile
-                        <a class="btn btn-primary" href=" {{url('dashboard')}} ">Admin Dashboard</a>
+                        @include('profile.admin')
                     @else
-                        User Profile
-                        <a class="btn btn-primary" href=" {{url('/')}} ">Back to Home</a>
+                        @include('profile.user')
                     @endif
                 </div>
             </div>

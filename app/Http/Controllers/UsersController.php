@@ -27,4 +27,12 @@ class UsersController extends Controller
         ->update(['isAdmin' => 1]);
         return redirect()->back();
     }
+
+    public function remove($id)
+    {
+        DB::table('users')
+        ->where('id', $id)
+        ->update(['isAdmin' => NULL]);
+        return redirect()->back();
+    }
 }

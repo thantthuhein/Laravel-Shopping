@@ -28,8 +28,9 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::paginate(8)->latest();
-        return view('products.index', ['products' => $products]);
+        $categories = Category::all();
+        $products = Product::latest()->paginate(6);
+        return view('products.index', ['products' => $products, 'categories' => $categories]);
     }
 
     /**
@@ -108,7 +109,7 @@ class ProductController extends Controller
     {
         $product->update( $request->all() );
         $product->categories()->sync($request->category_id);
-        return redirect('dashboard/products');
+        return redirect('dashboard');
     }
 
     /**
