@@ -17,12 +17,13 @@
                         <br><hr>
                         <div class="dropdown">
                             <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action <span class="caret"></span>
+                                Reduce <span class="caret"></span>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="">Reduce by 1</a>
-                                <a class="dropdown-item" href="">Reduce All Items</a>
+                                <a class="dropdown-item" href="">Clear All Items</a>
                             </div>
+                            <a class="btn btn-primary" href="{{ route('addToCart', $product['item']['id'] ) }}">Increase</a>
                         </div>
                     </li>
                     <hr>
@@ -32,7 +33,7 @@
         </div>
         <div class="row mt-4">
             <div class="col">
-                <strong>Total: {{ $totalPrice }}</strong>
+                <strong>Total: $ {{ $totalPrice }}</strong>
             </div>
         </div>
         <div class="row mt-2">

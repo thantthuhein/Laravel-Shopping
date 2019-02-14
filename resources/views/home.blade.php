@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @if ( auth()->user()->isAdmin == 1) 
+                    @if ( auth()->user()->is_Admin == true) 
                         @include('profile.admin')
                     @else
                         @include('profile.user')

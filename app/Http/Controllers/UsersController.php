@@ -24,7 +24,7 @@ class UsersController extends Controller
     {
         DB::table('users')
         ->where('id', $id)
-        ->update(['isAdmin' => 1]);
+        ->update(['is_Admin' => true]);
         return redirect()->back();
     }
 
@@ -32,7 +32,7 @@ class UsersController extends Controller
     {
         DB::table('users')
         ->where('id', $id)
-        ->update(['isAdmin' => NULL]);
+        ->update(['is_Admin' => false]);
         return redirect()->back();
     }
 }

@@ -14,11 +14,5 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(ProductTableSeeder::class);
         $this->call(CategoryTableSeeder::class);
-        DB::table('users')->insert([
-            'name' => 'admin',
-            'isAdmin' => 1,
-            'email' => 'testadmin@gmail.com',
-            'password' => bcrypt('admin123'),
-        ]);
     }
 }

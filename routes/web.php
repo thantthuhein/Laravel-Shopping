@@ -23,6 +23,9 @@ Route::group(['middleware' => 'admin'], function() {
 Route::get('/', "ProductController@index");
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/checkout', "CartController@getCheckout")->name('checkout');
+Route::post('/checkout', "CartController@postCheckout")->name('checkout');
+
 // route for cart control
 Route::get('/add-to-cart/{id}', "CartController@getAddToCart")->name('addToCart');
 Route::get('/shoppingCart', "CartController@getCart")->name('shoppingCart');

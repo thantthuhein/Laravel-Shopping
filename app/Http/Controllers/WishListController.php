@@ -22,7 +22,7 @@ class WishListController extends Controller
         if( isset( $wishlist[$id] ) ) {
             unset($wishlist[$id]);
             session()->put('wishlist', $wishlist);
-            return redirect()->back()->with('success', 'Added to Wish List');
+            return redirect()->back()->with('success', 'Remove from Wish List');
         }
         
         $wishlist[$id] = [
@@ -51,6 +51,6 @@ class WishListController extends Controller
                 session()->put('wishlist', $wishlist);
             }
         }
-        return redirect()->back();
+        return redirect()->back()->with('success', "Remove From Wishlist");
     }
 }

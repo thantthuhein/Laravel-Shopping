@@ -9,25 +9,42 @@
             <div class="col-md-6">
                 <h1>Checkout</h1>
                 <h5>Total: $ {{ $total }}</h5>
+                <div id="charge-error" class="alert alert-danger{{ !Session::has ('error') ? 'hidden' : ''}}" >
+                    {{ Session::get('error') }}
+                </div>
                 {{ Form::open(['route' => 'checkout', 'method' => 'POST', 'id' => 'checkout-form']) }}
                     <div class="row">
-
                         <div class="col-12">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                {{ Form::text('name', null, ['class' => ($errors->has('name') ? 'form-control is-invalid' : 'form-control'), 'id' => 'name'])}}
-                                @if($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong> {{ $errors->first('name')}} </strong>
-                                    </span>
-                                @endif
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="first_name">First Name</label>
+                                        {{ Form::text('first_name', null, ['class' => ($errors->has('first_name') ? 'form-control is-invalid' : 'form-control'), 'id' => 'first_name'])}}
+                                        @if($errors->has('first_name'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong> {{ $errors->first('first_name')}} </strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="last_name">Last Name</label>
+                                        {{ Form::text('last_name', null, ['class' => ($errors->has('last_name') ? 'form-control is-invalid' : 'form-control'), 'id' => 'last_name'])}}
+                                        @if($errors->has('last_name'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong> {{ $errors->first('last_name')}} </strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                {{ Form::text('address', null, ['class' => ($errors->has('address') ? 'form-control is-invalid' : 'form-control'), 'id' => 'address'])}}
+                                {{ Form::text('address', NULL, ['class' => ($errors->has('address') ? 'form-control is-invalid' : 'form-control'), 'id' => 'address', 'placeholder' => 'For Example: House #123, Street #123, #A Road'])}}
                                 @if($errors->has('address'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong> {{ $errors->first('address')}} </strong>
@@ -38,77 +55,48 @@
 
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="card-name">Card Holder Name</label>
-                                {{ Form::text('card-name', null, ['class' => ($errors->has('card-name') ? 'form-control is-invalid' : 'form-control'), 'id' => 'card-name'])}}
-                                @if($errors->has('card-name'))
+                                <label for="phone">Phone Number</label>
+                                {{ Form::text('phone', null, ['class' => ($errors->has('phone') ? 'form-control is-invalid' : 'form-control'), 'id' => 'phone'])}}
+                                @if($errors->has('phone'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong> {{ $errors->first('card-name')}} </strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="card-number">Credit Card Number</label>
-                                {{ Form::text('card-number', null, ['class' => ($errors->has('card-number') ? 'form-control is-invalid' : 'form-control'), 'id' => 'card-number'])}}
-                                @if($errors->has('card-number'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong> {{ $errors->first('card-number')}} </strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="card-expiry-month">Card Expiration Month</label>
-                                        {{ Form::text('card-expiry-month', null, ['class' => ($errors->has('card-expiry-month') ? 'form-control is-invalid' : 'form-control'), 'id' => 'card-expiry-month'])}}
-                                        @if($errors->has('card-expiry-month'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong> {{ $errors->first('card-expiry-month')}} </strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="card-expiry-year">Card Expiration Year</label>
-                                        {{ Form::text('card-expiry-year', null, ['class' => ($errors->has('card-expiry-year') ? 'form-control is-invalid' : 'form-control'), 'id' => 'card-expiry-year'])}}
-                                        @if($errors->has('card-expiry-year'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong> {{ $errors->first('card-expiry-year')}} </strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="card-cvc">CVC</label>
-                                {{ Form::text('card-cvc', null, ['class' => ($errors->has('card-cvc') ? 'form-control is-invalid' : 'form-control'), 'id' => 'card-cvc'])}}
-                                @if($errors->has('card-cvc'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong> {{ $errors->first('card-cvc')}} </strong>
+                                        <strong> {{ $errors->first('phone')}} </strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                     </div>
+
                     <button class="btn btn-success" type="submit">Buy Now <i class="fas fa-shopping-cart"></i></button>
                 {{ Form::close() }}
 
            </div>
        </div>
        <hr>
+       <div class="row p-3 m-3">
+            <div class="col-md-12">
+                <p>
+                    @if (1 == $totalQty)
+                        {{ $totalQty }} Item
+                    @else
+                        {{ $totalQty }} Items
+                    @endif
+                </p>
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                    @foreach ($products as $product)
+                        <tr>
+                            <th><p>{{ $product['item']['name'] }}</p></th>
+                            <th><p>$ {{ $product['price'] }}</p></th>
+                            <th><p>{{ $product['qty'] }}</p></th>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+       </div>
 @endsection
 
-@section('scripts')
-    <script src="https://js.stripe.com/v3/"></script>   
-    <script src="{{ asset('js/checkout.js') }}"></script>
-@endsection

@@ -1,17 +1,17 @@
 <div class="container-fluid top-bar">
     <nav class="navbar navbar-expand">
         <a href="{{ url('/') }}" class="navbar-brand text-light"><h3>LOGO</h3></a>
-        <div class="navbar-collapse">
-            <ul class="navbar-nav mr-auto">
+        <div class="navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="{{ route('shoppingCart') }}" class="nav-link text-light">
                         <i class="fas fa-shopping-cart"></i> Shopping Cart 
                         <span class="badge badge-success">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
                     </a>
                 </li>
-                <li class="nav-item"><a href=" {{url('wishlist')}} " class="nav-link text-light"><i class="fas fa-bookmark"></i> Wish List</a></li>
+                <li class="nav-item"><a href=" {{url('wishlist')}} " class="nav-link text-light"><i class="fas fa-heart"></i> Wish List <span class="badge badge-success">{{ Session::has('wishlist') ? collect(Session::get('wishlist'))->count() : '' }}</span></a></li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href=" {{ url('/home') }}"><i class="fas fa-user-circle"></i></a>
+                    <a class="nav-link text-light" href=" {{ url('/home') }}">Profile <i class="fas fa-user-circle"></i></a>
                 </li>
                 @guest
                     <li class="nav-item">
@@ -42,11 +42,6 @@
                     </li>
                 @endguest
            </ul>
-
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                <button type="submit" class="btn btn-outline-success my-2 my-sm-0"><i class="fas fa-search"></i></button>
-            </form>     
         </div>  
     </nav>
 </div>

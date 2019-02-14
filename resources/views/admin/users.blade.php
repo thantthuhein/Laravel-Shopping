@@ -12,7 +12,7 @@
                     <th>Actions</th>
                 </tr>
                 @foreach ($users as $user)
-                    @if($user->isAdmin == NUll)
+                    @if($user->is_Admin == false)
                     <tr>
                         <th>
                             {{$user->name}}
@@ -36,7 +36,7 @@
                     <th>Actions</th>
                 </tr>
                 @foreach( $users as $user)
-                    @if ($user->isAdmin == 1)
+                    @if ($user->is_Admin == true)
                         <tr>
                             <th> {{ $user->name }} <span class="badge badge-primary">Admin</span></th>
                             <th>

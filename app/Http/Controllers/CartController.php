@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Cart;
+use App\Order;
 use Session;
 use App\Http\Requests\StoreCheckout;
 
@@ -16,7 +17,7 @@ class CartController extends Controller
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id);
         $request->session()->put('cart', $cart);
-        return redirect()->back();
+        return redirect()->back()->with('success', "Added To Cart");
     }
 
     public function getCart()
@@ -39,13 +40,24 @@ class CartController extends Controller
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-        $total = $cart->totalPrice;
-        return view('checkout', ['total' => $total]);
+        return view('checkout', [
+            'products' => $cart->items,
+            'total' => $cart->totalPrice,
+            'totalQty' => $cart->totalQty
+        ]);
     }
 
     public function postCheckout(StoreCheckout $request)
     {
-        return redirect()->back();
+        if ( !Session::has('cart')) {
+            return redirect()->route('shoppingCart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+
+        $request->address;
+        $request->phone;
+        
     }
     
     // public function remove($id) 

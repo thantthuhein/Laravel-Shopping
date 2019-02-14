@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+use App\Product;
+
 class Cart
 
 {
@@ -18,16 +20,24 @@ class Cart
     }
     public function add($item, $id)
     {
+        $product = Product::find($id);
         $storedItem = ['qty' => 0, 'price' => $item->price, 'item' => $item];
         if ($this->items) {
             if(array_key_exists($id, $this->items)) {
                 $storedItem = $this->items[$id];
             }
         }
-        $storedItem['qty']++;
-        $storedItem['price'] = $item->price * $storedItem['qty'];
+
+        if ( $storedItem['qty'] < $product->quantity) {
+            $storedItem['qty']++;
+            $this->totalQty++;
+            $storedItem['price'] = $item->price * $storedItem['qty'];
+            $this->totalPrice +=  $item->price;
+        }
+        $storedItem['qty'];
+        $storedItem['price'];
         $this->items[$id] = $storedItem;
-        $this->totalQty++;
-        $this->totalPrice +=  $item->price;
+        $this->totalQty;
+        $this->totalPrice;
     }
 }

@@ -1,27 +1,47 @@
 @extends('layouts.layout')
 
 @section('content')
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+<div class="container">
+    <div class="row mt-4 mb-3">
+        <div class="col-md-4">
+            <form class="form-inline d-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i title="Search List" class="fas fa-search"></i></button>
+            </form>
+        </div>
+        @if(Session::has('success'))
+            <div class="col-md-8">
+                <div id="charge-message" class="alert alert-success">
+                    {{ Session::get('success') }} 
+                    <a href="" class="btn btn-sm">x</a>
+                </div>
+            </div>
+        @endif
+    </div>
+    <div id="carouselExampleControls" class="carousel slide mt-3" data-ride="carousel">
+        <h3>Latest Items</h3>
         <div class="carousel-inner">
-          <div class="carousel-item active">
+            <div class="carousel-item active">
             <img class="d-block w-100" src="https://via.placeholder.com/350x65" alt="First slide">
-          </div>
-          <div class="carousel-item">
+            </div>
+            <div class="carousel-item">
             <img class="d-block w-100" src="https://via.placeholder.com/350x65" alt="Second slide">
-          </div>
-          <div class="carousel-item">
+            </div>
+            <div class="carousel-item">
             <img class="d-block w-100" src="https://via.placeholder.com/350x65" alt="Third slide">
-          </div>
+            </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
         </a>
-      </div>
+        </div>
+</div>
 
 
 

@@ -24,13 +24,10 @@ class StoreCheckout extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'address' => 'required',
-            'card-name' => 'required',
-            'card-number' => 'required',
-            'card-expiry-month' => 'required',
-            'card-expiry-year' => 'required',
-            'card-cvc' => 'required',
+            'phone' => 'required'
         ];
     }
 }

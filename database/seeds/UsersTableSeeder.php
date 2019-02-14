@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,25 +12,61 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => str_random(10),
-            'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
-        ]);
-        DB::table('users')->insert([
-            'name' => str_random(10),
-            'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
-        ]);
-        DB::table('users')->insert([
-            'name' => str_random(10),
-            'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
-        ]);
-        DB::table('users')->insert([
-            'name' => str_random(10),
-            'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
-        ]);
+        $user = new User();
+        $user->name = 'admin';
+        $user->email = 'admin@gmail.com';
+        $user->password = bcrypt('admin123');
+        $user->is_admin = true;
+        $user->save();
+
+        $user = new User();
+        $user->name = str_random(10);
+        $user->email = str_random(10).'@gmail.com';
+        $user->password = bcrypt('user123');
+        $user->is_admin = false;
+        $user->save();
+
+        $user = new User();
+        $user->name = str_random(10);
+        $user->email = str_random(10).'@gmail.com';
+        $user->password = bcrypt('secret');
+        $user->is_admin = false;
+        $user->save();
+
+        $user = new User();
+        $user->name = str_random(10);
+        $user->email = str_random(10).'@gmail.com';
+        $user->password = bcrypt('user123');
+        $user->is_admin = false;
+        $user->save();
+
+        $user = new User();
+        $user->name = str_random(10);
+        $user->email = str_random(10).'@gmail.com';
+        $user->password = bcrypt('user123');
+        $user->is_admin = false;
+        $user->save();
+
+        $user = new User();
+        $user->name = str_random(10);
+        $user->email = str_random(10).'@gmail.com';
+        $user->password = bcrypt('user123');
+        $user->is_admin = false;
+        $user->save();
+
+        $user = new User();
+        $user->name = str_random(10);
+        $user->email = str_random(10).'@gmail.com';
+        $user->password = bcrypt('user123');
+        $user->is_admin = false;
+        $user->save();
+
+        $user = new User();
+        $user->name = str_random(10);
+        $user->email = str_random(10).'@gmail.com';
+        $user->password = bcrypt('user123');
+        $user->is_admin = false;
+        $user->save();
+
     }
 }
