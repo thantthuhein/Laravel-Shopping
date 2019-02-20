@@ -31,6 +31,9 @@
         <li>
           <a href=" {{url('dashboard/users')}} "><i class="fas fa-users ml-0"></i> Users</a>
         </li>
+        <li>
+          <a href="#"><i class="fas fa-shopping-cart"></i> Orders</a>
+        </li>
       </ul>
 
     </div>

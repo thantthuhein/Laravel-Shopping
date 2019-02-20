@@ -12,35 +12,9 @@
                 <div id="charge-error" class="alert alert-danger{{ !Session::has ('error') ? 'hidden' : ''}}" >
                     {{ Session::get('error') }}
                 </div>
-                {{ Form::open(['route' => 'checkout', 'method' => 'POST', 'id' => 'checkout-form']) }}
+                {{ Form::model($user, ['url' => 'checkout', 'method' => 'POST', 'id' => 'checkout-form']) }}
                     <div class="row">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="first_name">First Name</label>
-                                        {{ Form::text('first_name', null, ['class' => ($errors->has('first_name') ? 'form-control is-invalid' : 'form-control'), 'id' => 'first_name'])}}
-                                        @if($errors->has('first_name'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong> {{ $errors->first('first_name')}} </strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="last_name">Last Name</label>
-                                        {{ Form::text('last_name', null, ['class' => ($errors->has('last_name') ? 'form-control is-invalid' : 'form-control'), 'id' => 'last_name'])}}
-                                        @if($errors->has('last_name'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong> {{ $errors->first('last_name')}} </strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        {{ Auth::user()->address }}
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="address">Address</label>
@@ -56,7 +30,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="phone">Phone Number</label>
-                                {{ Form::text('phone', null, ['class' => ($errors->has('phone') ? 'form-control is-invalid' : 'form-control'), 'id' => 'phone'])}}
+                                {{ Form::number('phone', null, ['class' => ($errors->has('phone') ? 'form-control is-invalid' : 'form-control'), 'id' => 'phone'])}}
                                 @if($errors->has('phone'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong> {{ $errors->first('phone')}} </strong>

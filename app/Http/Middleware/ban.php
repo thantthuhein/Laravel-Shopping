@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Admin 
+class ban
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,6 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if( auth()->user()->is_Admin == 1) {
-            return $next($request);
-        }
-        return redirect('getProfile')->with('error!', "You don't have admin access!");
+        return $next($request);
     }
 }

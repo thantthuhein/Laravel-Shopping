@@ -5,7 +5,9 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Cart;
 use App\Order;
+use App\User;
 use Session;
+use Auth;
 use App\Http\Requests\StoreCheckout;
 
 class CartController extends Controller
@@ -25,6 +27,7 @@ class CartController extends Controller
         if(! Session::has('cart')) {
             return view('ShoppingCart');
         }
+        
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         return view('ShoppingCart', [
@@ -39,8 +42,10 @@ class CartController extends Controller
             return view('ShoppingCart');
         }
         $oldCart = Session::get('cart');
+        $user = User::find(auth()->user()->id);
         $cart = new Cart($oldCart);
         return view('checkout', [
+            'user' => $user,
             'products' => $cart->items,
             'total' => $cart->totalPrice,
             'totalQty' => $cart->totalQty
@@ -49,15 +54,23 @@ class CartController extends Controller
 
     public function postCheckout(StoreCheckout $request)
     {
+        $cart = Session::get('cart');
+        // dd($cart->items);
         if ( !Session::has('cart')) {
             return redirect()->route('shoppingCart');
         }
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
+        $cart = Session::get('cart');
+        $user = User::find(Auth()->user()->id);
 
-        $request->address;
-        $request->phone;
-        
+        $order = new Order();
+        $order->user_id = Auth()->user()->id;
+        $order->cart = base64_encode(serialize($cart));
+        $user->address = $request->input('address');
+        $user->phone = $request->input('phone');
+        $user->save();
+        $order->save();
+        $request->session()->forget('cart');
+        return redirect()->route('/')->with('success', 'Successfully Purchased Items');
     }
     
     // public function remove($id) 

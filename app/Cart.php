@@ -4,12 +4,11 @@ namespace App;
 use App\Product;
 
 class Cart
-
 {
     public $items = NULL;
     public $totalQty = 0;
     public $totalPrice = 0;
-
+    
     public function __construct($oldCart)
     {
         if ($oldCart) {
@@ -21,7 +20,12 @@ class Cart
     public function add($item, $id)
     {
         $product = Product::find($id);
-        $storedItem = ['qty' => 0, 'price' => $item->price, 'item' => $item];
+        $storedItem = [
+            'qty' => 0, 
+            'price' => $item->price, 
+            'item' => $item
+        ];
+        
         if ($this->items) {
             if(array_key_exists($id, $this->items)) {
                 $storedItem = $this->items[$id];
@@ -31,6 +35,8 @@ class Cart
         if ( $storedItem['qty'] < $product->quantity) {
             $storedItem['qty']++;
             $this->totalQty++;
+            $product->quantity--;
+            $product->save();
             $storedItem['price'] = $item->price * $storedItem['qty'];
             $this->totalPrice +=  $item->price;
         }

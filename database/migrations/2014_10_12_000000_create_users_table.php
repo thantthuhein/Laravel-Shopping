@@ -19,12 +19,13 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->boolean('is_Admin')->default(false);
             $table->unsignedInteger('phone')->unique()->nullable();
-            $table->string('address')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->string('address')->unique()->nullable()->foreign()
+            ->references('address')->on('orders')->onUpdate('cascade')->onDelete('set null');
         });
     }
 

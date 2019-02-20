@@ -25,4 +25,7 @@ body { font-family:'Quicksand', sans-serif}
 .onHover:hover {
     background-color: #cbced3;
 }
+.border_radius_40 {
+    border-radius: 41px;
+}
 /*# sourceMappingURL=style.css.map */

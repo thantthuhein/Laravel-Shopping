@@ -10,15 +10,16 @@ class Order extends Model
     use SoftDeletes;
     protected $table = 'orders';
     protected $fillable = [
-        'product_id', 'user_id', 'quantity', 'address'
+        'product_id', 'user_id', 'quantity', 'address', 'phone'
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo('App\User');
     }
-    public function product()
+
+    public function products()
     {
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->hasMany('App\Product');
     }
 }

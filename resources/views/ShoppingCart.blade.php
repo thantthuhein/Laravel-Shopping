@@ -5,6 +5,8 @@
         <h3 class="mt-4">Shopping Cart </h3> 
         @if(Session::has('cart'))
         <div class="row mt-5 mb-0 pb-0">
+            total:
+            {{ session()->get('cart')->totalQty }}
             @foreach ($products as $product)
             <div class="col-3">
                 <ul class="list-group">
@@ -44,7 +46,7 @@
         @else
         <div class="row m-5 p-5 shadow">
             <div class="col">
-                <h3>Empty Cart!</h3>
+                <p>Your Shopping Cart is Empty <i class="fas fa-smile"></i> <br><a class="noTextDecoration" href="{{ url('/') }}">Find Out Some Products!!!</a></p>
             </div>
         </div>
         @endif

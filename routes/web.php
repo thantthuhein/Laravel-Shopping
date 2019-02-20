@@ -8,7 +8,9 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 Route::group(['middleware' => 'auth'], function() {
     // checkout
     Route::get('/checkout', "CartController@getCheckout")->name('checkout');
-    Route::post('/checkout', "CartController@postCheckout")->name('checkout');
+    Route::post('/checkout', "CartController@postCheckout")->name('postCheckout');
+    Route::get('/home', 'ProfileController@getProfile')->name('getProfile');
+    Route::get('/getProfile', "ProfileController@getProfile");
 });
 Route::group(['middleware' => 'admin'], function() {
     Route::get('/dashboard', "HomeController@admin");
@@ -20,11 +22,9 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/user/promote/{id}', "UsersController@promote");
     Route::get('/user/remove/{id}', "UsersController@remove");
 });
-Route::get('/', "ProductController@index");
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', "ProductController@index")->name('/');
 
-Route::get('/checkout', "CartController@getCheckout")->name('checkout');
-Route::post('/checkout', "CartController@postCheckout")->name('checkout');
+
 
 // route for cart control
 Route::get('/add-to-cart/{id}', "CartController@getAddToCart")->name('addToCart');

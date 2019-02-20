@@ -13,10 +13,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <a class="btn btn-primary" href="">Go to Your Profile</a>
                     @if ( auth()->user()->is_Admin == true) 
-                        @include('profile.admin')
                     @else
-                        @include('profile.user')
+                        
                     @endif
                 </div>
             </div>

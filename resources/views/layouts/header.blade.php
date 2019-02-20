@@ -11,7 +11,7 @@
                 </li>
                 <li class="nav-item"><a href=" {{url('wishlist')}} " class="nav-link text-light"><i class="fas fa-heart"></i> Wish List <span class="badge badge-success">{{ Session::has('wishlist') ? collect(Session::get('wishlist'))->count() : '' }}</span></a></li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href=" {{ url('/home') }}">Profile <i class="fas fa-user-circle"></i></a>
+                    <a class="nav-link text-light" href=" {{ url('/getProfile') }}">Profile <i class="fas fa-user-circle"></i></a>
                 </li>
                 @guest
                     <li class="nav-item">
