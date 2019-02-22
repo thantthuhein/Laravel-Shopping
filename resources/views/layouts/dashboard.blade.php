@@ -23,7 +23,7 @@
           </a>
         </li>
         <li>
-          <a href=" {{url('dashboard')}} "><i class="fas fa-chart-bar"></i> Dashboard</a>
+          <a href=" {{url('dashboard')}} "><i class="fas fa-box-open"></i> Products</a>
         </li>
         <li>
           <a href=" {{url('dashboard/categories')}} "><i class="fas fa-book-open"></i> Categories</a>
@@ -32,7 +32,7 @@
           <a href=" {{url('dashboard/users')}} "><i class="fas fa-users ml-0"></i> Users</a>
         </li>
         <li>
-          <a href="#"><i class="fas fa-shopping-cart"></i> Orders</a>
+          <a href="{{ url('dashboard/orders') }}"><i class="fas fa-shopping-cart"></i> Orders</a>
         </li>
       </ul>
 

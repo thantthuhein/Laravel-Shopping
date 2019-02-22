@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <div class="container mt-5">
-        <h3>users</h3>
+        <h3>Users</h3>
     
         <hr>
 

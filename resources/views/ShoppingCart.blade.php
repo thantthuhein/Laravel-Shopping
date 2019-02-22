@@ -5,8 +5,6 @@
         <h3 class="mt-4">Shopping Cart </h3> 
         @if(Session::has('cart'))
         <div class="row mt-5 mb-0 pb-0">
-            total:
-            {{ session()->get('cart')->totalQty }}
             @foreach ($products as $product)
             <div class="col-3">
                 <ul class="list-group">
@@ -15,17 +13,12 @@
                         <br><hr>
                         Quantity: <span class="badge">{{ $product['qty'] }}</span>
                         <br><hr>
-                        Price: $ <span class="badge badge-success">{{ $product['price'] }}</span>
+                        Total: <span class="badge badge-success"> $ </span> {{ $product['price'] }}
                         <br><hr>
-                        <div class="dropdown">
-                            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Reduce <span class="caret"></span>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="">Reduce by 1</a>
-                                <a class="dropdown-item" href="">Clear All Items</a>
-                            </div>
-                            <a class="btn btn-primary" href="{{ route('addToCart', $product['item']['id'] ) }}">Increase</a>
+                        <div>
+                            <a class="btn btn-dark" href="{{ route('addToCart', $product['item']['id'] ) }}"><i class="fas fa-chevron-up"></i></a>
+                            <a class="btn btn-dark" href=""><i class="fas fa-chevron-down"></i></a>
+                            <a class="btn btn-dark" href="">Clear</a>
                         </div>
                     </li>
                     <hr>
@@ -35,7 +28,7 @@
         </div>
         <div class="row mt-4">
             <div class="col">
-                <strong>Total: $ {{ $totalPrice }}</strong>
+                <strong>Total Price: $ {{ $totalPrice }}</strong>
             </div>
         </div>
         <div class="row mt-2">

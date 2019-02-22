@@ -9,11 +9,15 @@
         <div class="col-md-12 mt-4 text-center">
             <img class="rounded-circle" src="https://via.placeholder.com/150" alt="">
             <br> 
-            <p class="mt-3 mb-4">{{ $user->name }} 
+            <p class="mt-3 mb-4">
+                {{ $user->name }} 
                 @if (auth()->user()->is_Admin == TRUE)
                     <span><i class="fas fa-star"></i></span>
                 @endif
-                | <span class="text-muted">{{ $user->email }}</span></p>
+                . <span class="text-muted">{{ $user->email }}</span>
+                <br>
+                Member Since: {{ $user->created_at->format('d. D. M. Y') }}
+            </p>
         </div>
     </div>
     <div class="container  border_radius_40 shadow p-5">
@@ -73,21 +77,44 @@
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12 m-0">
-                <h3>Your Orders List</h3>
+                <h3>Ordered Items</h3>
                 <br>
                 @foreach ($orders as $order)
-                    {{-- {{ dd( isset($order) ) }} --}}
+                    <div class="card border-success text-success">
+                        <div class="card-header">
+                            <p class="card-title">{{ $order->created_at->format('d, D, M, Y') }}</p>
+                            <p class="card-title">
+                                {{ $order->created_at->format('g:i:A') }} 
+                            </p>
+                        </div>
                         @foreach ($order->cart->items as $item)
-                            <tr>
-                                <th>{{ $item['item']['name'] }}</th>
-                                <th>{{ $item['price'] }}</th>
-                                <th>{{ $item['qty'] }}</th>
-                                <th>{{ $order->cart->totalPrice }}</th>
-                                <th>{{ $order->cart->totalQty }}</th>
-                                <th>{{ $order->created_at }}</th>
-                            </tr>                                           
+                            <div class="card-body m-0 p-3">
+                                <p class="p-0 m-0">
+                                    {{ $item['item']['name'] }} |
+                                    {{ $item['qty'] }} 
+                                    @if ($item['qty'] > 1)
+                                    Units
+                                    @else
+                                    Unit
+                                    @endif | 
+                                    $ {{ $item['price'] }}  
+                                </p>
+                            </div>
                         @endforeach
-                    @endforeach
+                        <div class="card-footer">
+                            <p>
+                                Total: {{ $order->cart->totalQty }} 
+                                @if ($order->cart->totalQty > 1)
+                                    Units
+                                @else
+                                    Unit
+                                @endif
+                            </p>
+                            <p>Total Price: $ {{ $order->cart->totalPrice }}</p>
+                        </div>
+                    </div>
+                    <br>
+                @endforeach
             </div>   
         </div>
     </div>

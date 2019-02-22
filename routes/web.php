@@ -16,6 +16,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/dashboard', "HomeController@admin");
     Route::get('/dashboard/categories', "HomeController@categories");
     Route::get('/dashboard/users', "HomeController@users");
+    Route::get('/dashboard/orders', "HomeController@orders");
     Route::get('/admin/routes', "HomeController@index");
     Route::get('/users', "UsersController@index");
     Route::get('/user/destroy/{id}', "UsersController@delete");
