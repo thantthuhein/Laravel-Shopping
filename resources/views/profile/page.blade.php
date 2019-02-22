@@ -80,7 +80,7 @@
                 <h3>Ordered Items</h3>
                 <br>
                 @foreach ($orders as $order)
-                    <div class="card border-success text-success">
+                    <div class="card border-info">
                         <div class="card-header">
                             <p class="card-title">{{ $order->created_at->format('d, D, M, Y') }}</p>
                             <p class="card-title">
@@ -111,6 +111,15 @@
                                 @endif
                             </p>
                             <p>Total Price: $ {{ $order->cart->totalPrice }}</p>
+                            <div class="clearfix">
+                                @if ($order->is_delivered == false)
+                                    <p class="text-danger">Not Yet Delivered! 
+                                        <a class="btn btn-success btn-sm" href="{{ url('/getDeliver', $order->id) }}">Delivered?</a>
+                                    </p>
+                                @else
+                                    <p class="text-success">Delivered!</p>
+                                @endif
+                            </div>
                         </div>
                     </div>
                     <br>

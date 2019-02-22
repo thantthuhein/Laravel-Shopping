@@ -11,6 +11,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/checkout', "CartController@postCheckout")->name('postCheckout');
     Route::get('/home', 'ProfileController@getProfile')->name('getProfile');
     Route::get('/getProfile', "ProfileController@getProfile");
+    Route::get('/getDeliver/{id}', "CartController@getDeliver");
 });
 Route::group(['middleware' => 'admin'], function() {
     Route::get('/dashboard', "HomeController@admin");

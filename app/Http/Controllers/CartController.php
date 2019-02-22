@@ -72,6 +72,14 @@ class CartController extends Controller
         $request->session()->forget('cart');
         return redirect()->route('/')->with('success', 'Successfully Purchased Items');
     }
+
+    public function getDeliver($id)
+    {
+        $order = Order::find($id);
+        $order->is_delivered = true;
+        $order->save();
+        return redirect()->back();
+    }
     
     // public function remove($id) 
     // {
