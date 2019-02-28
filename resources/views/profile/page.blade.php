@@ -58,21 +58,6 @@
                 @endif
             </div>
         </div>
-        <hr>
-        <div class="row m-0">
-            <div class="col-md-6">
-                @if ($user->is_verify == NULL)
-                    Your Email is not Verified yet! <a href="">Verify Your Email Now</a>
-                @else
-                    <p class="text-muted">Verified</p>
-                @endif
-            </div>
-            <div class="col-md-6">
-                @if (auth()->user()->is_Admin == TRUE)
-                    <a href="{{ url('dashboard') }}" class="btn btn-primary">Dashboard <i class="fas fa-arrow-right"></i></a>
-                @endif
-            </div>
-        </div>
     </div>
     <div class="container mt-5 mb-5">
         <div class="row">

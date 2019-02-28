@@ -1,6 +1,6 @@
 <?php
 
-Auth::routes();
+Auth::routes(['verify' => TRUE]);
 Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::resource('products', "ProductController");
     Route::resource('categories', "CategoryController");
@@ -12,6 +12,14 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/home', 'ProfileController@getProfile')->name('getProfile');
     Route::get('/getProfile', "ProfileController@getProfile");
     Route::get('/getDeliver/{id}', "CartController@getDeliver");
+
+    //important?
+    // reset password 
+    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
 });
 Route::group(['middleware' => 'admin'], function() {
     Route::get('/dashboard', "HomeController@admin");
@@ -19,6 +27,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/dashboard/users', "HomeController@users");
     Route::get('/dashboard/orders', "HomeController@orders");
     Route::get('/admin/routes', "HomeController@index");
+    Route::post('/getDate', "HomeController@getDate")->name('getDate');
     Route::get('/users', "UsersController@index");
     Route::get('/user/destroy/{id}', "UsersController@delete");
     Route::get('/user/promote/{id}', "UsersController@promote");
@@ -55,4 +64,5 @@ Route::get('email', "TestController@index");
     //     return response("<h1>hello world</h1>", 200)
     //         ->header('Content-type', 'text/plain');
     // });
-    
+
+Route::get('/home', 'HomeController@index')->name('home');

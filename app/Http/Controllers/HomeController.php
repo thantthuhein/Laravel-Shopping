@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
+use App\Order;
+use Session;
 use App\Product;
-
-use App\Category;
-
-use DB;
+use App\Cart;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
     }
 
     /**
@@ -27,31 +27,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function admin()
-    {
-        $products = Product::all();
-        return view('admin/dashboard', ['products' => $products]);
-    }
-
-    public function categories()
-    {
-        $categories = Category::all();
-        return view('admin/categories', ['categories' => $categories]);
-    }
-
-    public function users()
-    {
-        $users = DB::table('users')->latest()->get();
-        return view('admin/users', ['users' => $users]);
-    }
-
     public function index()
     {
-        return view('home');
-    }
-
-    public function orders()
-    {
-        return view('admin/orders');
+        $user = User::find(Auth()->user()->id);
+        $orders = auth()->user()->orders;
+        $orders->transform(function($order, $key) {
+            $order->cart = unserialize(base64_decode($order->cart));
+            return $order;
+        });
+        return view('profile.page', ['user' => $user, 'orders' => $orders]);
     }
 }

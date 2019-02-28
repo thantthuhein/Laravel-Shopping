@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Notifications\Notifiable;
 use DB;
 
 class UsersController extends Controller

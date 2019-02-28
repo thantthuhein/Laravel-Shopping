@@ -51,8 +51,10 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
                 <a class="nav-link h3 text-light" href=" {{url('dashboard')}} ">DASHBOARD</a>
-              </li>
-              @guest
+              </li>  
+            </ul>
+            <ul class="navbar-nav navbar-right">
+                @guest
                 <li class="nav-item mt-1">
                     <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
@@ -80,16 +82,12 @@
                     </div>
                 </li>
               @endguest
-              </ul>
-              <form class="form-inline mr-4 my-2 my-lg-0 ml-2">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+            </ul>
           </div>
         </nav>
       </div>
     </div>
-    <div class="container-fluid mt-5 ml-4">
+    <div class="container-fluid mt-3">
       @yield('content')
     </div>
   </div>

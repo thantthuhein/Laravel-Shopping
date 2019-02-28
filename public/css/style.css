@@ -28,4 +28,7 @@ body { font-family:'Quicksand', sans-serif}
 .border_radius_40 {
     border-radius: 41px;
 }
+.colorOrangered {
+    background-color: orangered !important; 
+}
 /*# sourceMappingURL=style.css.map */
