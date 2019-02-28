@@ -7,6 +7,7 @@ use Session;
 use App\Product;
 use App\Cart;
 use Auth;
+use App\Http\Requests\StoreCheckout;
 
 use Illuminate\Http\Request;
 
@@ -25,4 +26,21 @@ class ProfileController extends Controller
 
         return view('profile.page', ['user' => $user, 'orders' => $orders]);
     }
+
+    public function getChangeInfo() 
+    {
+        $user = User::find(auth()->user()->id);
+        return view('/profile/changeInfo', ['user' => $user]);
+    }
+
+    public function changeInfo(StoreCheckout $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->save();
+        return redirect('/getProfile')->with('success', "Changed Info Successfully");
+    }
+
 }

@@ -6,6 +6,8 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::resource('categories', "CategoryController");
 });
 Route::group(['middleware' => 'auth'], function() {
+    Route::get('/getChangeInfo', "ProfileController@getChangeInfo");
+    Route::post('/changeInfo', "ProfileController@changeInfo")->name('changeInfo');
     // checkout
     Route::get('/checkout', "CartController@getCheckout")->name('checkout');
     Route::post('/checkout', "CartController@postCheckout")->name('postCheckout');
@@ -15,10 +17,12 @@ Route::group(['middleware' => 'auth'], function() {
 
     //important?
     // reset password 
-    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
-    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+    // Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+    // Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+    // Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+    // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+    
 
 });
 Route::group(['middleware' => 'admin'], function() {

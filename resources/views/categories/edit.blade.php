@@ -16,7 +16,7 @@
         ])}}
 
             <div class="form-group">
-                {{ Form::label(null, 'E mail Address')}}
+                {{ Form::label(null, 'Email Address')}}
                 {{ Form::text('name', null, ['class' => 'form-control'])}}
             </div>
 
