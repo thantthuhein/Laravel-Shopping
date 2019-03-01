@@ -11,17 +11,30 @@
                     <th>Email</th>
                     <th>Actions</th>
                 </tr>
+                @if (Session::has('blocked'))
+                    <p class="alert alert-danger">Successfully blocked!</p>
+                @endif
+                @if (Session::has('unblocked'))
+                    <p class="alert alert-success">Successfully Unblocked!</p>
+                @endif
+
                 @foreach ($users as $user)
                     @if($user->is_Admin == false)
                     <tr>
                         <th>
-                            {{$user->name}}
+                            {{$user->banned_at}}
                             <span class="badge badge-secondary">User</span>
                         </th>
                         <th>{{$user->email}}</th>
                         <th>
                             <a class="btn btn-warning btn-sm hvr-grow mr-3 " href=" {{ url('user/promote', $user->id) }} " data-toggle="tooltip" data-placement="top" title="promote to admin">Appoint as Admin</a>
-                            <a class="btn btn-danger btn-sm hvr-grow" href=" {{ url('user/destroy', $user->id) }} " data-toggle="tooltip" data-placement="top" title="delete user"><i class="fas fa-user-slash"></i></a>
+                            @if ($user->banned_at == NULL)
+                                <a class="btn btn-danger btn-sm hvr-grow" href=" {{ url('user/ban', $user->id) }} " data-toggle="tooltip" data-placement="top" title="block user"><i class="fas fa-user-slash"></i></a>
+                            @endif
+                            @if($user->banned_at == !NULL)    
+                                <a class="btn btn-success btn-sm hvr-grow" href=" {{ url('user/unban', $user->id) }} " data-toggle="tooltip" data-placement="top" title="unblock user">Unblock
+                            </a>
+                            @endif
                         </th>
                     </tr>
                     @endif

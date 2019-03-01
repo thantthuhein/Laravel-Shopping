@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use DB;
+use App\User;
+use Carbon\Carbon;
 
 class UsersController extends Controller
 {
@@ -34,5 +36,21 @@ class UsersController extends Controller
         ->where('id', $id)
         ->update(['is_Admin' => false]);
         return redirect()->back();
+    }
+
+    public function ban(Request $request, $id) 
+    {
+        $user = User::find($id);
+        $user->banned_at = Carbon::now();
+        $user->save();
+        return redirect()->back()->with('blocked','Successfully Blocked'.$user->name.'!');
+    }
+
+    public function unban($id)
+    {
+        $user = User::find($id);
+        $user->banned_at = NULL;
+        $user->save();
+        return redirect()->back()->with('unblocked', "Successfully Unblocked".$user->name."!");
     }
 }

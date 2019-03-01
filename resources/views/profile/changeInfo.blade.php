@@ -36,8 +36,8 @@
                                 </span>
                             @endif
                         </div>
+                        <button class="btn btn-primary">Submit</button>
                     </div>
-                    <button class="btn btn-primary">Submit</button>
                 {{ Form::close() }}
             </div>
         </div>

@@ -1,9 +1,11 @@
 <?php
 
 Auth::routes(['verify' => TRUE]);
-Route::group(['middleware' => ['auth', 'admin']], function() {
+Route::group(['middleware' => ['admin', 'ban']], function() {
     Route::resource('products', "ProductController");
     Route::resource('categories', "CategoryController");
+    Route::get('/user/ban/{id}', "UsersController@ban");
+    Route::get('/user/unban/{id}', "UsersController@unban");
 });
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/getChangeInfo', "ProfileController@getChangeInfo");
@@ -12,7 +14,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/checkout', "CartController@getCheckout")->name('checkout');
     Route::post('/checkout', "CartController@postCheckout")->name('postCheckout');
     Route::get('/home', 'ProfileController@getProfile')->name('getProfile');
-    Route::get('/getProfile', "ProfileController@getProfile");
+    Route::get('/getProfile', "ProfileController@getProfile")->name('getProfile');
     Route::get('/getDeliver/{id}', "CartController@getDeliver");
 
     //important?
@@ -38,9 +40,6 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/user/remove/{id}', "UsersController@remove");
 });
 Route::get('/', "ProductController@index")->name('/');
-
-
-
 // route for cart control
 Route::get('/add-to-cart/{id}', "CartController@getAddToCart")->name('addToCart');
 Route::get('/shoppingCart', "CartController@getCart")->name('shoppingCart');
@@ -50,6 +49,9 @@ Route::get('/cart/remove/{id}', "CartController@remove");
 Route::get('wishlist/{id}', "WishListController@add");
 Route::get('wishlist', "WishListController@list");
 Route::get('wishlist/remove/{id}', "WishListController@remove");
+
+
+
 
 
 
@@ -68,5 +70,9 @@ Route::get('email', "TestController@index");
     //     return response("<h1>hello world</h1>", 200)
     //         ->header('Content-type', 'text/plain');
     // });
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
