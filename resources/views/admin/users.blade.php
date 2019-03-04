@@ -22,7 +22,7 @@
                     @if($user->is_Admin == false)
                     <tr>
                         <th>
-                            {{$user->banned_at}}
+                            <p class="text-uppercase d-inline">{{ $user->name }}</p>
                             <span class="badge badge-secondary">User</span>
                         </th>
                         <th>{{$user->email}}</th>

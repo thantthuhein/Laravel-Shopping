@@ -17,16 +17,14 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/getProfile', "ProfileController@getProfile")->name('getProfile');
     Route::get('/getDeliver/{id}', "CartController@getDeliver");
 
-    //important?
-    // reset password 
-    // Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-    // Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-    // Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
-    // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-
-    
-
 });
+
+// reset password 
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::get('password/reset', 'Auth\ResetPasswordController@reset');
+Route::post('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+
 Route::group(['middleware' => 'admin'], function() {
     Route::get('/dashboard', "HomeController@admin");
     Route::get('/dashboard/categories', "HomeController@categories");
