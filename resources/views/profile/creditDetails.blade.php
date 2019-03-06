@@ -23,7 +23,25 @@
             </div>
             <br>
             <a href="{{ url('/getEnterPin') }}" class="btn btn-primary">Top up Points</a>
+            <hr>
+            <h5 class="mt-3">Points Top Up History</h5>
+            <hr>
+            @foreach ($purchasedCards as $card)
+                <div class="card shadow">
+                    <div class="card-header">
+                        {{ $date }}
+                    </div>
+                    <div class="card-body">
+                        <p class="text-dark">
+                            $ {{ $card->value }}
+                        </p>
+                    </div>
+                </div>
+                <br>
+            @endforeach
         </div>
+
+
         <div class="col-md-9">
             <div>
                 <h3>My Orders</h3>

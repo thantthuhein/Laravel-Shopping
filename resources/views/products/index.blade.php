@@ -1,5 +1,9 @@
 @extends('layouts.layout')
 
+@section('title')
+    Home
+@endsection
+
 @section('content')
 
 <div class="container">
@@ -71,7 +75,7 @@
     <h3 class="mt-5 mb-3">Featured Products</h3>
     <div class="row mb-3">
         @foreach($products as $product)
-            <div class="col-4 mt-5">
+            <div class="col-md-4 col-xs-12 mt-5">
                 <div class="card shadow">
                     <div class="p-3">
                         <a title=" {{$product->name}} " href=" {{url('products', $product->id)}} ">

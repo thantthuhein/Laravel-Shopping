@@ -8,10 +8,9 @@ use App\Product;
 use App\Cart;
 use Auth;
 use App\CreditpointsCard;
-use App\PurchasedCard;
 use App\Http\Requests\StoreCheckout;
 use App\Http\Requests\TopUpCredits;
-use Carbon;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -25,9 +24,8 @@ class ProfileController extends Controller
             $order->cart = unserialize(base64_decode($order->cart));
             return $order;
         });
-
+        
         // dd($orders);
-
         return view('profile.page', ['user' => $user, 'orders' => $orders]);
     }
 
@@ -49,13 +47,23 @@ class ProfileController extends Controller
 
     public function getCreditDetails()
     {
+        $user = User::find(auth()->user()->id);
+        // $purchasedCards = $user->creditpointscards();
+        // dd($user->creditpointscards());
+        // dd(auth()->user()->creditpointscards);
+        
+        $purchasedCards = $user->creditpointscards;
+        $date = NULL;
+        foreach($user->creditpointscards as $card) {
+            $time = strtotime($card->purchased_at);
+            $date = date(' M : d :Y | h : i : a', $time);
+        }
         $orders = auth()->user()->orders;
         $orders->transform(function($order, $key) {
             $order->cart = unserialize(base64_decode($order->cart));
             return $order;
         });
-
-        return view('/profile/creditDetails', ['orders' => $orders]);
+        return view('/profile/creditDetails', ['orders' => $orders, 'purchasedCards' => $purchasedCards, 'date' => $date]);
     }
 
     public function enterPin()
@@ -73,18 +81,15 @@ class ProfileController extends Controller
             // founded
             $user = User::find(auth()->user()->id);
 
-            $purchasedCard = new PurchasedCard();
-            $purchasedCard->user_id = auth()->user()->id;
-
             foreach($credits as $credit ) {
                 if ($credit->useable == FALSE) {
                     return redirect()->back()->with('error', "Credit Card Already Used!");
                 } else {
                     $user->credit_points += $credit->value;
                     $credit->useable = FALSE;
-                    $purchasedCard->card_id = $credit->id;
+                    $credit->user_id = $user->id;
+                    $credit->purchased_at = Carbon::create()->toDateTimeString();
                     $credit->save();
-                    $purchasedCard->save();
                     $user->save();
                     return redirect('/getCreditDetails')->with('success', "Top Up Success!");
                 }

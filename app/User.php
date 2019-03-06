@@ -38,10 +38,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\CreditpointsCard');
     }
 
-    public function purchasedCards()
-    {
-        return $this->hasMany('App\PurchasedCard');
-    }
 
     /**
      * The attributes that should be hidden for arrays.

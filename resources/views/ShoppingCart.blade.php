@@ -1,5 +1,9 @@
  @extends('layouts.layout')
 
+@section('title')
+    Shopping Cart
+@endsection
+
 @section('content')
     <div class="container">
         @if (Session::has('cart'))

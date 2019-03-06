@@ -52,11 +52,11 @@
           </a>
           <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
+              <li class="nav-item active d-none d-sm-block">
                 <a class="nav-link h3 text-light" href=" {{url('dashboard')}} ">DASHBOARD</a>
               </li>  
             </ul>
-            <ul class="navbar-nav navbar-right">
+            <ul class="navbar-nav navbar-right d-none d-sm-block"> 
                 @guest
                 <li class="nav-item mt-1">
                     <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>

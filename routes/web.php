@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 
-Route::group(['middleware' => 'admin'], function() {
+Route::group(['middleware' => 'admin', 'auth'], function() {
     Route::get('/dashboard', "HomeController@admin");
     Route::get('/dashboard/categories', "HomeController@categories");
     Route::get('/dashboard/users', "HomeController@users");
@@ -36,6 +36,9 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/dashboard/getTotalCards', "CreditpointsCardsController@getTotalCards");
     Route::get('/dashboard/getUseableCards', "CreditpointsCardsController@getUseableCards");
     Route::get('/dashboard/getUsedCards', "CreditpointsCardsController@getUsedCards");
+    Route::get('/dashboard/generateCards_i/{times}', "CreditpointsCardsController@generateCards_i");
+    Route::get('/dashboard/generateCards_ii/{times}', "CreditpointsCardsController@generateCards_ii");
+    Route::get('/dashboard/generateCards_iii/{times}', "CreditpointsCardsController@generateCards_iii");
     Route::get('/admin/routes', "HomeController@index");
     Route::post('/getDate', "HomeController@getDate")->name('getDate');
     Route::get('/users', "UsersController@index");

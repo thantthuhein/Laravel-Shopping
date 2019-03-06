@@ -16,6 +16,7 @@ class CreateCreditpointsCardsTable extends Migration
         Schema::create('creditpoints_cards', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->nullable();
+            $table->timestamp('purchased_at')->nullable();
             $table->bigInteger('pin');
             $table->unsignedInteger('value');
             $table->boolean('useable')->default(TRUE);
