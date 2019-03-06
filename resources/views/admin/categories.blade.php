@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-10 mr-auto">
             <br>
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover shadow">
                 <tr>
                     <th><h5>Category Name</h5></th>
                     <th><h5>Actions</h5></th>

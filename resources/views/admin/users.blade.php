@@ -5,7 +5,7 @@
     <div class="row mt-4 ml-1 mr-2">
         <div class="col-8">
             <h3>Users</h3>
-            <table class="table table-bordered table-hover mt-4">
+            <table class="table table-bordered table-hover mt-4 shadow">
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
@@ -43,7 +43,7 @@
         </div>
         <div class="col-md-4">
             <h3>Admins</h3>
-            <table class="table table-bordered table-hover mt-4">
+            <table class="table table-bordered table-hover mt-4 shadow">
                 <tr>
                     <th>Name</th>
                     <th>Actions</th>

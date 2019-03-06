@@ -32,7 +32,7 @@ class Cart
             }
         }
 
-        if ( $storedItem['qty'] < $product->quantity) {
+        if ($product->quantity > 0) {
             $storedItem['qty']++;
             $this->totalQty++;
             $product->quantity--;

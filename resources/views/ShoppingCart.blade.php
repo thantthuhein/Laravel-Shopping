@@ -2,9 +2,20 @@
 
 @section('content')
     <div class="container">
-        <h3 class="mt-4">Shopping Cart </h3> 
+        @if (Session::has('cart'))
+            <h3 class="mt-4 text-center">Shopping Cart </h3>    
+        @endif
+        <div class="row">
+            <div class="col-md-3">
+                @if (Session::has('error'))
+                    <div class="alert alert-danger">
+                        {{ Session::get('error') }}
+                    </div>
+                @endif
+            </div>
+        </div>
         @if(Session::has('cart'))
-        <div class="row mt-5 mb-0 pb-0">
+        <div class="row mt-2 mb-0 pb-0">
             @foreach ($products as $product)
             <div class="col-3">
                 <ul class="list-group">
@@ -37,12 +48,16 @@
             </div>
         </div>
         @else
-        <div class="row m-5 p-5 shadow">
-            <div class="col">
-                <p>Your Shopping Cart is Empty <i class="fas fa-smile"></i> <br><a class="noTextDecoration" href="{{ url('/') }}">Find Out Some Products!!!</a></p>
+        <div class="row m-5 p-5">
+            <div class="col-md-12">
+                <p class="text-dark text-center h1">
+                    Your Shopping Cart is Empty <i class="fas fa-frown"></i> 
+                </p>
+                <p class="text-center">
+                    <a class="noTextDecoration" href="{{ url('/') }}">Find Out Some Products!!!</a>
+                </p>
             </div>
         </div>
         @endif
-        <hr>
     </div>
 @endsection

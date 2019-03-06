@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
+            $table->unsignedInteger('credit_points')->default('0');
             $table->timestamps();
             $table->softDeletes();
             $table->string('address')->unique()->nullable()->foreign()

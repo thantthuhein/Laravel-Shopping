@@ -42,8 +42,9 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->banned_at = Carbon::now();
+        // dd($user->name);
         $user->save();
-        return redirect()->back()->with('blocked','Successfully Blocked'.$user->name.'!');
+        return redirect()->back()->with('blocked','Successfully Blocked'. $user->name .'!');
     }
 
     public function unban($id)
@@ -51,6 +52,6 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->banned_at = NULL;
         $user->save();
-        return redirect()->back()->with('unblocked', "Successfully Unblocked".$user->name."!");
+        return redirect()->back()->with('unblocked', "Successfully Unblocked". $user->name ."!");
     }
 }

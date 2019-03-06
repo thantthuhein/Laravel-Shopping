@@ -21,7 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'banned_at'
+        'name', 'email', 'password', 'phone', 'banned_at', 'credit_points'
     ];
     protected $date = [
         'banned_at'
@@ -36,6 +36,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function creditpointscards()
     {
         return $this->hasMany('App\CreditpointsCard');
+    }
+
+    public function purchasedCards()
+    {
+        return $this->hasMany('App\PurchasedCard');
     }
 
     /**

@@ -16,20 +16,26 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/home', 'ProfileController@getProfile')->name('getProfile');
     Route::get('/getProfile', "ProfileController@getProfile")->name('getProfile');
     Route::get('/getDeliver/{id}', "CartController@getDeliver");
-
+    Route::get('/getCreditDetails', "ProfileController@getCreditDetails");
+    Route::get('/getEnterPin', "ProfileController@enterPin");
+    Route::post('/topUpCredits', "ProfileController@topUpCredits");
+    // reset password 
+    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+    Route::get('password/reset', 'Auth\ResetPasswordController@reset');
+    Route::post('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
 });
 
-// reset password 
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-Route::get('password/reset', 'Auth\ResetPasswordController@reset');
-Route::post('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
 
 Route::group(['middleware' => 'admin'], function() {
     Route::get('/dashboard', "HomeController@admin");
     Route::get('/dashboard/categories', "HomeController@categories");
     Route::get('/dashboard/users', "HomeController@users");
     Route::get('/dashboard/orders', "HomeController@orders");
+    Route::get('/dashboard/getCreditcardsDetails', "HomeController@cardsDetails");
+    Route::get('/dashboard/getTotalCards', "CreditpointsCardsController@getTotalCards");
+    Route::get('/dashboard/getUseableCards', "CreditpointsCardsController@getUseableCards");
+    Route::get('/dashboard/getUsedCards', "CreditpointsCardsController@getUsedCards");
     Route::get('/admin/routes', "HomeController@index");
     Route::post('/getDate', "HomeController@getDate")->name('getDate');
     Route::get('/users', "UsersController@index");

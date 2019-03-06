@@ -4,20 +4,42 @@
 
 <div class="container">
     <div class="row mt-4 mb-3">
+
+        <div class="col-md-4">
+            <div class="input-group">
+                <select class="custom-select">
+                    <option selected>Category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->name }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
         <div class="col-md-4">
             <form class="form-inline d-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i title="Search List" class="fas fa-search"></i></button>
             </form>
         </div>
+        
         @if(Session::has('success'))
-            <div class="col-md-8">
-                <div id="charge-message" class="alert alert-success">
-                    {{ Session::get('success') }} 
-                    <a href="" class="btn btn-sm">x</a>
+        <div class="col-md-4">
+            <div class="alert alert-success p-2">
+                {{ Session::get('success') }}
+                <a href="" class="float-right text-secondary pr-1"><i class="fas fa-times"></i></a>
+            </div>
+        </div>
+        @endif
+
+        @if (Session::has('error'))
+            <div class="col-md-4">
+                <div class="alert alert-danger p-2">
+                    {{ Session::get('error') }}
+                    <a href="" class="float-right text-secondary pr-1"><i class="fas fa-times"></i></a>
                 </div>
             </div>
         @endif
+        
     </div>
     <div id="carouselExampleControls" class="carousel slide mt-3" data-ride="carousel">
         <h3>Latest Items</h3>

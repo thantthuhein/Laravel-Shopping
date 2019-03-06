@@ -14,10 +14,11 @@ body { font-family:'Quicksand', sans-serif}
     box-shadow: 0px 0px 9px -4px rgba(0,0,0,0.75);
 }
 .top-bar {
-    background-color:#10175c;height:60px
+    background-color:#3bcb37;
 }
 .footer {
-    background-color:#12023e;padding:140px 0
+    background-color:#12023e;
+    padding:140px 0;
 }
 .noTextDecoration {
     text-decoration: none !important;
@@ -30,5 +31,8 @@ body { font-family:'Quicksand', sans-serif}
 }
 .colorOrangered {
     background-color: orangered !important; 
+}
+.details:hover {
+    box-shadow: 0px 0px 5px -3px rgba(0,0,0,0.75) !important;
 }
 /*# sourceMappingURL=style.css.map */

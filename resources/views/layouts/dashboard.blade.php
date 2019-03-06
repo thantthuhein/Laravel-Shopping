@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Dashboard</title>
+  <title>@yield('title')</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -19,27 +19,30 @@
       <ul class="sidebar-nav">
         <li class="sidebar-brand">
           <a href="#">
-            Menu
+            MENU
           </a>
         </li>
         <li>
-          <a href=" {{url('dashboard')}} "><i class="fas fa-box-open"></i> Products</a>
+          <a href=" {{url('/dashboard')}} "><i class="fas fa-box-open"></i> PRODUCTS</a>
         </li>
         <li>
-          <a href=" {{url('dashboard/categories')}} "><i class="fas fa-book-open"></i> Categories</a>
+          <a href=" {{url('/dashboard/categories')}} "><i class="fas fa-book-open"></i> CATEGORIES</a>
         </li>
         <li>
-          <a href=" {{url('dashboard/users')}} "><i class="fas fa-users ml-0"></i> Users</a>
+          <a href=" {{url('/dashboard/users')}} "><i class="fas fa-users ml-0"></i> USERS</a>
         </li>
         <li>
-          <a href="{{ url('dashboard/orders') }}"><i class="fas fa-shopping-cart"></i> Orders</a>
+          <a href="{{ url('/dashboard/orders') }}"><i class="fas fa-shopping-cart"></i> ORDERS</a>
+        </li>
+        <li>
+          <a href="{{ url('/dashboard/getCreditcardsDetails') }}"><i class="fas fa-credit-card"></i> CREDIT CARDS</a>
         </li>
       </ul>
 
     </div>
 
     <div id="page-content-wrapper pt-0">
-      <div class="top-bar">
+      <div class="dash-bar">
         <nav class="navbar navbar-expand navbar-light p-0 ml-5">
           <a class="navbar-brand text-light p-2" href="#menu-toggle" id="menu-toggle">
             <i class="fas fa-bars"></i>

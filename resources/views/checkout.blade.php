@@ -8,13 +8,18 @@
        <div class="row justify-content-center mt-1 p-2">
             <div class="col-md-6">
                 <h1>Checkout</h1>
-                <h5>Total: $ {{ $total }}</h5>
-                <div id="charge-error" class="alert alert-danger{{ !Session::has ('error') ? 'hidden' : ''}}" >
-                    {{ Session::get('error') }}
+                <div class="clearfix">
+                    <h5 class="float-left">Total Price: $ {{ $total }}</h5>
+                    <h5 class="float-right">Your Balance: $ {{ $user->credit_points }}</h5>
                 </div>
+                @if (Session::has('error'))
+                    <div class="alert alert-danger">
+                        {{ Session::get('error') }}
+                    </div>
+                @endif
+                <hr>                    
                 {{ Form::model($user, ['url' => 'checkout', 'method' => 'POST', 'id' => 'checkout-form']) }}
                     <div class="row">
-                        {{ Auth::user()->address }}
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="address">Address</label>

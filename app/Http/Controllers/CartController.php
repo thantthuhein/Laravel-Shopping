@@ -15,6 +15,9 @@ class CartController extends Controller
     public function getAddToCart(Request $request, $id)
     {
         $product = Product::find($id);
+        if (0 == $product->quantity) {
+            return redirect()->back()->with('error', "Out of Stock!");
+        }
         $oldCart = Session::has('cart') ? Session::get('cart') : NULL;
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id);
@@ -62,12 +65,17 @@ class CartController extends Controller
         }
         $cart = Session::get('cart');
         $user = User::find(Auth()->user()->id);
+        // dd($user->credit_points);
+        if ($user->credit_points < $cart->totalPrice) {
+            return redirect()->back()->with('error', "Unsufficient Credit Points!");
+        }
 
         $order = new Order();
         $order->user_id = Auth()->user()->id;
         $order->cart = base64_encode(serialize($cart));
         $user->address = $request->input('address');
         $user->phone = $request->input('phone');
+        $user->credit_points -= $cart->totalPrice;
         $user->save();
         $order->save();
         $request->session()->forget('cart');

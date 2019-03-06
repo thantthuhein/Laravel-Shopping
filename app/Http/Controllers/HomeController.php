@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\CreditpointsCard;
+
 class HomeController extends Controller
 {
     /**
@@ -68,5 +70,14 @@ class HomeController extends Controller
             $totalAmount += $order->cart->totalPrice;
         }
         return view('/admin/orders', ['orders' => $orders, 'date' => $date, 'totalAmount' => $totalAmount]);
+    }
+
+    public function cardsDetails()
+    {
+        $totalCards = CreditpointsCard::all();
+        $useableCards = CreditpointsCard::where('useable', TRUE)->get();
+        $usedCards = CreditpointsCard::where('useable', FALSE)->get();
+
+        return view('/admin/creditcards', ['totalCards' => $totalCards, 'useableCards' => $useableCards, 'usedCards' => $usedCards]);
     }
 }
