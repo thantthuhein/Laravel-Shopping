@@ -20,6 +20,7 @@ class CreateCreditpointsCardsTable extends Migration
             $table->bigInteger('pin');
             $table->unsignedInteger('value');
             $table->boolean('useable')->default(TRUE);
+            $table->timestamp('expired_at')->nullable();
             $table->timestamps();
         });
     }

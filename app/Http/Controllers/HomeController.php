@@ -57,7 +57,7 @@ class HomeController extends Controller
     {
         // dd($request->all());
         $time = strtotime($request->date);
-        $date = date('D:M:Y');
+        $date = date('d: D : M : Y');
         
         $orders = \App\Order::whereDate('created_at', $request->date)->get();
         // dd($orders);

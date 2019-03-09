@@ -2,12 +2,17 @@
 
 Auth::routes(['verify' => TRUE]);
 Route::group(['middleware' => ['admin', 'ban']], function() {
-    Route::resource('products', "ProductController");
     Route::resource('categories', "CategoryController");
     Route::get('/user/ban/{id}', "UsersController@ban");
     Route::get('/user/unban/{id}', "UsersController@unban");
 });
 Route::group(['middleware' => 'auth'], function() {
+    Route::get('/searchByCategory/{id}', "SearchController@searchByCategory");
+    // route for wishlist control
+    Route::get('wishlist/{id}', "WishListController@add");
+    Route::get('wishlist', "WishListController@list");
+    Route::get('wishlist/remove/{id}', "WishListController@remove");
+    
     Route::get('/getChangeInfo', "ProfileController@getChangeInfo");
     Route::post('/changeInfo', "ProfileController@changeInfo")->name('changeInfo');
     // checkout
@@ -20,11 +25,16 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/getEnterPin', "ProfileController@enterPin");
     Route::post('/topUpCredits', "ProfileController@topUpCredits");
     // reset password 
-    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+    Route::get('password/reset', "Auth\ForgotPasswordController@showLinkRequestForm");
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
     Route::get('password/reset', 'Auth\ResetPasswordController@reset');
     Route::post('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
 });
+// route for cart control
+Route::get('/add-to-cart/{id}', "CartController@getAddToCart")->name('addToCart');
+Route::get('/shoppingCart', "CartController@getCart")->name('shoppingCart');
+Route::get('/cart/reduceOne/{id}', "CartController@reduceOne");
+Route::get('/cart/reduceAll/{id}', "CartController@reduceAll");
 
 
 Route::group(['middleware' => 'admin', 'auth'], function() {
@@ -46,16 +56,14 @@ Route::group(['middleware' => 'admin', 'auth'], function() {
     Route::get('/user/promote/{id}', "UsersController@promote");
     Route::get('/user/remove/{id}', "UsersController@remove");
 });
+Route::resource('products', "ProductController");
 Route::get('/', "ProductController@index")->name('/');
-// route for cart control
-Route::get('/add-to-cart/{id}', "CartController@getAddToCart")->name('addToCart');
-Route::get('/shoppingCart', "CartController@getCart")->name('shoppingCart');
-Route::get('/cart/remove/{id}', "CartController@remove");
 
-// route for wishlist control
-Route::get('wishlist/{id}', "WishListController@add");
-Route::get('wishlist', "WishListController@list");
-Route::get('wishlist/remove/{id}', "WishListController@remove");
+
+//search
+Route::get('/search','SearchController@index')->name('search');
+Route::post('/search','SearchController@showResult')->name('search');
+
 
 
 

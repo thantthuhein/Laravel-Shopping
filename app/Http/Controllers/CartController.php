@@ -21,6 +21,8 @@ class CartController extends Controller
         $oldCart = Session::has('cart') ? Session::get('cart') : NULL;
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id);
+        // $cart->toArray();
+        // dd($cart);
         $request->session()->put('cart', $cart);
         return redirect()->back()->with('success', "Added To Cart");
     }
@@ -38,6 +40,33 @@ class CartController extends Controller
             'products' => $cart->items, 
             'totalPrice' => $cart->totalPrice
         ]);
+    }
+
+    public function reduceOne($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : NULL;
+        $cart = new Cart($oldCart);
+        $cart->reduceOne($id);
+        if (count($cart->items) > 0 ) {
+            session()->put('cart', $cart);
+        } else {
+            session()->forget('cart', $cart);
+        }
+        return redirect()->back()->with('success', "Removed Item!");
+    }
+
+    public function reduceAll($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : NULL;
+        $cart = new Cart($oldCart);
+        $cart->reduceAll($id);
+        if (count($cart->items) > 0 ) {
+            session()->put('cart', $cart);
+        } else {
+            session()->forget('cart', $cart);
+        }
+
+        return redirect()->back()->with('success', "Removed Item!");
     }
 
     public function getCheckout()
@@ -69,7 +98,14 @@ class CartController extends Controller
         if ($user->credit_points < $cart->totalPrice) {
             return redirect()->back()->with('error', "Unsufficient Credit Points!");
         }
-
+        foreach ( $cart->items as $item) {
+            $product = Product::find($item['item']['id']);
+            // dd($item['qty']);
+            // dd($product->quantity);
+            $product->quantity -= $item['qty'];
+            $product->save();
+            // dd($product->quantity);
+        }
         $order = new Order();
         $order->user_id = Auth()->user()->id;
         $order->cart = base64_encode(serialize($cart));
@@ -90,16 +126,5 @@ class CartController extends Controller
         return redirect()->back();
     }
     
-    // public function remove($id) 
-    // {
-    //     if($id or 0 == $id) {
-    //         $cart = session()->get('cart');
-    //         if( isset($cart[$id]) ) {
-    //             unset($cart[$id]);
-    //             session()->put('cart', $cart);
-    //         }
-    //     }   
-    //     // session()->forget('success', 'Product removed successfully');
-    //     return redirect()->back()->with('remove', 'Removed');
-    // }
+   
 }

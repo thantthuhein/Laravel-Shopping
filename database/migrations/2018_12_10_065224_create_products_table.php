@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->unsignedInteger('price');
             $table->unsignedInteger('quantity');
+            $table->boolean('wishlist')->default(FALSE);
             $table->softDeletes();
             $table->timestamps();
         });

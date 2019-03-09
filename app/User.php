@@ -7,13 +7,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Cog\Contracts\Ban\Bannable as BannableContract;
-use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, Bannable;
+    use Notifiable;
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.
@@ -38,7 +36,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\CreditpointsCard');
     }
 
-
+    public function wishlists()
+    {
+        return $this->hasMany('App\Wishlist');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
