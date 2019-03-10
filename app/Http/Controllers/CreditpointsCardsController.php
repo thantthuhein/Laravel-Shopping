@@ -22,7 +22,7 @@ class CreditpointsCardsController extends Controller
 
     public function getUsedCards()
     {
-        $usedCards = CreditpointsCard::where('useable', FALSE)->get();
+        $usedCards = CreditpointsCard::where('useable', FALSE)->latest('purchased_at')->get();
         return view('/admin/cardsDetails/usedCards', ['usedCards' => $usedCards]);
     }
 
@@ -62,5 +62,32 @@ class CreditpointsCardsController extends Controller
             $creditCard->save();
         }
         return redirect()->back();
+    }
+
+    public function usedCardDetails($id)
+    {
+        $card = CreditpointsCard::find($id);
+        // dd($card->user->name);
+        return view('/admin/usedCardDetails', [ 'card' => $card ]);
+    }
+
+    public function deleteAllUsedCardsHistory()
+    {
+        $cards = Creditpointscard::where('useable', FALSE)->get();
+        foreach ($cards as $card) {
+            $card->delete();
+        }
+        // dd($cards);
+        return redirect()->back()->with('success', "Success!");
+    }
+
+    public function deleteHistory($id)
+    {
+        $card = CreditpointsCard::find($id);
+        if ($card !== NULL) {
+            $card->delete();
+        }
+        $usedCards = CreditpointsCard::where('useable', FALSE)->latest('purchased_at')->get();
+        return view('/admin/cardsDetails/usedCards', ['usedCards' => $usedCards]);
     }
 }

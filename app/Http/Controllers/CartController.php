@@ -15,9 +15,18 @@ class CartController extends Controller
     public function getAddToCart(Request $request, $id)
     {
         $product = Product::find($id);
-        if (0 == $product->quantity) {
+
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+
+        // dd($cart->items[$id]);
+        $leftItems = $product->quantity - $cart->items[$id]['qty'];
+        if ( $leftItems == 0) {
             return redirect()->back()->with('error', "Out of Stock!");
         }
+
+        
+
         $oldCart = Session::has('cart') ? Session::get('cart') : NULL;
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id);

@@ -49,6 +49,9 @@ Route::group(['middleware' => 'admin', 'auth'], function() {
     Route::get('/dashboard/generateCards_i/{times}', "CreditpointsCardsController@generateCards_i");
     Route::get('/dashboard/generateCards_ii/{times}', "CreditpointsCardsController@generateCards_ii");
     Route::get('/dashboard/generateCards_iii/{times}', "CreditpointsCardsController@generateCards_iii");
+    Route::get('/dashboard/usedCardDetails/{id}', "CreditpointsCardsController@usedCardDetails");
+    Route::get('/dashboard/deleteAllUsedCardsHistory', "CreditpointsCardsController@deleteAllUsedCardsHistory");
+    Route::get('/dashboard/deleteHistory/{id}', "CreditpointsCardsController@deleteHistory");
     Route::get('/admin/routes', "HomeController@index");
     Route::post('/getDate', "HomeController@getDate")->name('getDate');
     Route::get('/users', "UsersController@index");

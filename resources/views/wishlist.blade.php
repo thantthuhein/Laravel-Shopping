@@ -25,7 +25,7 @@
 
                     <div class="card-header">
                         <div class="clearfix">
-                            <h5 class="float-left">{{ $wishlist->name }}</h5>
+                            <h5 class="float-left"><a href="{{ url('products', $wishlist->product_id) }}">{{ $wishlist->name }}</a></h5>
                             <a href="{{ url( '/wishlist/remove', $wishlist->product_id ) }}" class="float-right text-danger"><i class="fas fa-times"></i></a>
                         </div>
                     </div>

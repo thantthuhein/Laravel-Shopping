@@ -32,7 +32,7 @@
                         <th>{{ $product->name }}</th>
                         <th>{{ $product->price }}</th>
                         <th>{{ $product->quantity }}</th>
-                        <th><a href="{{ url('products', $product->id) }}">Info</a></th>
+                        <th><a href="{{ url('products', $product->id) }}" class="btn btn-info"> <i class="fas fa-info-circle"></i> </a></th>
                     </tr>
                     @endforeach
                 </tbody>

@@ -13,6 +13,7 @@ class WishListController extends Controller
         $product = Product::find($id);
         $item = Wishlist::where('product_id', $product->id)->first();
         // dd($item);
+        
         if ( ! $item ) {
             // add to wishlist
             $wishlist = new Wishlist();
