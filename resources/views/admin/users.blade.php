@@ -1,16 +1,20 @@
 @extends('layouts.dashboard')
-
+@section('title')
+    Users and Roles   
+@endsection
 @section('content')
 
     <div class="row mt-4 ml-1 mr-2">
         <div class="col-8">
             <h3>Users</h3>
             <table class="table table-bordered table-hover mt-4 shadow">
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
+                <thead class="top-bar text-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 @if (Session::has('blocked'))
                     <p class="alert alert-danger">Successfully blocked!</p>
                 @endif
@@ -22,7 +26,7 @@
                     @if($user->is_Admin == false)
                     <tr>
                         <th>
-                            <p class="text-uppercase d-inline">{{ $user->name }}</p>
+                            <a href="{{ url('/dashboard/userDetails', $user->id) }}" class="text-uppercase d-inline noTextDecoration">{{ $user->name }}</a>
                             <span class="badge badge-secondary">User</span>
                         </th>
                         <th>{{$user->email}}</th>
@@ -44,20 +48,24 @@
         <div class="col-md-4">
             <h3>Admins</h3>
             <table class="table table-bordered table-hover mt-4 shadow">
-                <tr>
-                    <th>Name</th>
-                    <th>Actions</th>
-                </tr>
-                @foreach( $users as $user)
-                    @if ($user->is_Admin == true)
-                        <tr>
-                            <th> {{ $user->name }} <span class="badge badge-primary">Admin</span></th>
-                            <th>
-                                <a class="btn btn-danger btn-sm hvr-grow" href=" {{ url('user/remove', $user->id) }} " data-toggle="tooltip" data-placement="top" title="remove from admin">Remove</a>
-                            </th>
-                        </tr>
-                    @endif
-                @endforeach
+                <thead class="top-bar text-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach( $users as $user)
+                        @if ($user->is_Admin == true)
+                            <tr>
+                                <th> <a class="noTextDecoration" href="{{ url('/dashboard/userDetails', $user->id) }}">{{ $user->name }}</a><span class="badge badge-primary">Admin</span></th>
+                                <th>
+                                    <a class="btn btn-danger btn-sm hvr-grow" href=" {{ url('user/remove', $user->id) }} " data-toggle="tooltip" data-placement="top" title="remove from admin">Remove</a>
+                                </th>
+                            </tr>
+                        @endif
+                    @endforeach
+                </tbody>
             </table>
         </div>
     </div>

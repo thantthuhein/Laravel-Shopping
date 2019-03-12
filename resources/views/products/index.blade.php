@@ -16,7 +16,7 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fuga dicta autem quia asperiores, temporibus officiis velit aliquam perspiciatis quas sequi 
                 <br>
                 @guest
-                    <a href="{{ route('register') }}" class="btn btn-success mt-3 hvr-sweep-to-right">Sign Up Now</a>
+                    <a href="{{ route('register') }}" class="btn btn-success mt-3 hvr-sweep-to-right">Start Shopping</a>
                 @endguest
             </p>
         </div>
@@ -44,23 +44,22 @@
                     </div>
                 @endif
             </div>
-            <hr>
         </div>
             
-        <div class="container-fluid p-0 m-0">
-            <div class="row p-0 m-0">
+        <div class="container">
+            <div class="row justify-content-center p-0 m-0">
                 <div class="col-md-12 p-0 m-0">
                     <div id="carouselExampleControls" class="carousel slide mt-3" data-ride="carousel">
                         <h3 class="text-center text-uppercaset mb-5 mt-2"><b>Latest Items</b></h3>
                         <div class="carousel-inner slideShow">
                             <div class="carousel-item active">
-                            <img class="img-responsive" src="https://via.placeholder.com/1500x500" alt="First slide">
+                            <img class="img-responsive" src="https://via.placeholder.com/1150x500" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="img-responsive" src="https://via.placeholder.com/1500x500" alt="Second slide">
+                            <img class="img-responsive" src="https://via.placeholder.com/1150x500" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="img-responsive" src="https://via.placeholder.com/1500x500" alt="Third slide">
+                            <img class="img-responsive" src="https://via.placeholder.com/1150x500" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -174,7 +173,6 @@
 
     @endif
         <div class="container mt-5 mb-5">
-            <hr>
             <div class="row mt-5">
                 <div class="col-md-6 mb-5">
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit tempora quibusdam similique perferendis provident ea aut non omnis eaque consectetur, adipisci facilis, hic ab error optio consequuntur illo ipsa excepturi.</p>

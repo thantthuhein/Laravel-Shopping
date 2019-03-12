@@ -1,25 +1,28 @@
 @extends('layouts.dashboard')
 
+@section('title')
+    Categories   
+@endsection
+
 @section('content')
-    <div class="row mt-5">
-        <div class="col-md-8">
-            <h3>Categories</h3>
-        </div>
-        <div class="col-md-4">
-            <form action=" {{route('categories.create')}} ">
-                <p class="d-inline mr-1">Create New Category</p>
-                <button class="btn btn-success mr-auto hvr-grow"><i class="fas fa-plus-square"></i></button>
-            </form>
-        </div>
+    <div class="row mt-2">
+        <div class="col-md-12">
+            <div class="clearfix">
+                <h3 class="float-left">Categories</h3>      
+                <p class="float-right">Create New <a class="btn btn-success mr-auto hvr-grow" href="{{route('categories.create')}}"><i class="fas fa-plus-square"></i></a></p>
+            </div>
+            </div>
     </div>
     <div class="row">
-        <div class="col-md-10 mr-auto">
+        <div class="col-md-12">
             <br>
             <table class="table table-bordered table-hover shadow">
-                <tr>
-                    <th><h5>Category Name</h5></th>
-                    <th><h5>Actions</h5></th>
-                </tr>
+                <thead class="top-bar text-light">
+                    <tr>
+                        <th><h5>Category Name</h5></th>
+                        <th><h5>Actions</h5></th>
+                    </tr>
+                </thead>
                 @foreach ($categories as $category)
                     <tr>
                         <th> {{$category->name}}</th>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Order;
 use App\CreditpointsCard;
 
 class HomeController extends Controller
@@ -32,8 +33,26 @@ class HomeController extends Controller
 
     public function admin()
     {
+        $totalUsers = User::all();
+        $totalOrders = Order::all();
+        // dd($totalOrders);
+        $totalOrders->transform(function($totalOrder, $key) {
+            $totalOrder->cart = unserialize(base64_decode($totalOrder->cart));
+            return $totalOrder;
+        });
+
+        $totalPrice = 0;
+        foreach ($totalOrders as $order) {
+            $totalPrice += $order->cart->totalPrice;
+        }
+        // dd($totalPrice);
+        return view('/admin/dashboard',['totalUsers' => $totalUsers, 'totalOrders' => $totalOrders , 'totalPrice' => $totalPrice]);
+    }
+    
+    public function products()
+    {
         $products = \App\Product::all();
-        return view('/admin/dashboard', ['products' => $products]);
+        return view('/admin/products', ['products' => $products]);
     }
 
     public function categories()
@@ -51,6 +70,19 @@ class HomeController extends Controller
     public function orders()
     {
         return view('/admin/orders');
+    }
+
+    public function showTotalOrders()
+    {
+        $orders = Order::latest()->get();
+        $orders->transform(function($order, $key) {
+            $order->cart = unserialize(base64_decode($order->cart));
+            return $order;
+        });
+        // foreach($orders as $order) {
+        //     dd($order->cart->items);
+        // }
+        return view('/admin/showTotalOrders', ['orders' => $orders]);
     }
 
     public function getDate(Request $request) 

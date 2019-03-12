@@ -28,7 +28,7 @@
                             <th>Purchased At</th>
                         </tr>
                         <tr>
-                            <th>{{ $card->user->name }}</th>
+                            <th><a class="noTextDecoration" href="{{ url('/dashboard/userDetails', $card->user->id) }}">{{ $card->user->name }}</a></th>
                             <th>{{ $card->user->email }}</th>
                             <th>0 {{ $card->user->phone }}</th>
                             <th>$ {{ $card->value }}</th>

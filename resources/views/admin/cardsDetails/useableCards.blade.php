@@ -15,7 +15,7 @@
 
     <div class="row mt-2 p-4">
         <table class="table table-hover shadow">
-            <thead>
+            <thead class="top-bar text-light">
                 <tr>
                     <th>Pin</th>
                     <th>Value</th>

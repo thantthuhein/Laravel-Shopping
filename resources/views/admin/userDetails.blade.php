@@ -1,10 +1,47 @@
-@extends('layouts.layout')
+@extends('layouts.dashboard')
 
 @section('title')
-    Credit Details
-@endsection 
+    {{ $user->name }}
+@endsection
 
 @section('content')
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <table class="table table-hover">
+                    <thead class="top-bar text-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Current Credit Points</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>{{ $user->name }}</th>
+                            <th>{{ $user->email }}</th>
+                            @if ($user->phone == NULL)
+                                <th class="text-muted">NONE</th>
+                            @else
+                                <th>0 {{ $user->phone }}</th>
+                            @endif
+                            <th>$ {{ $user->credit_points }}</th>
+                            @if ($user->address == NULL)
+                                <th class="text-muted">NONE</th>
+                            @else
+                                <th>{{ $user->address }}</th>
+                            @endif
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
     <div class="row mt-4">
         <div class="col-md-12">
             <h5 class="text-center">Credits Details</h5>
@@ -13,22 +50,11 @@
 
     <div class="row p-5">
         <div class="col-md-3">
-            <div class="shadow p-5 details card border border-secondary">
-                <p class="text-center">
-                    Credit Points
-                </p>
-                <h1 class="text-center">
-                    $ {{ auth()->user()->credit_points }}
-                </h1>
-            </div>
-            <br>
-            <a href="{{ url('/getEnterPin') }}" class="btn btn-primary">Top up Points</a>
-            <hr>
-            <h5 class="mt-3">Points Top Up History</h5>
+            <h5 class="mt-3 text-center">Points Top Up History</h5>
             <hr>
             @if ($purchasedCards->isEmpty())
-                <h5 class="text-center">None ! </h5>
-            @else    
+                <h5 class="text-center">None !</h5>
+            @else
                 @foreach ($purchasedCards as $card)
                     <div class="card shadow">
                         <div class="card-header">
@@ -48,7 +74,7 @@
 
         <div class="col-md-9">
             <div>
-                <h3>My Orders</h3>
+                <h3 class="text-center">Orders History</h3>
                 @if (Session::has('success'))
                     <div class="alert alert-success">
                         {{ Session::get('success') }}
@@ -91,8 +117,8 @@
                         <p>Total Price: $ {{ $order->cart->totalPrice }}</p>
                         <div class="clearfix">
                             @if ($order->is_delivered == false)
-                                <p class="text-danger">Not Yet Delivered! 
-                                    <a class="btn btn-success btn-sm" href="{{ url('/getDeliver', $order->id) }}">Delivered?</a>
+                                <p class="text-danger">
+                                    Not Yet Delivered! 
                                 </p>
                             @else
                                 <p class="text-success">Delivered!</p>
@@ -103,9 +129,9 @@
                 <br>
                 @endforeach
             @else
-                <h1 class="text-center p-5 mt-3 text-info">You Don't have any Orders yet! <i class="fas fa-frown"></i></h1>
+                <h1 class="text-center p-5 mt-3 text-info">No Orders  ! <i class="fas fa-frown"></i></h1>
             @endif
         </div>
     </div>
 
-@endsection 
+@endsection

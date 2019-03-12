@@ -25,13 +25,12 @@
 
         <div class="row mt-2">
             <div class="col-md-12">
-                <div class="card shadow">
+                <div class="shadow">
                     <table class="table table-hover">
                         <thead class="bg-dark text-light">
                             <tr>
                                 <th>Pin</th>
                                 <th>Value</th>
-                                <th>Status</th>
                                 <th>Details</th>
                             </tr>
                         </thead>
@@ -41,14 +40,7 @@
                                     <th>{{ $card->pin }}</th>
                                     <th>$ {{ $card->value }}</th>
                                     <th>
-                                        @if ( $card->useable == TRUE )
-                                            <p class="text-success">Useable</p>
-                                        @else
-                                            <p class="text-danger">Used</p>
-                                        @endif  
-                                    </th>
-                                    <th>
-                                        <a class="btn btn-dark" href="{{ url('/dashboard/usedCardDetails', $card->id) }}"><i class="fas fa-info-circle"></i></a>
+                                        <a class="btn btn-dark btn-sm" href="{{ url('/dashboard/usedCardDetails', $card->id) }}"><i class="fas fa-info-circle"></i></a>
                                     </th>
                                 </tr>
                             @endforeach

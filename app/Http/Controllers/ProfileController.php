@@ -6,10 +6,12 @@ use App\Order;
 use Session;
 use App\Product;
 use App\Cart;
+use App\UserFeedback;
 use Auth;
 use App\CreditpointsCard;
 use App\Http\Requests\StoreCheckout;
 use App\Http\Requests\TopUpCredits;
+use App\Http\Requests\PostFeedback;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;
@@ -98,5 +100,22 @@ class ProfileController extends Controller
         }
 
     }
+
+    public function getFeedback()
+    {
+        return view('/profile/userFeedbackForm');
+    }
+
+    public function sendFeedback(PostFeedback $request)
+    {
+        // dd($request->all());
+        $feedback = new UserFeedback();
+        $feedback->subject = $request->subject;
+        $feedback->description = $request->description;
+        $feedback->user_name = $request->user_name;
+        $feedback->save();
+        return redirect()->route('/')->with('success', "Successfully Send Feedback !");
+    }
+    
 
 }

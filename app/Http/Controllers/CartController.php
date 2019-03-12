@@ -7,6 +7,7 @@ use App\Cart;
 use App\Order;
 use App\User;
 use Session;
+use App\Notifications\PurchasedSuccessful;
 use Auth;
 use App\Http\Requests\StoreCheckout;
 
@@ -15,24 +16,23 @@ class CartController extends Controller
     public function getAddToCart(Request $request, $id)
     {
         $product = Product::find($id);
-
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
-
-        // dd($cart->items[$id]);
-        $leftItems = $product->quantity - $cart->items[$id]['qty'];
-        if ( $leftItems == 0) {
-            return redirect()->back()->with('error', "Out of Stock!");
-        }
-
         
-
         $oldCart = Session::has('cart') ? Session::get('cart') : NULL;
         $cart = new Cart($oldCart);
+        
+        if($cart->items !=NULL) {
+            if(array_key_exists($id, $cart->items)) {
+                $leftItems = $product->quantity - $cart->items[$id]['qty'];
+                if ( $leftItems == 0) {
+                    return redirect()->back()->with('error', "Out of Stock!");
+                }
+            }
+        }
         $cart->add($product, $product->id);
         // $cart->toArray();
         // dd($cart);
         $request->session()->put('cart', $cart);
+        // session()->flush();
         return redirect()->back()->with('success', "Added To Cart");
     }
 
@@ -124,6 +124,7 @@ class CartController extends Controller
         $user->save();
         $order->save();
         $request->session()->forget('cart');
+        $user->notify(new PurchasedSuccessful());
         return redirect()->route('/')->with('success', 'Successfully Purchased Items');
     }
 

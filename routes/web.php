@@ -8,6 +8,8 @@ Route::group(['middleware' => ['admin', 'ban']], function() {
 });
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/searchByCategory/{id}', "SearchController@searchByCategory");
+    Route::post('/sendFeedback', "ProfileController@sendFeedback");
+    Route::get('/getFeedback', "ProfileController@getFeedback");
     // route for wishlist control
     Route::get('wishlist/{id}', "WishListController@add");
     Route::get('wishlist', "WishListController@list");
@@ -38,7 +40,13 @@ Route::get('/cart/reduceAll/{id}', "CartController@reduceAll");
 
 
 Route::group(['middleware' => 'admin', 'auth'], function() {
+    Route::get('/dashboard/showUserFeedbacks' , "UsersController@showUserFeedbacks");
+    Route::get('/dashboard/markAsAllRead' , "UsersController@markAsAllRead");
+    Route::get('/dashboard/markAsRead/{id}' , "UsersController@markAsRead");
+    Route::get('/dashboard/deleteFeedback/{id}' , "UsersController@deleteFeedback");
     Route::get('/dashboard', "HomeController@admin");
+    Route::get('/dashboard/products', "HomeController@products");
+    Route::get('/dashboard/showTotalOrders', "HomeController@showTotalOrders");
     Route::get('/dashboard/categories', "HomeController@categories");
     Route::get('/dashboard/users', "HomeController@users");
     Route::get('/dashboard/orders', "HomeController@orders");
@@ -51,6 +59,7 @@ Route::group(['middleware' => 'admin', 'auth'], function() {
     Route::get('/dashboard/generateCards_iii/{times}', "CreditpointsCardsController@generateCards_iii");
     Route::get('/dashboard/usedCardDetails/{id}', "CreditpointsCardsController@usedCardDetails");
     Route::get('/dashboard/deleteAllUsedCardsHistory', "CreditpointsCardsController@deleteAllUsedCardsHistory");
+    Route::get('/dashboard/userDetails/{id}', "UsersController@userDetails");
     Route::get('/dashboard/deleteHistory/{id}', "CreditpointsCardsController@deleteHistory");
     Route::get('/admin/routes', "HomeController@index");
     Route::post('/getDate', "HomeController@getDate")->name('getDate');

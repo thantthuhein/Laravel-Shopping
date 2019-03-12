@@ -23,7 +23,10 @@
           </a>
         </li>
         <li>
-          <a href=" {{url('/dashboard')}} "><i class="fas fa-box-open"></i> PRODUCTS</a>
+          <a href="{{ url('/dashboard') }}"><i class="fas fa-chart-line"></i> DASHBOARD</a>
+        </li>
+        <li>
+          <a href=" {{url('/dashboard/products')}} "><i class="fas fa-box-open"></i> PRODUCTS</a>
         </li>
         <li>
           <a href=" {{url('/dashboard/categories')}} "><i class="fas fa-book-open"></i> CATEGORIES</a>
@@ -36,6 +39,9 @@
         </li>
         <li>
           <a href="{{ url('/dashboard/getCreditcardsDetails') }}"><i class="fas fa-credit-card"></i> CREDIT CARDS</a>
+        </li>
+        <li>
+          <a href="{{ url('/dashboard/showUserFeedbacks') }}"><i class="fas fa-comments"></i> USER FEEDBACKS</a>
         </li>
       </ul>
 

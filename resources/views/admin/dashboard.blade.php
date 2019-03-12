@@ -1,46 +1,70 @@
 @extends('layouts.dashboard')
 
-@section('content') 
-  <div class="row mt-5">
-    <div class="col-md-8">
-        <h3>Products in Store</h3>      
-    </div>
-    <div class="col-md-4">
-        <form action="{{route('products.create')}}">
-            <p class="d-inline mr-1">Create New Product</p>
-            <button class="btn btn-success mr-auto hvr-grow"><i class="fas fa-plus-square"></i></button>
-        </form>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-10 mr-auto">
-        <br>
-        <table class="table table-bordered table-hover shadow">
-            <tr>
-                <th><h3>Product Name</h3></th>
-                <th><h3>Price</h3></th>
-                <th><h3>Actions</h3></th>
-            </tr>
-            @foreach($products as $product)
-              <tr>
-                <th> {{$product->name}}</th>
-                <th> ${{$product->price}} </th>
-                <th> 
-                  <a class="btn btn-info hvr-grow mr-2" href=" {{route('products.show', $product->id)}}" data-toggle="tooltip" data-placement="top" title="details"><i class="fas fa-info-circle"></i></a>
-                  {{ Form::model($products, [
-                    'route' => ['products.destroy', $product->id], 
-                    'method' => "DELETE",
-                    'class' => 'd-inline'
-                      ]) }}
-                      <a class="btn btn-dark hvr-grow mr-2" href=" {{route('products.edit', $product->id)}} "data-toggle="tooltip" data-placement="top" title="profile"><i class="fas fa-edit"></i></a>
+@section('title')
+    Dashboard   
+@endsection
 
-                     <button data-toggle="tooltip" data-placement="top" title="delete" class="btn btn-danger hvr-grow"><i class="fas fa-trash-alt"></i></button>
-                  {{ Form::close() }}
-
-                </th>
-              </tr>
-            @endforeach
-        </table>
+@section('content')
+    <div class="row mt-3 pl-5 justify-content-center">
+        <div class="col-md-3">
+            <div class="card shadow">
+                <div class="card-header top-bar text-light">
+                    <h3>Total Users</h3>
+                </div>
+                <div class="card-body">
+                    <div class="clearfix">
+                        <h1 class="float-left"> 
+                            <i class="fas fa-user"></i>
+                        </h1>
+                        <h1 class="float-right">
+                            {{ count($totalUsers) }}
+                        </h1>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url('/dashboard/users') }}">Details <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow">
+                <div class="card-header top-bar text-light">
+                    <h3>Total Orders</h3>
+                </div>
+                <div class="card-body">
+                    <div class="clearfix">
+                        <h1 class="float-left"> 
+                            <i class="fas fa-shopping-cart"></i>
+                        </h1>
+                        <h1 class="float-right">
+                            {{ count($totalOrders) }}
+                        </h1>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url('/dashboard/showTotalOrders') }}">Details <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>                
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-header top-bar text-light">
+                    <h3>Total Amount of Selling</h3>
+                </div>
+                <div class="card-body">
+                    <div class="clearfix">
+                        <h1 class="float-left">
+                            <i class="fas fa-balance-scale"></i>
+                        </h1>
+                        <h1 class="float-right">
+                            $ {{ $totalPrice }}
+                        </h1>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url('/dashboard/orders') }}">Details <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>            
+        </div>
     </div>
-  </div>
 @endsection

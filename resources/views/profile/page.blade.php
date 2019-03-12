@@ -22,7 +22,13 @@
                 @else
                     <i class="fas fa-user"></i>
                 @endif
-                . <span class="text-muted">{{ $user->email }}</span>
+                <span class="text-muted">
+                    @if (auth()->user()->is_Admin == TRUE)
+                        . Administrator
+                    @else
+                        
+                    @endif
+                </span>
                 <br>
                 Member Since: {{ $user->created_at->format('d. D. M. Y') }}
         </div>
@@ -74,7 +80,9 @@
         <div class="row justify-content-center">
             <div class="col-md-12 text-left">
                 @if (auth()->user()->is_Admin == TRUE)
-                    <a class="btn btn-danger" href="{{ url('/dashboard') }}">Go To Dashboard</a>
+                    <a class="btn btn-danger" href="{{ url('/dashboard') }}">Go To Dashboard <i class="fas fa-chart-line"></i></a>
+                @else
+                    <a class="btn btn-dark" href="{{ url('/getFeedback') }}">Send Feedback <i class="fas fa-comment-alt"></i> </a>
                 @endif
             </div>
         </div>

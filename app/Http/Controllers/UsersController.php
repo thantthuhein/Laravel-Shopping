@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use DB;
+use App\UserFeedback;
 use App\User;
 use Carbon\Carbon;
 
@@ -53,5 +54,54 @@ class UsersController extends Controller
         $user->banned_at = NULL;
         $user->save();
         return redirect()->back()->with('unblocked', "Successfully Unblocked". $user->name ."!");
+    }
+
+    public function userDetails($id)
+    {
+        $user = User::find($id);
+        $purchasedCards = $user->creditpointscards;
+        $date = NULL;
+        foreach($user->creditpointscards as $card) {
+            $time = strtotime($card->purchased_at);
+            $date = date(' M : d :Y | h : i : a', $time);
+        }
+        $orders = $user->orders;
+        $orders->transform(function($order, $key) {
+            $order->cart = unserialize(base64_decode($order->cart));
+            return $order;
+        });
+        return view('/admin/userDetails', ['user' => $user, 'orders' => $orders, 'purchasedCards' => $purchasedCards, 'date' => $date]);
+    }
+
+    public function showUserFeedbacks()
+    {
+        $feedbacks = UserFeedback::latest()->get();
+        // dd($feedbacks);
+        return view('/admin/showUserFeedbacks',['feedbacks' => $feedbacks]);
+    }
+
+    public function markAsAllRead()
+    {
+        $feedbacks = UserFeedback::all();
+        foreach($feedbacks as $feedback) {
+            $feedback->read = TRUE;
+            $feedback->save();
+        }
+        return redirect()->back();
+    }
+
+    public function markAsRead($id)
+    {
+        $feedback = UserFeedback::find($id);
+        $feedback->read = TRUE;
+        $feedback->save();
+        return redirect()->back();
+    }
+
+    public function deleteFeedback($id)
+    {
+        $feedback = UserFeedback::find($id);
+        $feedback->delete();
+        return redirect()->back();
     }
 }
