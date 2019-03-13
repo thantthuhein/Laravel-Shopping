@@ -1,5 +1,5 @@
 <?php
-
+$DATABASE_URL = parse_url('postgres://pnwsjnbatbxuyy:4e3e3feb0bca5317a16f615dde28f66ebf7cf2bba3530c28b060e19b62a4d379@ec2-184-73-216-48.compute-1.amazonaws.com:5432/d4hi1v0dqdh1t');
 return [
 
     /*
@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -60,9 +60,9 @@ return [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('shopping_website', 'forge'),
+            'username' => env('root', 'forge'),
+            'password' => env('', ''),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
