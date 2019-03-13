@@ -60,7 +60,7 @@ class ProfileController extends Controller
             $time = strtotime($card->purchased_at);
             $date = date(' M : d :Y | h : i : a', $time);
         }
-        $orders = auth()->user()->orders;
+        $orders = auth()->user()->orders()->latest()->get();
         $orders->transform(function($order, $key) {
             $order->cart = unserialize(base64_decode($order->cart));
             return $order;
