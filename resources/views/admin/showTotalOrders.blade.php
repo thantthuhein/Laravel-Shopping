@@ -7,9 +7,9 @@
 @section('content')
     <div class="row mt-3 justify-content-center">
         <div class="col-md-9">
-            <h1>Total Orders</h1>
+            <h1 class="mt-3">Total Orders</h1>
             @foreach ($orders as $order)
-                <div class="card shadow mb-3">
+                <div class="card shadow mb-5">
                     <div class="card-header top-bar text-light">
                         <div class="clearfix">
                             <h3 class="float-left">{{ $order->created_at->format('D.d.M.Y | h:i:a') }}</h3>

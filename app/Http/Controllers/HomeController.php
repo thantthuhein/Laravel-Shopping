@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Order;
+use App\Product;
+use App\Category;
+use App\CreditpointsCard;
 
 class HomeController extends Controller
 {
@@ -49,9 +52,15 @@ class HomeController extends Controller
         return view('/admin/dashboard', ['products' => $products, 'totalUsers' => $totalUsers, 'totalOrders' => $totalOrders, 'totalPrice' => $totalPrice]);
     }
 
+    public function products()
+    {
+        $products = Product::all();
+        return view('/admin/products', ['products' => $products]);
+    }
+
     public function categories()
     {
-        $categories = \App\Category::all();
+        $categories = Category::all();
         return view('/admin/categories', ['categories' => $categories]);
     }
 
@@ -82,7 +91,7 @@ class HomeController extends Controller
         $time = strtotime($request->date);
         $date = date('d: D : M : Y');
         
-        $orders = \App\Order::whereDate('created_at', $request->date)->get();
+        $orders = \App\Order::whereDate('created_at', $request->date)->latest()->get();
         // dd($orders);
         $orders->transform(function($order, $key) {
             $order->cart = unserialize(base64_decode($order->cart));

@@ -10,9 +10,10 @@
             <div class="p-2">
                 {{ Form::open(['route' => 'getDate', 'method' => 'POST']) }}
                     <label class="h5" for="date">Pick Date: </label>
-                    <input class="btn colorOrangered" type="date" name="date">
+                    <input class="btn btn-outline border-success" value="asdf" type="date" name="date">
                     <button class="btn btn-success" type="submit">Submit</button>
                 {{ Form::close() }}
+                
             </div>
         </div>
 

@@ -32,12 +32,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('password/reset', 'Auth\ResetPasswordController@reset');
     Route::post('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
 });
-// route for cart control
-Route::get('/add-to-cart/{id}', "CartController@getAddToCart")->name('addToCart');
-Route::get('/shoppingCart', "CartController@getCart")->name('shoppingCart');
-Route::get('/cart/reduceOne/{id}', "CartController@reduceOne");
-Route::get('/cart/reduceAll/{id}', "CartController@reduceAll");
-
 
 Route::group(['middleware' => 'admin', 'auth'], function() {
     Route::get('/dashboard/showUserFeedbacks' , "UsersController@showUserFeedbacks");
@@ -70,17 +64,14 @@ Route::group(['middleware' => 'admin', 'auth'], function() {
 });
 Route::resource('products', "ProductController");
 Route::get('/', "ProductController@index")->name('/');
-
-
+// cart control
+Route::get('/add-to-cart/{id}', "CartController@getAddToCart")->name('addToCart');
+Route::get('/shoppingCart', "CartController@getCart")->name('shoppingCart');
+Route::get('/cart/reduceOne/{id}', "CartController@reduceOne");
+Route::get('/cart/reduceAll/{id}', "CartController@reduceAll");
 //search
 Route::get('/search','SearchController@index')->name('search');
 Route::post('/search','SearchController@showResult')->name('search');
-
-
-
-
-
-
 
 
 
