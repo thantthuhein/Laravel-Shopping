@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-    <title>Index</title>
+Index
 @endsection
 @section('content')
     <div class="container mt-5">

@@ -16,7 +16,7 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fuga dicta autem quia asperiores, temporibus officiis velit aliquam perspiciatis quas sequi 
                 <br>
                 @guest
-                    <a href="{{ route('register') }}" class="btn btn-success mt-3 hvr-sweep-to-right">Start Shopping</a>
+                    <a href="{{ route('register') }}" class="btn btn-success border-0 mt-3 hvr-sweep-to-right">Start Shopping</a>
                 @endguest
             </p>
         </div>
