@@ -45,34 +45,7 @@
         </div>
     </div>
         
-    <div class="container">
-        <div class="row justify-content-center p-0 m-0">
-            <div class="col-md-12 p-0 m-0">
-                <div id="carouselExampleControls" class="carousel slide mt-3" data-ride="carousel">
-                    <h3 class="text-center text-uppercaset mb-5 mt-2"><b>Latest Items</b></h3>
-                    <div class="carousel-inner slideShow">
-                        <div class="carousel-item active">
-                        <img class="img-responsive" src="https://via.placeholder.com/1150x500" alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                        <img class="img-responsive" src="https://via.placeholder.com/1150x500" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                        <img class="img-responsive" src="https://via.placeholder.com/1150x500" alt="Third slide">
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <div class="container">
         <h3 class="mt-5 mb-3 text-uppercase">Featured Products</h3>
