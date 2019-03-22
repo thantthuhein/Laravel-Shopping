@@ -1,5 +1,5 @@
-<?php
-$DATABASE_URL = parse_url('postgres://pnwsjnbatbxuyy:4e3e3feb0bca5317a16f615dde28f66ebf7cf2bba3530c28b060e19b62a4d379@ec2-184-73-216-48.compute-1.amazonaws.com:5432/d4hi1v0dqdh1t');
+<?php 
+
 return [
 
     /*
@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -58,16 +58,16 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => $DATABASE_URL("ec2-184-73-216-48.compute-1.amazonaws.com"),
-            'port' => $DATABASE_URL("5432"),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'forge'),
-            'username' => $DATABASE_URL["pnwsjnbatbxuyy"],
-            'password' => $DATABASE_URL["4e3e3feb0bca5317a16f615dde28f66ebf7cf2bba3530c28b060e19b62a4d379"],
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
             'schema' => 'public',
-            'sslmode' => 'require',
+            'sslmode' => 'prefer',
         ],
 
         'sqlsrv' => [

@@ -6,13 +6,13 @@
 
 @section('content')
     @if ($wishlists->isNotEmpty())
-        <div class="row mt-5 justify-content-center">
+        <div class="row m-0 mt-5 justify-content-center">
             <div class="col-md-12">
                 <h3 class="text-center">Wish Lists</h3>
             </div>
         </div>
     @endif
-    <div class="row mt-5 pl-5 pr-5">
+    <div class="row mt-5 pl-5 m-0 pr-5">
         @if ($wishlists->isEmpty())
         <div class="col-md-12">
             <h1 class="mt-5 text-center">No Items In Wish List ! <i class="fas fa-frown"></i></h1>

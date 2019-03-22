@@ -5,13 +5,13 @@
 @endsection 
 
 @section('content')
-    <div class="row mt-4">
+    <div class="row m-0 mt-4">
         <div class="col-md-12">
             <h5 class="text-center">Credits Details</h5>
         </div>
     </div>
 
-    <div class="row p-5">
+    <div class="row m-0 p-5">
         <div class="col-md-3">
             <div class="shadow p-5 details card border border-secondary">
                 <p class="text-center">
@@ -32,7 +32,7 @@
                 @foreach ($purchasedCards as $card)
                     <div class="card shadow">
                         <div class="card-header">
-                            {{ $date }}
+                            {{ $card->purchased_at }}
                         </div>
                         <div class="card-body">
                             <p class="text-dark">

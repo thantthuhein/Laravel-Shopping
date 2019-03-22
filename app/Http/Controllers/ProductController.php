@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
-use App\Student;
+// use App\Student;
+use App\Wishlist;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ProductStore;
 
@@ -16,10 +17,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function example()
-    {
-        return view('example');
-    }
+    // public function example()
+    // {
+    //     return view('example');
+    // }
 
     public function home()
     {
@@ -28,9 +29,22 @@ class ProductController extends Controller
 
     public function index()
     {
+        if(auth()->check()) {
+            $list;
+            $wishlists = auth()->user()->wishlists;
+            foreach($wishlists as $wishlist) {
+                $list[] = $wishlist->product_id;
+            }
+        }
+        // dd($list);
         $categories = Category::all();
         $products = Product::latest()->paginate(6);
-        return view('products.index', ['products' => $products, 'categories' => $categories]);
+        if(isset($list)) {
+            return view('products.index', ['products' => $products, 'categories' => $categories, 'list' => $list]);
+        } else {
+            return view('products.index', ['products' => $products, 'categories' => $categories]);
+        }
+
     }
 
     /**

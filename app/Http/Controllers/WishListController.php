@@ -9,9 +9,10 @@ use App\Product;
 class WishListController extends Controller
 {
     public function add($id)
-    {
+    {   
         $product = Product::find($id);
-        $item = Wishlist::where('product_id', $product->id)->first();
+        // $item = Wishlist::where('product_id', $product->id)->first();
+        $item = auth()->user()->wishlists->where('product_id', $product->id)->first();
         // dd($item);
         
         if ( ! $item ) {
@@ -27,16 +28,12 @@ class WishListController extends Controller
                 $wishlist->user_id = NULL;
             }
             $wishlist->save();
-            $product->wishlist = TRUE;
-            $product->save();
+
             // dd($wishlist);
             return redirect()->back()->with('success', "Added To Wish List");
         } else {
             // remove if already exists
             $item->delete();
-            $product->wishlist = FALSE;
-            $product->save();
-            // dd($item);
             return redirect()->back()->with('error', "Removed From Wish List");
         }
 
@@ -55,8 +52,6 @@ class WishListController extends Controller
         $product = Product::find($id);
         // dd($product->id);
         $wishlist = Wishlist::where('product_id', $product->id)->first();
-        $product->wishlist = FALSE;
-        $product->save();
         // dd($wishlist);
         $wishlist->delete();
         return redirect()->back()->with('success', "Success !");

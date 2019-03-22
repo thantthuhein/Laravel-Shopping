@@ -11,7 +11,7 @@ class Product extends Model
     use SoftDeletes;
     protected $table = "products";
     protected $fillable = [
-        'name', 'description', 'price', 'quantity', 'wishlist'
+        'name', 'description', 'price', 'quantity'
     ];
 
     public function categories()

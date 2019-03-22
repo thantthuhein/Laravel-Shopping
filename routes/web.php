@@ -7,9 +7,13 @@ Route::group(['middleware' => ['admin', 'ban']], function() {
     Route::get('/user/unban/{id}', "UsersController@unban");
 });
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/searchByCategory/{id}', "SearchController@searchByCategory");
     Route::post('/sendFeedback', "ProfileController@sendFeedback");
     Route::get('/getFeedback', "ProfileController@getFeedback");
+    // cart control
+    Route::get('/add-to-cart/{id}', "CartController@getAddToCart")->name('addToCart');
+    Route::get('/shoppingCart', "CartController@getCart")->name('shoppingCart');
+    Route::get('/cart/reduceOne/{id}', "CartController@reduceOne");
+    Route::get('/cart/reduceAll/{id}', "CartController@reduceAll");
     // route for wishlist control
     Route::get('wishlist/{id}', "WishListController@add");
     Route::get('wishlist', "WishListController@list");
@@ -32,7 +36,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('password/reset', 'Auth\ResetPasswordController@reset');
     Route::post('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
 });
-
+Route::get('/searchByCategory/{id}', "SearchController@searchByCategory");
 Route::group(['middleware' => 'admin', 'auth'], function() {
     Route::get('/dashboard/showUserFeedbacks' , "UsersController@showUserFeedbacks");
     Route::get('/dashboard/markAsAllRead' , "UsersController@markAsAllRead");
@@ -64,11 +68,7 @@ Route::group(['middleware' => 'admin', 'auth'], function() {
 });
 Route::resource('products', "ProductController");
 Route::get('/', "ProductController@index")->name('/');
-// cart control
-Route::get('/add-to-cart/{id}', "CartController@getAddToCart")->name('addToCart');
-Route::get('/shoppingCart', "CartController@getCart")->name('shoppingCart');
-Route::get('/cart/reduceOne/{id}', "CartController@reduceOne");
-Route::get('/cart/reduceAll/{id}', "CartController@reduceAll");
+
 //search
 Route::get('/search','SearchController@index')->name('search');
 Route::post('/search','SearchController@showResult')->name('search');

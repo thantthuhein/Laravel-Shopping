@@ -25,6 +25,7 @@ body { font-family:'Quicksand', sans-serif}
 }
 .onHover:hover {
     background-color: #cbced3;
+    padding: 16px!important;
 }
 .border_radius_40 {
     border-radius: 41px;

@@ -67,6 +67,7 @@ class CreditpointsCardsController extends Controller
     public function usedCardDetails($id)
     {
         $card = CreditpointsCard::find($id);
+        // dd($card->purchased_at);
         $time = strtotime($card->purchased_at); 
         $date = date(' D : d : M : Y : h : i : A ', $time);
         $card->purchased_at = $date;

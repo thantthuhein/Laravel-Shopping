@@ -53,19 +53,22 @@ class ProfileController extends Controller
         // $purchasedCards = $user->creditpointscards();
         // dd($user->creditpointscards());
         // dd(auth()->user()->creditpointscards);
-        
-        $purchasedCards = $user->creditpointscards;
-        $date = NULL;
-        foreach($user->creditpointscards as $card) {
-            $time = strtotime($card->purchased_at);
-            $date = date(' M : d :Y | h : i : a', $time);
-        }
+        $purchasedCards = CreditpointsCard::where('user_id', auth()->user()->id)
+            ->latest('purchased_at')
+            ->get();
+
+        // $cards = CreditpointsCard::find(auth()->user()->id);
+        // $purchasedCards = $user->creditpointscards;
+        // foreach($user->creditpointscards as $card) {
+        //     $time = strtotime($card->purchased_at);
+        //     $card->purchased_at = date(' M : d :Y | h : i : a', $time);
+        // }
         $orders = auth()->user()->orders()->latest()->get();
         $orders->transform(function($order, $key) {
             $order->cart = unserialize(base64_decode($order->cart));
             return $order;
         });
-        return view('/profile/creditDetails', ['orders' => $orders, 'purchasedCards' => $purchasedCards, 'date' => $date]);
+        return view('/profile/creditDetails', ['orders' => $orders, 'purchasedCards' => $purchasedCards]);
     }
 
     public function enterPin()
@@ -84,15 +87,16 @@ class ProfileController extends Controller
             $user = User::find(auth()->user()->id);
 
             foreach($credits as $credit ) {
-                if ($credit->useable == FALSE) {
+                if ( $credit->useable == FALSE ) {
                     return redirect()->back()->with('error', "Credit Card Already Used!");
                 } else {
                     $user->credit_points += $credit->value;
                     $credit->useable = FALSE;
                     $credit->user_id = $user->id;
-                    $credit->purchased_at = Carbon::create()->toDateTimeString();
+                    $credit->purchased_at = Carbon::now();
                     $credit->save();
                     $user->save();
+                    // dd($credit->purchased_at);
                     return redirect('/getCreditDetails')->with('success', "Top Up Success!");
                 }
             }

@@ -7,36 +7,34 @@
 @section('content')
     <div class="row mt-5 justify-content-center">
         <div class="col-md-12">
-            <div class="card shadow">
-                <table class="table table-hover">
-                    <thead class="top-bar text-light">
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Current Credit Points</th>
-                            <th>Address</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>{{ $user->name }}</th>
-                            <th>{{ $user->email }}</th>
-                            @if ($user->phone == NULL)
-                                <th class="text-muted">NONE</th>
-                            @else
-                                <th>0 {{ $user->phone }}</th>
-                            @endif
-                            <th>$ {{ $user->credit_points }}</th>
-                            @if ($user->address == NULL)
-                                <th class="text-muted">NONE</th>
-                            @else
-                                <th>{{ $user->address }}</th>
-                            @endif
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <table class="table table-hover shadow">
+                <thead class="top-bar text-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Current Credit Points</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>{{ $user->name }}</th>
+                        <th>{{ $user->email }}</th>
+                        @if ($user->phone == NULL)
+                            <th class="text-muted">NONE</th>
+                        @else
+                            <th>0 {{ $user->phone }}</th>
+                        @endif
+                        <th>$ {{ $user->credit_points }}</th>
+                        @if ($user->address == NULL)
+                            <th class="text-muted">NONE</th>
+                        @else
+                            <th>{{ $user->address }}</th>
+                        @endif
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 

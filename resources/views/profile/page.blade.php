@@ -5,7 +5,7 @@
 @endsection 
 
 @section('content')
-    <div class="row">
+    <div class="row m-0">
         <div class="col-md-12 mt-4 text-center">
             @if (Session::has('success'))
                 <div id="charge-message" class="alert alert-success">
