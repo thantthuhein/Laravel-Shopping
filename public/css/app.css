@@ -22,7 +22,7 @@
 }
 
 .top-bar {
-  background-color: #383854;
+  background-color: #383854 !important;
 }
 
 .footer {
