@@ -38,7 +38,7 @@
                     @endif
                 </ul>
             </div>
-
+            
             {{-- nav right --}}
             <ul class="navbar-nav ml-auto"> 
                 @guest
