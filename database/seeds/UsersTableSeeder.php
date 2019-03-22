@@ -16,64 +16,9 @@ class UsersTableSeeder extends Seeder
         $user->name = 'admin';
         $user->email = 'admin@gmail.com';
         $user->password = bcrypt('admin123');
-        $user->is_admin = true;
+        $user->is_Admin = true;
         $user->save();
 
-        $user = new User();
-        $user->name = 'user';
-        $user->email = 'user@gmail.com';
-        $user->password = bcrypt('user123');
-        $user->is_admin = false;
-        $user->save();
-
-        $user = new User();
-        $user->name = str_random(10);
-        $user->email = str_random(10).'@gmail.com';
-        $user->password = bcrypt('user123');
-        $user->is_admin = false;
-        $user->save();
-
-        $user = new User();
-        $user->name = str_random(10);
-        $user->email = str_random(10).'@gmail.com';
-        $user->password = bcrypt('secret');
-        $user->is_admin = false;
-        $user->save();
-
-        $user = new User();
-        $user->name = str_random(10);
-        $user->email = str_random(10).'@gmail.com';
-        $user->password = bcrypt('user123');
-        $user->is_admin = false;
-        $user->save();
-
-        $user = new User();
-        $user->name = str_random(10);
-        $user->email = str_random(10).'@gmail.com';
-        $user->password = bcrypt('user123');
-        $user->is_admin = false;
-        $user->save();
-
-        $user = new User();
-        $user->name = str_random(10);
-        $user->email = str_random(10).'@gmail.com';
-        $user->password = bcrypt('user123');
-        $user->is_admin = false;
-        $user->save();
-
-        $user = new User();
-        $user->name = str_random(10);
-        $user->email = str_random(10).'@gmail.com';
-        $user->password = bcrypt('user123');
-        $user->is_admin = false;
-        $user->save();
-
-        $user = new User();
-        $user->name = str_random(10);
-        $user->email = str_random(10).'@gmail.com';
-        $user->password = bcrypt('user123');
-        $user->is_admin = false;
-        $user->save();
-
+       
     }
 }
