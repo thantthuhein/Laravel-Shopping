@@ -88,7 +88,20 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show', ['product' => $product]);
+        if(auth()->check()) {
+            $list;
+            $wishlists = auth()->user()->wishlists;
+            foreach($wishlists as $wishlist) {
+                $list[] = $wishlist->product_id;
+            }
+        }
+        // dd($list);
+        if(isset($list)) {
+            return view('products.show', ['product' => $product, 'list' => $list]);
+        } else {
+            
+            return view('products.show', ['product' => $product]);
+        }
     }
 
     /**

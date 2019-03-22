@@ -6,15 +6,30 @@
             <div class="col-md-6">
                 <div class="card shadow">
                     <div class="card-header top-bar text-light">
-                        <p class="h3">
-                            {{ $product->name }}
-                        </p>
-                        <p>
-                            Category : 
-                            @foreach($product->categories as $category)
-                                <span>{{ $category->name }}</span> .
-                            @endforeach
-                        </p>
+                        <div class="clearfix">
+                            <div class="float-left">
+                                <p class="h3">{{ $product->name }}</p>
+                                
+                                Category : 
+                                @foreach($product->categories as $category)
+                                    <span>{{ $category->name }}</span> .
+                                @endforeach
+                            </div>
+                            <a href="{{ url('wishlist', $product->id) }}" class="float-right">
+                                <div class="text-center text-light">
+                                    @if (isset($list)) 
+                                        @if ( in_array($product->id, $list) )
+                                        <i title="Wish List" class="fas fa-heart text-danger"></i>
+                                        @else
+                                        <i title="Wish List" class="fas fa-heart text-light"></i>
+                                        @endif
+                                    @else
+                                        <i title="Wish List" class="fas fa-heart text-light"></i>
+                                    @endif
+                                    
+                                </div>
+                            </a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="clearfix">
