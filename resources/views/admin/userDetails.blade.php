@@ -48,7 +48,7 @@
 
     <div class="row p-5">
         <div class="col-md-3">
-            <h3 class="mt-3 text-center">Points Top Up History</h3>
+            <h3 class="mt-3 text-center">Top Up History</h3>
             <hr>
             @if ($purchasedCards->isEmpty())
                 <h5 class="text-center">None !</h5>
