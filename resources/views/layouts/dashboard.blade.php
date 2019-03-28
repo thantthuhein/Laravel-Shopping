@@ -6,15 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>@yield('title')</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
-  <link rel="stylesheet" href=" {{asset('css/dashboard.css')}} ">
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css"> --}}
+  <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
-  <div id="wrapper">
+  <div id="wrapper" class="toggled">
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
         <li class="sidebar-brand">
@@ -22,25 +21,25 @@
             MENU
           </a>
         </li>
-        <li>
+        <li class='pt-3'>
           <a href="{{ url('/dashboard') }}"><i class="fas fa-chart-line"></i> DASHBOARD</a>
         </li>
-        <li>
+        <li class='pt-3'>
           <a href=" {{url('/dashboard/products')}} "><i class="fas fa-box-open"></i> PRODUCTS</a>
         </li>
-        <li>
+        <li class='pt-3'>
           <a href=" {{url('/dashboard/categories')}} "><i class="fas fa-book-open"></i> CATEGORIES</a>
         </li>
-        <li>
+        <li class='pt-3'>
           <a href=" {{url('/dashboard/users')}} "><i class="fas fa-users ml-0"></i> USERS</a>
         </li>
-        <li>
+        <li class='pt-3'>
           <a href="{{ url('/dashboard/orders') }}"><i class="fas fa-shopping-cart"></i> ORDERS</a>
         </li>
-        <li>
+        <li class='pt-3'>
           <a href="{{ url('/dashboard/getCreditcardsDetails') }}"><i class="fas fa-credit-card"></i> CREDIT CARDS</a>
         </li>
-        <li>
+        <li class='pt-3'>
           <a href="{{ url('/dashboard/showUserFeedbacks') }}"><i class="fas fa-comments"></i> USER FEEDBACKS</a>
         </li>
       </ul>

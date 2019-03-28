@@ -72,6 +72,26 @@ class ProductController extends Controller
         //     'price' => 'required',
         //     'quantity' => 'required'
         // ]);
+        
+        // $specifications = [
+        //     'releasedate' => $request->releasedate,            
+        //     'weight' => $request->weight,            
+        //     'colors' => $request->colors,            
+        //     'material' => $request->material,            
+        //     'os' => $request->os,            
+        //     'size' => $request->size,            
+        //     'resolution' => $request->resolution,            
+        //     'processor' => $request->processor,
+        //     'ram' => $request->ram,
+        //     'storage' => $request->storage,
+        //     'webcamera' => $request->webcamera,
+        //     'keyboardlight' => $request->keyboardlight,
+        //     'touchpad' => $request->touchpad,
+        //     'speakers' => $request->speakers,
+        //     'usbports' => $request->usbports,
+        //     'hdmpport' => $request->hdmpport,
+        //     'headphonejack' => $request->headphonejack,
+        // ];
         $product = Product::create( $request->all() );
 
         // dd($product->categories()->sync($request->category_id));

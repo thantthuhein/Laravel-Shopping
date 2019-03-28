@@ -10,8 +10,7 @@
             <table class="table table-bordered table-hover mt-4 shadow">
                 <thead class="top-bar text-light">
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
+                        <th>Name</th>                        
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -29,7 +28,6 @@
                             <a href="{{ url('/dashboard/userDetails', $user->id) }}" class="text-uppercase d-inline noTextDecoration">{{ $user->name }}</a>
                             <span class="badge badge-secondary">User</span>
                         </th>
-                        <th>{{$user->email}}</th>
                         <th>
                             <a class="btn btn-warning btn-sm hvr-grow mr-3 " href=" {{ url('user/promote', $user->id) }} " data-toggle="tooltip" data-placement="top" title="promote to admin">Appoint as Admin</a>
                             @if ($user->banned_at == NULL)

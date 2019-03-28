@@ -16,15 +16,13 @@
         <table class="table table-bordered table-hover shadow">
             <thead class="top-bar text-light">
               <tr>
-                <th><h3>Product Name</h3></th>
-                <th><h3>Price</h3></th>
-                <th><h3>Actions</h3></th>
+                <th><h5>Product Name</h5></th>
+                <th><h5>Actions</h5></th>
             </tr>
             </thead>
             @foreach($products as $product)
               <tr>
                 <th> {{$product->name}}</th>
-                <th> ${{$product->price}} </th>
                 <th> 
                   <a class="btn btn-info hvr-grow mr-2" href=" {{route('products.show', $product->id)}}" data-toggle="tooltip" data-placement="top" title="details"><i class="fas fa-info-circle"></i></a>
                   {{ Form::model($products, [

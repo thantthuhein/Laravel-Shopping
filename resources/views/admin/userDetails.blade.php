@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    {{ $user->name }}
+    Details | {{ $user->name }}
 @endsection
 
 @section('content')
@@ -48,7 +48,7 @@
 
     <div class="row p-5">
         <div class="col-md-3">
-            <h5 class="mt-3 text-center">Points Top Up History</h5>
+            <h3 class="mt-3 text-center">Points Top Up History</h3>
             <hr>
             @if ($purchasedCards->isEmpty())
                 <h5 class="text-center">None !</h5>
@@ -56,7 +56,7 @@
                 @foreach ($purchasedCards as $card)
                     <div class="card shadow">
                         <div class="card-header">
-                            {{ $date }}
+                            {{ $card->purchased_at }}
                         </div>
                         <div class="card-body">
                             <p class="text-dark">
@@ -72,14 +72,15 @@
 
         <div class="col-md-9">
             <div>
-                <h3 class="text-center">Orders History</h3>
+                <h3 class="mt-3 text-center">Orders History</h3>
+                <hr>
                 @if (Session::has('success'))
                     <div class="alert alert-success">
                         {{ Session::get('success') }}
                     </div>
                 @endif  
             </div>
-            <hr>
+            
             @if ($orders->isEmpty() == FALSE)
                 @foreach ($orders as $order)
                 <div class="card shadow">

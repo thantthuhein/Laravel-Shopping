@@ -7,7 +7,9 @@ use Illuminate\Notifications\Notifiable;
 use DB;
 use App\UserFeedback;
 use App\User;
+use App\Order;
 use Carbon\Carbon;
+use App\CreditpointsCard;
 
 class UsersController extends Controller
 {
@@ -59,18 +61,23 @@ class UsersController extends Controller
     public function userDetails($id)
     {
         $user = User::find($id);
-        $purchasedCards = $user->creditpointscards;
-        $date = NULL;
-        foreach($user->creditpointscards as $card) {
+        // $purchasedCards = $user->creditpointscards;
+        $purchasedCards = CreditpointsCard::where('user_id', $id)
+            ->latest('purchased_at')
+            ->get();
+        // dd($purchasedCards);
+        
+        foreach($purchasedCards as $card) {
             $time = strtotime($card->purchased_at);
-            $date = date(' M : d :Y | h : i : a', $time);
+            $card->purchased_at = date(' M : d :Y | h : i : A', $time);
+            // dd($card->purchased_at);
         }
-        $orders = $user->orders;
+        $orders = Order::where('user_id', $id)->latest('created_at')->get();
         $orders->transform(function($order, $key) {
             $order->cart = unserialize(base64_decode($order->cart));
             return $order;
         });
-        return view('/admin/userDetails', ['user' => $user, 'orders' => $orders, 'purchasedCards' => $purchasedCards, 'date' => $date]);
+        return view('/admin/userDetails', ['user' => $user, 'orders' => $orders, 'purchasedCards' => $purchasedCards]);
     }
 
     public function showUserFeedbacks()

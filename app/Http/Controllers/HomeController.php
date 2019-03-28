@@ -89,8 +89,8 @@ class HomeController extends Controller
     {
         // dd($request->all());
         $time = strtotime($request->date);
-        $date = date('d: D : M : Y');
-        
+        $date = date('d: D : M : Y', $time);
+        // dd($date);
         $orders = \App\Order::whereDate('created_at', $request->date)->latest()->get();
         // dd($orders);
         $orders->transform(function($order, $key) {

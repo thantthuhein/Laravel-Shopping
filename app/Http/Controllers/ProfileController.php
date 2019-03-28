@@ -58,11 +58,12 @@ class ProfileController extends Controller
             ->get();
 
         // $cards = CreditpointsCard::find(auth()->user()->id);
-        // $purchasedCards = $user->creditpointscards;
-        // foreach($user->creditpointscards as $card) {
-        //     $time = strtotime($card->purchased_at);
-        //     $card->purchased_at = date(' M : d :Y | h : i : a', $time);
-        // }
+        // dd($user->creditpointscards);
+        foreach($purchasedCards as $card) {
+            $time = strtotime($card->purchased_at);
+            $card->purchased_at = date(' M : d :Y | h : i : A', $time);
+            // dd($card->purchased_at);
+        }
         $orders = auth()->user()->orders()->latest()->get();
         $orders->transform(function($order, $key) {
             $order->cart = unserialize(base64_decode($order->cart));
@@ -93,7 +94,7 @@ class ProfileController extends Controller
                     $user->credit_points += $credit->value;
                     $credit->useable = FALSE;
                     $credit->user_id = $user->id;
-                    $credit->purchased_at = Carbon::now();
+                    $credit->purchased_at = Carbon::now()->toDateTimeString();
                     $credit->save();
                     $user->save();
                     // dd($credit->purchased_at);

@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="p-2">
                 {{ Form::open(['route' => 'getDate', 'method' => 'POST']) }}
                     <label class="h5" for="date">Pick Date: </label>
@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="p-2">
                 <p class="text-uppercase text-right h5">
                     @if (isset($date))

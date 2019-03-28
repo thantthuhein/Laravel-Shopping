@@ -21,9 +21,9 @@
                     <div class="card-body">
                         @foreach ($order->cart->items as $item)
                         <p>
-                            {{ $item['item']['name'] }}
-                            {{ $item['price'] }}
-                            {{ $item['qty'] }}
+                            {{ $item['item']['name'] }} |
+                            {{ $item['qty'] }} items |
+                            $ {{ $item['price'] }}  
                         </p>
                         @endforeach
                     </div>

@@ -45,8 +45,6 @@
         </div>
     </div>
         
-    
-
     <div class="container">
         <h3 class="mt-5 mb-3 text-uppercase">Featured Products</h3>
         <div class="d-flex justify-content-center">
@@ -147,25 +145,26 @@
             </div>
         </div>
     </div>
-        <div class="container mt-5 mb-5">
-            <div class="row mt-5 m-0">
-                <div class="col-md-6 mb-5">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit tempora quibusdam similique perferendis provident ea aut non omnis eaque consectetur, adipisci facilis, hic ab error optio consequuntur illo ipsa excepturi.</p>
-                </div>
-                <div class="col-md-6 mb-5">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit tempora quibusdam similique perferendis provident ea aut non omnis eaque consectetur, adipisci facilis, hic ab error optio consequuntur illo ipsa excepturi.</p>
-                </div>
+
+    <div class="container mt-5 mb-5">
+        <div class="row mt-5 m-0">
+            <div class="col-md-6 mb-5">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit tempora quibusdam similique perferendis provident ea aut non omnis eaque consectetur, adipisci facilis, hic ab error optio consequuntur illo ipsa excepturi.</p>
             </div>
-            <div class="row">
-                <div class="col-md-12 mt-3 mb-5">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, possimus odio, error aliquid suscipit quae nesciunt animi consequatur, reiciendis ducimus quod expedita iusto? Quas, temporibus. Quaerat quo aliquam doloribus corporis Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta maxime beatae blanditiis sit molestias ex nam porro, ut, facilis adipisci dolor alias tempore magni omnis labore non ab iusto? Natus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id eos iste consectetur minima perspiciatis sequi nam modi quos quia itaque! Saepe eveniet tempora magnam! Minus necessitatibus alias expedita dicta obcaecati. 
-                    </p>
-                </div>
+            <div class="col-md-6 mb-5">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit tempora quibusdam similique perferendis provident ea aut non omnis eaque consectetur, adipisci facilis, hic ab error optio consequuntur illo ipsa excepturi.</p>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12 mt-3 mb-5">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, possimus odio, error aliquid suscipit quae nesciunt animi consequatur, reiciendis ducimus quod expedita iusto? Quas, temporibus. Quaerat quo aliquam doloribus corporis Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta maxime beatae blanditiis sit molestias ex nam porro, ut, facilis adipisci dolor alias tempore magni omnis labore non ab iusto? Natus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id eos iste consectetur minima perspiciatis sequi nam modi quos quia itaque! Saepe eveniet tempora magnam! Minus necessitatibus alias expedita dicta obcaecati. 
+                </p>
+            </div>
+        </div>
+    </div>
 
 
-@include('layouts.footer')
+
 
 @endsection
