@@ -24,10 +24,19 @@ class ProductStore extends FormRequest
     public function rules()
     {
         return [
+            'imagePath' => 'required',
             'name' => 'required',
-            'description' => 'required',
             'price' => 'required',
-            'quantity' => 'required'
+            'quantity' => 'required',
+            'colors' => 'required',
+            'description' => 'required',
+            'processor' => 'required',
+            'ghz' => 'required',
+            'graphics' => 'required',
+            'memory' => 'required',
+            'storage' => 'required',
+            'display' => 'required',
+            'ports' => 'required',
         ];
     }
 }

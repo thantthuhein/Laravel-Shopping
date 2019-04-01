@@ -5,8 +5,10 @@ Route::group(['middleware' => ['admin', 'ban']], function() {
     Route::resource('categories', "CategoryController");
     Route::get('/user/ban/{id}', "UsersController@ban");
     Route::get('/user/unban/{id}', "UsersController@unban");
+    // Route::get('/products/{id}/edit', "ProductController@edit");
 });
 Route::group(['middleware' => 'auth'], function() {
+    Route::resource('products', "ProductController");
     Route::post('/sendFeedback', "ProfileController@sendFeedback");
     Route::get('/getFeedback', "ProfileController@getFeedback");
     // cart control
@@ -66,7 +68,7 @@ Route::group(['middleware' => 'admin', 'auth'], function() {
     Route::get('/user/promote/{id}', "UsersController@promote");
     Route::get('/user/remove/{id}', "UsersController@remove");
 });
-Route::resource('products', "ProductController");
+
 Route::get('/', "ProductController@index")->name('/');
 
 //search

@@ -24,13 +24,12 @@
               <tr>
                 <th> {{$product->name}}</th>
                 <th> 
-                  <a class="btn btn-info hvr-grow mr-2" href=" {{route('products.show', $product->id)}}" data-toggle="tooltip" data-placement="top" title="details"><i class="fas fa-info-circle"></i></a>
                   {{ Form::model($products, [
                     'route' => ['products.destroy', $product->id], 
                     'method' => "DELETE",
                     'class' => 'd-inline'
                       ]) }}
-                      <a class="btn btn-dark hvr-grow mr-2" href=" {{route('products.edit', $product->id)}} "data-toggle="tooltip" data-placement="top" title="profile"><i class="fas fa-edit"></i></a>
+                      <a class="btn btn-dark hvr-grow mr-2" href=" {{route('products.edit', $product->id)}} "data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
 
                      <button data-toggle="tooltip" data-placement="top" title="delete" class="btn btn-danger hvr-grow"><i class="fas fa-trash-alt"></i></button>
                   {{ Form::close() }}

@@ -55,8 +55,8 @@
                 <div class="col-md-4 col-xs-12 mt-5">
                     <div class="card shadow">
                         <div class="p-3">
-                            <a title=" {{$product->name}} " href=" {{url('products', $product->id)}} ">
-                                <img src="https://via.placeholder.com/150" class="card-img-top">
+                            <a title=" {{$product->name }} " href=" {{url('products', $product->id)}} ">
+                                <img src="{{ $product->imagePath }}" class="card-img-top w-100 h-100">
                             </a>
                         </div>
                         

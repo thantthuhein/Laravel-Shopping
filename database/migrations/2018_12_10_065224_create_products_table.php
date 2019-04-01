@@ -16,8 +16,17 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('imagePath');
-            $table->text('specifications');
+            $table->text('imagePath')->nullable();
+            $table->text('colors')->nullable();
+            $table->text('description');
+            $table->unsignedInteger('price');
+            $table->text('processor')->nullable();
+            $table->text('ghz')->nullable();
+            $table->text('graphics')->nullable();
+            $table->text('memory')->nullable();
+            $table->text('storage')->nullable();
+            $table->text('display')->nullable();
+            $table->text('ports')->nullable();
             $table->unsignedInteger('quantity');
             $table->softDeletes();
             $table->timestamps();

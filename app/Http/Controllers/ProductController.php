@@ -66,6 +66,7 @@ class ProductController extends Controller
      */
     public function store(ProductStore $request)
     {
+        // dd($request->all());
         // $request->validate([
         //     'name' => 'required',
         //     'description' => 'required',
@@ -137,7 +138,10 @@ class ProductController extends Controller
 
         $selected_categories = $product->categories->pluck('id')->all();
 
-        
+        if (!auth()->user()->is_Admin) {
+            return redirect('/');
+        }
+           
         return view('products.edit', [
             'product' => $product,
             'categories' => $categories,
@@ -154,6 +158,8 @@ class ProductController extends Controller
      */
     public function update(ProductStore $request, Product $product)
     {
+        // dd($request->all());
+        // dd($product);
         $product->update( $request->all() );
         $product->categories()->sync($request->category_id);
         return redirect('dashboard');
