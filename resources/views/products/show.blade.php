@@ -43,9 +43,9 @@
                 <hr>
                 <p>Storage: {{ $product->storage }}</p>
                 <hr>
-                <p>Graphics: {{ $product->display }}</p>
+                <p>Display: {{ $product->display }}</p>
                 <hr>
-                <p>Graphics: {{ $product->ports }}</p>
+                <p>Ports: {{ $product->ports }}</p>
             </div>
         </div>
     </div>
