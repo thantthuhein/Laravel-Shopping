@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="clearfix">
                 <h4 class="text-uppercase float-left">
-                    Used Credit Cards: {{ count($usedCards) }}
+                    Used Prepaid Cards: {{ count($usedCards) }}
                 </h4>
                 <a class="btn btn-danger float-right" href="{{ url('/dashboard/deleteAllUsedCardsHistory') }}">Delete All History</a>
             </div>

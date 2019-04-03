@@ -1,14 +1,14 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    Total Credit Cards
+    Total Prepaid Cards
 @endsection
 
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <h5 class="text-uppercase text-center">
-                Total Credit Cards: {{ count($cards) }}
+                Total Prepaid Cards: {{ count($cards) }}
             </h5>
         </div>
     </div>

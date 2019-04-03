@@ -5,9 +5,9 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         @if (Session::has('cart'))
-            <h3 class="mt-4 text-center">Shopping Cart </h3>    
+            <h1 class="mt-4 mb-4 text-left">Shopping Cart </h1>    
         @endif
         <div class="row">
             <div class="col-md-3">
@@ -20,36 +20,52 @@
         </div>
         @if(Session::has('cart'))
         <div class="row mt-2 mb-0 pb-0">
-            @foreach ($products as $product)
-            <div class="col-3">
-                
-                <div class="card shadow">
-                    <div class="card-header top-bar text-light">{{ $product['item']['name'] }}</div>
-                    <div class="card-body">
-
-                        Quantity: <span class="badge">{{ $product['qty'] }}</span>
-                        <br><hr>
-                        Total: <span class="badge badge-success"> $ </span> {{ $product['price'] }}
-                        <br><hr>
-                        <div>
-                            <a class="btn btn-dark" href="{{ route('addToCart', $product['item']['id'] ) }}"><i class="fas fa-chevron-up"></i></a>
-                            <a class="btn btn-dark" href="{{ url('/cart/reduceOne', $product['item']['id']) }}"><i class="fas fa-chevron-down"></i></a>
-                            <a class="btn btn-dark" href="{{ url('/cart/reduceAll', $product['item']['id']) }}">Clear</a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover shadow">
+                    <thead class="top-bar text-light">
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Item Price</th>
+                            <th>Quantity</th>
+                            <th>Action</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($products as $product)
+                        <tr>
+                            <th>
+                                <a href="{{ url('products', $product['item']['id']) }}">{{ $product['item']['name'] }} <span class="fas fa-arrow-circle-right"></span></a>
+                            </th>
+                            <th>
+                                <span class="badge badge-success"> $ </span> {{ $product['item']['price'] }}
+                            </th>
+                            <th>{{ $product['qty'] }}</th>
+                            <th>
+                                <a class="btn btn-sm btn-success" href="{{ route('addToCart', $product['item']['id'] ) }}"><i class="fas fa-chevron-up"></i></a>
+                                <a class="btn btn-sm btn-success" href="{{ url('/cart/reduceOne', $product['item']['id']) }}"><i class="fas fa-chevron-down"></i></a>
+                                <a class="btn btn-sm btn-danger" href="{{ url('/cart/reduceAll', $product['item']['id']) }}">Clear</a>
+                            </th>
+                            <th>
+                                <span class="badge badge-success"> $ </span> {{ $product['price'] }}
+                            </th>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            @endforeach
+            
         </div>
-        <div class="row mt-4">
-            <div class="col">
-                <strong>Total Price: $ {{ $totalPrice }}</strong>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col">
-                <a class="btn btn-success" href="{{ route('checkout') }}">Checkout</a>
+        <div class="clearfix mt-4">
+            <div class="float-left">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>Total Price</th>
+                        <th><h5> <span class="badge badge-success">$</span> {{ $totalPrice }}</h5></th>
+                    </tr>
+                    
+                </table>
+                <a class="btn btn-lg btn-success" href="{{ route('checkout') }}">Proceed to Checkout</a>
             </div>
         </div>
         @else

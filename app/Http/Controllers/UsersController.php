@@ -69,7 +69,7 @@ class UsersController extends Controller
         
         foreach($purchasedCards as $card) {
             $time = strtotime($card->purchased_at);
-            $card->purchased_at = date(' M : d :Y | h : i : A', $time);
+            $card->purchased_at = date('d,M,Y | h:i:a', $time);
             // dd($card->purchased_at);
         }
         $orders = Order::where('user_id', $id)->latest('created_at')->get();

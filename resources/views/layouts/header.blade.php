@@ -1,46 +1,28 @@
-    <nav class="navbar navbar-expand-lg navbar-light p-2 m-0 top-bar">
-        <a class="navbar-brand text-light p-0" href="{{ url('/') }}"><h3 class="m-0">LOGO</h3></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light p-3 m-0 bar navigation">
+        <a class="navbar-brand text-light p-0" href="{{ url('/') }}">LOGO</a>
+        <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="justify-content-start">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link text-light" href="{{ url('/getProfile') }}">
-                            <i class="fas fa-user"></i> PROFILE
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link text-light" href="{{url('wishlist')}}">  
-                        <i class="fas fa-heart"></i> WISH LIST <span class="badge badge-success"></span></a></li>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link text-light" href="{{ route('shoppingCart') }}">
-                            <i class="fas fa-shopping-cart"></i> SHOPPING CART 
-                            <span class="badge badge-warning">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link text-light" href="#"></a>
-                    </li>
-                    @if (Session::has('success'))    
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-success disable"><b>{{ Session::get('success') }}</b></a>
-                    </li>
-                    @endif
-                    @if (Session::has('error'))    
-                        <li class="nav-item">
-                            <a href="#" class="nav-link text-danger disable"><b>{{ Session::get('error') }}</b></a>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-            
             {{-- nav right --}}
             <ul class="navbar-nav ml-auto"> 
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="{{ url('/getProfile') }}">
+                        <i class="fas fa-user"></i> PROFILE
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="{{url('wishlist')}}">  
+                    <i class="fas fa-heart"></i> WISH LIST <span class="badge badge-success"></span></a></li>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="{{ route('shoppingCart') }}">
+                        <i class="fas fa-shopping-cart"></i> SHOPPING CART 
+                        <span class="badge badge-warning">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+                    </a>
+                </li>
                 @guest
                 <li class="nav-item">
                     <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>

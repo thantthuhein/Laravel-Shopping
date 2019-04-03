@@ -6,40 +6,66 @@
 
 @section('content')
     @if ($wishlists->isNotEmpty())
-        <div class="row m-0 mt-5 justify-content-center">
+        <div class="row m-0 mt-3 pl-5">
             <div class="col-md-12">
-                <h3 class="text-center">Wish Lists</h3>
+                <h3 class="">Wish Lists</h3>
             </div>
         </div>
     @endif
-    <div class="row mt-5 pl-5 m-0 pr-5">
+    <div class="row mt-4 pl-5 m-0 pr-5">
         @if ($wishlists->isEmpty())
         <div class="col-md-12">
             <h1 class="mt-5 text-center">No Items In Wish List ! <i class="fas fa-frown"></i></h1>
         </div>
         @else
-            @foreach ($wishlists as $wishlist)          
-            <div class="col-md-4">
 
-                <div class="card shadow">
+        <div class="col-md-12">
 
-                    <div class="card-header">
-                        <div class="clearfix">
-                            <h5 class="float-left"><a href="{{ url('products', $wishlist->product_id) }}">{{ $wishlist->name }}</a></h5>
-                            <a href="{{ url( '/wishlist/remove', $wishlist->product_id ) }}" class="float-right text-danger"><i class="fas fa-times"></i></a>
+            <div class="row">
+                @if(Session::has('success'))
+                <div class="col-md-4">
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                        <a href="" class="float-right text-secondary pr-1"><i class="fas fa-times"></i></a>
+                    </div>
+                </div>
+                @endif
+                
+                @if (Session::has('error'))
+                    <div class="col-md-8">
+                        <div class="alert alert-danger">
+                            {{ Session::get('error') }}
+                            <a href="" class="float-right text-secondary pr-1"><i class="fas fa-times"></i></a>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="clearfix">
-                            <p class="float-left h5">$ {{ $wishlist->price }}</p>
-                            <a href="{{ route('addToCart', ['id' => $wishlist->product_id] ) }}" class="btn btn-success btn-sm float-right"> <i class="fas fa-shopping-cart"></i> </a>
-                        </div>
-                    </div>
+                @endif
+            </div>
+            <table class="table table-bordered table-hover shadow">
+                <thead class="top-bar text-light">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Item Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($wishlists as $wishlist)
+                        <tr>
+                            <th>
+                                <a href="{{ url('products', $wishlist->product_id) }}">{{ $wishlist->name }}  <i class="fas fa-arrow-circle-right"></i></a>
+                            </th>
+                            <th><span class="badge badge-success">$</span> {{ $wishlist->price }}</th>
+                            <th>
+                                <a href="{{ route('addToCart', ['id' => $wishlist->product_id] ) }}" class="btn btn-sm btn-success" title="Add to Cart"> <i class="fas fa-shopping-cart"></i> </a>
+                                <a href="{{ url( '/wishlist/remove', $wishlist->product_id ) }}" class="btn btn-sm btn-danger" title="Remove from Wishlists"><i class="fas fa-times"></i></a>
+                            </th>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        
 
-            </div>
-            <br>
-            </div>
-            @endforeach
         @endif
     </div>
 @endsection

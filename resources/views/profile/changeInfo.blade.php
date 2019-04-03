@@ -4,7 +4,7 @@
     <div class="row m-0 justify-content-center">
         <div class="col-6 p-5">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header top-bar text-light">
                     <p class="h5 text-center">Change Info</p>
                 </div>
                 <div class="card-body">
@@ -20,7 +20,7 @@
                         </div>
                         <div class="form-group">
                             <label for="address">phone</label>
-                            {{ Form::number('phone', NULL, ['class' => ($errors->has('phone') ? 'form-control is-invalid' : 'form-control'), 'id' => 'phone', 'placeholder' => '09'])}}
+                            {{ Form::text('phone', NULL, ['class' => ($errors->has('phone') ? 'form-control is-invalid' : 'form-control'), 'id' => 'phone', 'placeholder' => '09'])}}
                             @if($errors->has('phone'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong> {{ $errors->first('phone')}} </strong>
@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group">
                             <label for="address">Address</label>
-                            {{ Form::text('address', NULL, ['class' => ($errors->has('address') ? 'form-control is-invalid' : 'form-control'), 'id' => 'address', 'placeholder' => 'For Example: House #123, Street #123, #A Road'])}}
+                            {{ Form::textarea('address', NULL, ['class' => ($errors->has('address') ? 'form-control is-invalid' : 'form-control'), 'rows' => '3', 'id' => 'address', 'placeholder' => 'For Example: House #123, Street #123, #A Road'])}}
                             @if($errors->has('address'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong> {{ $errors->first('address')}} </strong>

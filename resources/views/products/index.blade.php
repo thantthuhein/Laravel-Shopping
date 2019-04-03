@@ -5,14 +5,14 @@
 @endsection
 
 @section('content')
-
+{{-- 
     <div class="container-fluid p-0">
         <div class="row p-0 mr-0">
             <div class="col-md-12 mainCover m-0">
-                <p class="text-light h1 text-center text-uppercase align-middle font-weight-bold mb-3">
+                <p class="text-light h1 text-center shadow-text text-uppercase align-middle font-weight-bold mb-3">
                     Shopping Website Demo
                 </p>
-                <p class="text-center text-light wow bounceInUp">
+                <p class="text-center text-light shadow-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fuga dicta autem quia asperiores, temporibus officiis velit aliquam perspiciatis quas sequi 
                     <br>
                     @guest
@@ -21,13 +21,25 @@
                 </p>
             </div>
         </div>
+    </div> --}}
+
+
+    <div class="container-fluid mt-0 p-0">
+        <div class="row m-0">
+            <div class="col-md-12 secondaryCover mt-0">
+                <p class="h1 shadow-text text-light text-center text-uppercase p-0">
+                    Find out what U need! <br>
+                    <a href="{{ url('search') }}" class="btn btn-dark hvr-sweep-to-right border-0">Explore <i class="fas fa-arrow-right"></i></a>
+                </p>
+            </div>
+        </div>
     </div>
 
     <div class="container">
-        <div class="row mt-4 m-0 mb-3">
+        <div class="row mt-4 mb-3">
             @if(Session::has('success'))
-            <div class="col-md-4">
-                <div class="alert alert-success p-2">
+            <div class="col-md-8">
+                <div class="alert alert-success">
                     {{ Session::get('success') }}
                     <a href="" class="float-right text-secondary pr-1"><i class="fas fa-times"></i></a>
                 </div>
@@ -35,8 +47,8 @@
             @endif
 
             @if (Session::has('error'))
-                <div class="col-md-4">
-                    <div class="alert alert-danger p-2">
+                <div class="col-md-8">
+                    <div class="alert alert-danger">
                         {{ Session::get('error') }}
                         <a href="" class="float-right text-secondary pr-1"><i class="fas fa-times"></i></a>
                     </div>
@@ -54,11 +66,11 @@
             @foreach($products as $product)
                 <div class="col-md-4 col-xs-12 mt-5">
                     <div class="card shadow">
-                        <div class="p-3">
-                            <a title=" {{$product->name }} " href=" {{url('products', $product->id)}} ">
-                                <img src="{{ $product->imagePath }}" class="card-img-top w-100 h-100">
-                            </a>
-                        </div>
+                        
+                        <a title=" {{ $product->name }} " href=" {{url('products', $product->id)}} ">
+                            <img src="{{ $product->imagePath }}" class="card-img-top w-100 h-100">
+                        </a>
+                        
                         
                         <div class="card-body">
                             <h3>
@@ -80,22 +92,22 @@
                         <div class="card-footer p-0 m-0">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <a href="{{ route('addToCart', ['id' => $product->id] ) }}" class="col-6 p-0 text-center p-3 noTextDecoration onHover">
-                                        <div class="text-center text-dark">
+                                    <a href="{{ route('addToCart', ['id' => $product->id] ) }}" class="col-6 p-0 text-center p-3 noTextDecoration btn btn-info button-square">
+                                        <div class="text-center">
                                             Add to Cart <i class="fas fa-shopping-cart"></i>
                                         </div>
                                     </a>
-                                    <a href="{{ url('wishlist', $product->id) }}" class="col-6 text-center p-3  pr-0 noTextDecoration onHover">
-                                        <div class="text-center text-dark">
+                                    <a href="{{ url('wishlist', $product->id) }}" class="col-6 text-center p-3  pr-0 noTextDecoration btn btn-success button-square">
+                                        <div class="text-center">
                                             Wishlist 
                                             @if (isset($list)) 
                                                 @if ( in_array($product->id, $list) )
                                                 <i title="Wish List" class="fas fa-heart text-danger"></i>
                                                 @else
-                                                <i title="Wish List" class="fas fa-heart text-dark"></i>
+                                                <i title="Wish List" class="fas fa-heart text-light"></i>
                                                 @endif
                                             @else
-                                                <i title="Wish List" class="fas fa-heart text-dark"></i>
+                                                <i title="Wish List" class="fas fa-heart text-light"></i>
                                             @endif
                                             
                                         </div>
@@ -111,16 +123,6 @@
         
     </div>  
 
-    <div class="container-fluid mt-5 p-0">
-        <div class="row m-0">
-            <div class="col-md-12 secondaryCover mt-0">
-                <p class="h1 text-light text-center text-uppercase p-0">
-                    Find out what U need! <br>
-                    <a href="{{ url('search') }}" class="btn btn-dark hvr-sweep-to-right border-0">Explore <i class="fas fa-arrow-right"></i></a>
-                </p>
-            </div>
-        </div>
-    </div>
 
     <div class="container">
         <div class="row">
@@ -130,13 +132,13 @@
                     @foreach ($categories as $category)
                         <div class="col-md-3">
                             <div class="card shadow mb-5">
-                                <div class="p-3">
+                                <div class="">
                                     <a title=" {{$category->name}} " href=" {{url('searchByCategory', $category->id)}} ">
                                         <img src="https://via.placeholder.com/150" class="card-img-top">
                                     </a>
                                 </div>
-                                <div class="card-body">
-                                    <a class="btn btn-link text-dark" href=" {{url('searchByCategory', $category->id)}} "><h3>{{$category->name}}</h3></a>
+                                <div class="card-footer">
+                                    <a class="btn btn-link text-dark pl-0" href=" {{url('searchByCategory', $category->id)}} "><h5>{{$category->name}}</h5></a>
                                 </div>
                             </div>
                         </div>

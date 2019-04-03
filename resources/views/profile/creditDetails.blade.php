@@ -1,13 +1,13 @@
 @extends('layouts.layout')
 
 @section('title')
-    Credit Details
+    Prepaid Points Details
 @endsection 
 
 @section('content')
     <div class="row m-0 mt-4">
         <div class="col-md-12">
-            <h5 class="text-center">Credits Details</h5>
+            <h5 class="text-center">Prepaid Cards Details</h5>
         </div>
     </div>
 
@@ -15,7 +15,7 @@
         <div class="col-md-3">
             <div class="shadow p-5 details card border border-secondary">
                 <p class="text-center">
-                    Credit Points
+                    Current Prepaid Points
                 </p>
                 <h1 class="text-center">
                     $ {{ auth()->user()->credit_points }}

@@ -16,11 +16,13 @@ class CartController extends Controller
     public function getAddToCart(Request $request, $id)
     {
         $product = Product::find($id);
-        
+        if( 0 == $product->quantity ) {
+            return redirect()->back()->with('error', "Out of Stock!");
+        }
         $oldCart = Session::has('cart') ? Session::get('cart') : NULL;
         $cart = new Cart($oldCart);
         
-        if($cart->items !=NULL) {
+        if($cart->items != NULL) {
             if(array_key_exists($id, $cart->items)) {
                 $leftItems = $product->quantity - $cart->items[$id]['qty'];
                 if ( $leftItems == 0) {
@@ -115,6 +117,7 @@ class CartController extends Controller
             $product->save();
             // dd($product->quantity);
         }
+        
         $order = new Order();
         $order->user_id = Auth()->user()->id;
         $order->cart = base64_encode(serialize($cart));
@@ -125,7 +128,7 @@ class CartController extends Controller
         $order->save();
         $request->session()->forget('cart');
         $user->notify(new PurchasedSuccessful());
-        return redirect()->route('/')->with('success', 'Successfully Purchased Items');
+        return redirect('/getProfile')->with('success', "Successfully Purchased Items, Total Cost $ $cart->totalPrice");
     }
 
     public function getDeliver($id)

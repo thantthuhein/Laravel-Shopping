@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="row">
+<div class="row justify-content-center">
         <div class="col-md-3 mt-3">
             <h3 class="text-center text-uppercase">Explore Products</h3>
         </div>
@@ -17,9 +17,9 @@
     </div>
     <div class="row justify-content-center">
         @if (! $results->isEmpty())
-            <div class="col-md-12">
+            <div class="col-md-11">
                 <table class="table table-hover shadow">
-                    <thead class="bg-info text-light">
+                    <thead class="bg-dark text-light">
                         <tr>
                             <th>NAME</th>
                             <th>PRICE</th>
@@ -33,7 +33,7 @@
                             <th>{{ $product->name }}</th>
                             <th>{{ $product->price }}</th>
                             <th>{{ $product->quantity }}</th>
-                            <th><a href="{{ url('products', $product->id) }}">Info</a></th>
+                            <th><a class="btn btn-sm btn-info" href="{{ url('products', $product->id) }}"><i class="fas fa-info-circle"></i></a></th>
                         </tr>
                         @endforeach
                     </tbody>

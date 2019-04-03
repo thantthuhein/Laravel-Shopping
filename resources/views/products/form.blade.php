@@ -70,7 +70,8 @@
 <div class="form-group">
     <label>Description</label>
     {{ Form::textarea('description', null, [
-            'class' => ($errors->has('description') ? 'form-control is-invalid' : 'form-control')
+            'class' => ($errors->has('description') ? 'form-control is-invalid' : 'form-control'),
+            'rows' => '3'
     ])}}
     @if($errors->has('description'))
         <span class="invalid-feedback" role="alert">

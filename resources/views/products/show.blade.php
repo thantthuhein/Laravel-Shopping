@@ -5,15 +5,15 @@
         <p class="h3">{{ $product->name }}</p>
         <div class="row justify-content-center mt-3">
             <div class="col-md-6">
-                <div class="border text-center pt-3 pb-3">
+                <div class="border text-center">
                     <img class="w-100" src="{{ $product->imagePath }}" alt="">
-                    <hr>
+                       
                     <div class="row">
-                        <div class="col-md-6">
-                            <a href="{{ route('addToCart', $product->id) }}" class="btn btn-primary text-light w-75 ">Add to cart</a>
+                        <div class="col-md-6 pr-0">
+                            <a href="{{ route('addToCart', $product->id) }}" class="btn btn-outline-primary button-square w-100 ">Add to cart</a>
                         </div>
-                        <div class="col-md-6">
-                            <a class="btn btn-success w-75" href="{{ url('wishlist', $product->id) }}">
+                        <div class="col-md-6 pl-0 m-0">
+                            <a class="btn btn-square btn-outline-success button-square w-100" href="{{ url('wishlist', $product->id) }}">
                                 @if (isset($list)) 
                                     @if ( in_array($product->id, $list) )
                                     Remove From Wishlist

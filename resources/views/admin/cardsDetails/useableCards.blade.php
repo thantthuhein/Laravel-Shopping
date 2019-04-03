@@ -8,7 +8,7 @@
 <div class="row">
         <div class="col-md-12">
             <h5 class="text-uppercase text-center">
-                Useable Credit Cards: {{ count($useableCards) }}
+                Useable Prepaid Cards: {{ count($useableCards) }}
             </h5>
         </div>
     </div>

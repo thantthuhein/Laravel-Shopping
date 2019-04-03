@@ -12,17 +12,25 @@
   text-decoration: none !important;
 }
 
+.bar {
+  background-color: #2c2254 !important;
+}
+
 .navigation {
-  background-color: #3490dc;
+  padding: 20px 0;
 }
 
 .shadow {
-  -webkit-box-shadow: 0px 0px 9px -4px rgba(0, 0, 0, 0.75);
-          box-shadow: 0px 0px 9px -4px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 25px -1px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 25px -1px rgba(0, 0, 0, 0.5);
 }
 
 .top-bar {
   background-color: #383854 !important;
+}
+
+.button-square {
+  border-radius: 0;
 }
 
 .footer {
@@ -53,7 +61,7 @@
 }
 
 .mainCover {
-  background-image: url(/images/Cover07.jpg?39979996aab568b638c8314b9b6e4e48);
+  background-image: url("https://res.cloudinary.com/dcs3zcs3v/image/upload/v1553237744/hannah-morgan-39891-unsplash.jpg");
   height: 580px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -71,8 +79,12 @@
   background-size: cover;
 }
 
+.shadow-text {
+  text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.89);
+}
+
 .secondaryCover {
-  background-image: url(/images/Cover08.jpg?2ee6c08c8edbe600c98f9a60b9c143e6);
+  background-image: url("https://res.cloudinary.com/dcs3zcs3v/image/upload/v1554103929/keagan-henman-538914-unsplash.jpg");
   height: 450px;
   background-position: center top;
   background-repeat: no-repeat;
@@ -203,3 +215,4 @@ body {
 .dash-bar {
   background-color: #10175c;
 }
+

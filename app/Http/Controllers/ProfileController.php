@@ -98,7 +98,7 @@ class ProfileController extends Controller
                     $credit->save();
                     $user->save();
                     // dd($credit->purchased_at);
-                    return redirect('/getCreditDetails')->with('success', "Top Up Success!");
+                    return redirect('/getCreditDetails')->with('success', "Successfully Top up $credit->value points, Your new balance is $user->credit_points");
                 }
             }
             

@@ -1,13 +1,13 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    Credit Cards Details
+    Prepaid Cards Details
 @endsection
 
 @section('content')
     <div class="row">
         <div class="col-12">
-            <h3 class="text-center text-uppercase">Credit Cards Details</h3>
+            <h3 class="text-center text-uppercase">Prepaid Cards Details</h3>
         </div>
     </div>
 
@@ -56,7 +56,7 @@
 
         <div class="col-md-4">
             <div class="card border-info bg-dark text-light p-5">
-                <h5 class="text-center mb-4">Generate $1000 Credit Card</h5>
+                <h5 class="text-center mb-4">Generate $1000 Prepaid Cards</h5>
                 <div class="text-center">
                     <a href="{{ url('/dashboard/generateCards_i', 10) }}" class="btn btn-warning"> x 10 </a>
                     <a href="{{ url('/dashboard/generateCards_i', 100) }}" class="btn btn-warning"> x 100 </a>
@@ -67,7 +67,7 @@
         
         <div class="col-md-4">
             <div class="card border-info bg-dark text-light p-5">
-                <h5 class="text-center mb-4">Generate $3000 Credit Card</h5>
+                <h5 class="text-center mb-4">Generate $3000 Prepaid Cards</h5>
                 <div class="text-center">
                     <a href="{{ url('/dashboard/generateCards_ii', 10) }}" class="btn btn-warning"> x 10 </a>
                     <a href="{{ url('/dashboard/generateCards_ii', 100) }}" class="btn btn-warning"> x 100 </a>
@@ -78,7 +78,7 @@
         
         <div class="col-md-4">
             <div class="card border-info bg-dark text-light p-5">
-                <h5 class="text-center mb-4">Generate $5000 Credit Card</h5>
+                <h5 class="text-center mb-4">Generate $5000 Prepaid Cards</h5>
                 <div class="text-center">
                     <a href="{{ url('/dashboard/generateCards_iii', 10) }}" class="btn btn-warning"> x 10 </a>
                     <a href="{{ url('/dashboard/generateCards_iii', 100) }}" class="btn btn-warning"> x 100 </a>

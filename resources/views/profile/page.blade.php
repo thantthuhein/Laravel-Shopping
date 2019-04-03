@@ -7,12 +7,6 @@
 @section('content')
     <div class="row m-0">
         <div class="col-md-12 mt-4 text-center">
-            @if (Session::has('success'))
-                <div id="charge-message" class="alert alert-success">
-                    {{ Session::get('success') }} 
-                    <a href="" class="btn btn-sm">x</a>
-                </div>
-            @endif
             <img class="rounded-circle" src="https://via.placeholder.com/150" alt="">
             <br> 
             <p class="mt-3 mb-4">
@@ -33,6 +27,16 @@
                 Member Since: {{ $user->created_at->format('d. D. M. Y') }}
         </div>
     </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    @if (Session::has('success'))
+                        <div id="charge-message" class="alert alert-success">
+                            {{ Session::get('success') }} 
+                            <a href="" class="btn btn-sm float-right text-danger"><i class="fas fa-times"></i></a>
+                        </div>
+                    @endif
+                </div>
+            </div>
     <div class="container border_radius_40 shadow p-5 mb-5">
         <div class="row justify-content-center m-0">
             <div class="col-md-6">

@@ -37,7 +37,7 @@
           <a href="{{ url('/dashboard/orders') }}"><i class="fas fa-shopping-cart"></i> ORDERS</a>
         </li>
         <li class='pt-3'>
-          <a href="{{ url('/dashboard/getCreditcardsDetails') }}"><i class="fas fa-credit-card"></i> CREDIT CARDS</a>
+          <a href="{{ url('/dashboard/getCreditcardsDetails') }}"><i class="fas fa-credit-card"></i> PREPAID CARDS</a>
         </li>
         <li class='pt-3'>
           <a href="{{ url('/dashboard/showUserFeedbacks') }}"><i class="fas fa-comments"></i> USER FEEDBACKS</a>
