@@ -25,7 +25,7 @@ class StoreCheckout extends FormRequest
     {
         return [
             'address' => 'required',
-            'phone' => 'required|regex:/(09)[0-9]{9}/'
+            'phone' => 'required|max:11'
         ];
     }
 }

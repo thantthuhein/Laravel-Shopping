@@ -162,7 +162,7 @@ class ProductController extends Controller
         // dd($product);
         $product->update( $request->all() );
         $product->categories()->sync($request->category_id);
-        return redirect('dashboard');
+        return redirect()->back();
     }
 
     /**

@@ -28,11 +28,11 @@
         </div>
     </div>
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-4">
                     @if (Session::has('success'))
                         <div id="charge-message" class="alert alert-success">
                             {{ Session::get('success') }} 
-                            <a href="" class="btn btn-sm float-right text-danger"><i class="fas fa-times"></i></a>
+                            <a href="" class="float-right text-danger"><i class="fas fa-times"></i></a>
                         </div>
                     @endif
                 </div>

@@ -8,7 +8,7 @@
     <div class="row mt-5 justify-content-center">
         <div class="col-md-12 mb-3">
             <div class="clearfix">
-                <h4 class="float-left">Used Credit Card Details</h4>
+                <h4 class="float-left">Used Prepaid Card Details</h4>
                 <a href="{{ url('/dashboard/deleteHistory', $card->id) }}" class="float-right btn btn-danger">Delete History</a>
             </div>
         </div>
@@ -24,13 +24,13 @@
                             <th>Customer Name</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            <th>Credit Card Value</th>
+                            <th>Card Value</th>
                             <th>Purchased At</th>
                         </tr>
                         <tr>
                             <th><a class="noTextDecoration" href="{{ url('/dashboard/userDetails', $card->user->id) }}">{{ $card->user->name }}</a></th>
                             <th>{{ $card->user->email }}</th>
-                            <th>0 {{ $card->user->phone }}</th>
+                            <th>{{ $card->user->phone }}</th>
                             <th>$ {{ $card->value }}</th>
                             <th>{{ $card->purchased_at }}</th>
                         </tr>

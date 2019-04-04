@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-12">
             <h5 class="text-uppercase text-center">
-                Total Prepaid Cards: {{ count($cards) }}
+                Total Prepaid Cards: {{ count($totalCards) }}
             </h5>
         </div>
     </div>
@@ -40,5 +40,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div>
+            {{ $cards->links() }}
+        </div>
     </div>
 @endsection

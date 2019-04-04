@@ -24,7 +24,7 @@
                         @if ($user->phone == NULL)
                             <th class="text-muted">NONE</th>
                         @else
-                            <th>0 {{ $user->phone }}</th>
+                            <th>{{ $user->phone }}</th>
                         @endif
                         <th>$ {{ $user->credit_points }}</th>
                         @if ($user->address == NULL)

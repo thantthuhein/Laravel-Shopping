@@ -5,21 +5,27 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        @if (Session::has('cart'))
-            <h1 class="mt-4 mb-4 text-left">Shopping Cart </h1>    
-        @endif
-        <div class="row">
-            <div class="col-md-3">
-                @if (Session::has('error'))
-                    <div class="alert alert-danger">
-                        {{ Session::get('error') }}
-                    </div>
+    <div class="container">
+        <div class="row mt-3 mb-3">
+            <div class="col-md-4">
+                @if (Session::has('cart'))
+                    <h3 class="p-3">Shopping Cart </h3>    
                 @endif
             </div>
+            <div class="col-md-8">
+                @if (Session::has('error'))
+                    <div class="alert alert-danger h-75">
+                        {{ Session::get('error') }}
+                        <a href="" class="float-right text-danger pr-1"><i class="fas fa-times"></i></a>
+                    </div>
+                @endif
+
+            </div>
         </div>
+        
+        
         @if(Session::has('cart'))
-        <div class="row mt-2 mb-0 pb-0">
+        <div class="row mt-3 mb-0 pb-0">
             <div class="col-md-12">
                 <table class="table table-bordered table-hover shadow">
                     <thead class="top-bar text-light">

@@ -89,7 +89,7 @@ class ProfileController extends Controller
 
             foreach($credits as $credit ) {
                 if ( $credit->useable == FALSE ) {
-                    return redirect()->back()->with('error', "Credit Card Already Used!");
+                    return redirect()->back()->with('error', "Prepaid Card Already Used!");
                 } else {
                     $user->credit_points += $credit->value;
                     $credit->useable = FALSE;

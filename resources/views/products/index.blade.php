@@ -94,7 +94,7 @@
                                 <div class="row">
                                     <a href="{{ route('addToCart', ['id' => $product->id] ) }}" class="col-6 p-0 text-center p-3 noTextDecoration btn btn-info button-square">
                                         <div class="text-center">
-                                            Add to Cart <i class="fas fa-shopping-cart"></i>
+                                            Add to Cart <i class="fas fa-shopping-cart pl-2"></i>
                                         </div>
                                     </a>
                                     <a href="{{ url('wishlist', $product->id) }}" class="col-6 text-center p-3  pr-0 noTextDecoration btn btn-success button-square">
@@ -102,12 +102,12 @@
                                             Wishlist 
                                             @if (isset($list)) 
                                                 @if ( in_array($product->id, $list) )
-                                                <i title="Wish List" class="fas fa-heart text-danger"></i>
+                                                <i title="Wish List" class="fas fa-heart pl-2 text-danger"></i>
                                                 @else
-                                                <i title="Wish List" class="fas fa-heart text-light"></i>
+                                                <i title="Wish List" class="fas fa-heart pl-2 text-light"></i>
                                                 @endif
                                             @else
-                                                <i title="Wish List" class="fas fa-heart text-light"></i>
+                                                <i title="Wish List" class="fas fa-heart pl-2 text-light"></i>
                                             @endif
                                             
                                         </div>

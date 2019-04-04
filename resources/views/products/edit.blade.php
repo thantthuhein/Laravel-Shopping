@@ -49,7 +49,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>memory</label>
+                    <label>Memory</label>
                     {{ Form::text('memory', null, [
                             'class' => ($errors->has('memory') ? 'form-control is-invalid' : 'form-control')
                     ])}}
@@ -61,7 +61,7 @@
                 </div>
                     
                 <div class="form-group">
-                    <label>storage</label>
+                    <label>Storage</label>
                     {{ Form::text('storage', null, [
                             'class' => ($errors->has('storage') ? 'form-control is-invalid' : 'form-control')
                     ])}}
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>display</label>
+                    <label>Display</label>
                     {{ Form::text('display', null, [
                             'class' => ($errors->has('display') ? 'form-control is-invalid' : 'form-control')
                     ])}}
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>ports</label>
+                    <label>Ports</label>
                     {{ Form::text('ports', null, [
                             'class' => ($errors->has('ports') ? 'form-control is-invalid' : 'form-control')
                     ])}}

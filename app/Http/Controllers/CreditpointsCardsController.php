@@ -10,8 +10,9 @@ class CreditpointsCardsController extends Controller
 {
     public function getTotalCards()
     {
-        $cards = CreditpointsCard::all();
-        return view('/admin/cardsDetails/totalCards', ['cards' => $cards]);
+        $cards = CreditpointsCard::paginate(20);
+        $totalCards = CreditpointsCard::all();
+        return view('/admin/cardsDetails/totalCards', ['cards' => $cards, 'totalCards' => $totalCards]);
     }
 
     public function getUseableCards()

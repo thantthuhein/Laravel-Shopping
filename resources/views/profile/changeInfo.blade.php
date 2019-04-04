@@ -10,7 +10,7 @@
                 <div class="card-body">
                     {{ Form::model($user, ['route' => 'changeInfo', 'method' => 'POST']) }}
                         <div class="form-group">
-                            <label for="address">name</label>
+                            <label for="address">Name</label>
                             {{ Form::text('name', NULL, ['class' => ($errors->has('name') ? 'form-control is-invalid' : 'form-control'), 'id' => 'name', 'placeholder' => 'For Example: House #123, Street #123, #A Road'])}}
                             @if($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
@@ -19,7 +19,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="address">phone</label>
+                            <label for="phone">Phone</label>
                             {{ Form::text('phone', NULL, ['class' => ($errors->has('phone') ? 'form-control is-invalid' : 'form-control'), 'id' => 'phone', 'placeholder' => '09'])}}
                             @if($errors->has('phone'))
                                 <span class="invalid-feedback" role="alert">

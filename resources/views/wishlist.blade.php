@@ -7,12 +7,29 @@
 @section('content')
     @if ($wishlists->isNotEmpty())
         <div class="row m-0 mt-3 pl-5">
-            <div class="col-md-12">
-                <h3 class="">Wish Lists</h3>
+            <div class="col-md-4">
+                <h1 class="pb-3">Wish Lists</h1>
             </div>
+            @if(Session::has('success'))
+            <div class="col-md-8 pb-0 mb-0">
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                    <a href="" class="float-right text-danger pr-1"><i class="fas fa-times"></i></a>
+                </div>
+            </div>
+            @endif
+            
+            @if (Session::has('error'))
+                <div class="col-md-8 pb-0 mb-0">
+                    <div class="alert alert-danger">
+                        {{ Session::get('error') }}
+                        <a href="" class="float-right text-danger pr-1"><i class="fas fa-times"></i></a>
+                    </div>
+                </div>
+            @endif
         </div>
     @endif
-    <div class="row mt-4 pl-5 m-0 pr-5">
+    <div class="row mt-4 pl-5 m-0">
         @if ($wishlists->isEmpty())
         <div class="col-md-12">
             <h1 class="mt-5 text-center">No Items In Wish List ! <i class="fas fa-frown"></i></h1>
@@ -21,25 +38,6 @@
 
         <div class="col-md-12">
 
-            <div class="row">
-                @if(Session::has('success'))
-                <div class="col-md-4">
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
-                        <a href="" class="float-right text-secondary pr-1"><i class="fas fa-times"></i></a>
-                    </div>
-                </div>
-                @endif
-                
-                @if (Session::has('error'))
-                    <div class="col-md-8">
-                        <div class="alert alert-danger">
-                            {{ Session::get('error') }}
-                            <a href="" class="float-right text-secondary pr-1"><i class="fas fa-times"></i></a>
-                        </div>
-                    </div>
-                @endif
-            </div>
             <table class="table table-bordered table-hover shadow">
                 <thead class="top-bar text-light">
                     <tr>

@@ -107,7 +107,7 @@ class CartController extends Controller
         $user = User::find(Auth()->user()->id);
         // dd($user->credit_points);
         if ($user->credit_points < $cart->totalPrice) {
-            return redirect()->back()->with('error', "Unsufficient Credit Points!");
+            return redirect()->back()->with('error', "Unsufficient Points, Top Up Points to Buy Items!");
         }
         foreach ( $cart->items as $item) {
             $product = Product::find($item['item']['id']);
