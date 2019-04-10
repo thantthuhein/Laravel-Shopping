@@ -7,7 +7,7 @@
 @section('content')
     <div class="row mt-3 justify-content-center">
         <div class="col-md-3">
-            <div class="card shadow">
+            <div class="card">
                 <div class="card-header top-bar text-light">
                     <h3>Total Users</h3>
                 </div>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card shadow">
+            <div class="card">
                 <div class="card-header top-bar text-light">
                     <h3>Total Orders</h3>
                 </div>
@@ -47,7 +47,7 @@
             </div>                
         </div>
         <div class="col-md-4">
-            <div class="card shadow">
+            <div class="card">
                 <div class="card-header top-bar text-light">
                     <h3>Total Amount of Selling</h3>
                 </div>

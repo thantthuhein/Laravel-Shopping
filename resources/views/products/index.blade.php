@@ -39,18 +39,22 @@
         <div class="row mt-4 mb-3">
             @if(Session::has('success'))
             <div class="col-md-8">
-                <div class="alert alert-success">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ Session::get('success') }}
-                    <a href="" class="float-right text-secondary pr-1"><i class="fas fa-times"></i></a>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
             </div>
             @endif
 
             @if (Session::has('error'))
                 <div class="col-md-8">
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ Session::get('error') }}
-                        <a href="" class="float-right text-secondary pr-1"><i class="fas fa-times"></i></a>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 </div>
             @endif

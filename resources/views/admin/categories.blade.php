@@ -16,29 +16,29 @@
     <div class="row">
         <div class="col-md-12">
             <br>
-            <table class="table table-bordered table-hover shadow">
-                <thead class="top-bar text-light">
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <th><h5>Category Name</h5></th>
-                        <th><h5>Actions</h5></th>
+                        <td>Category Name</td>
+                        <td>Actions</td>
                     </tr>
                 </thead>
                 @foreach ($categories as $category)
                     <tr>
-                        <th> {{$category->name}}</th>
-                        <th> 
-                        <a class="btn btn-info hvr-grow" href=" {{route('categories.show', $category->id)}}" data-toggle="tooltip" data-placement="top" title="details"><i class="fas fa-info-circle"></i></a>
+                        <td> {{$category->name}}</td>
+                        <td> 
+                        <a class="btn btn-outline-info" href=" {{route('categories.show', $category->id)}}" data-toggle="tooltip" data-placement="top" title="details"><i class="fas fa-info-circle"></i></a>
                         {{ Form::model($categories, [
                             'route' => ['categories.destroy', $category->id], 
                             'method' => "DELETE",
                             'class' => 'd-inline'
                             ]) }}
-                            <a class="btn btn-dark hvr-grow" href=" {{route('categories.edit', $category->id)}} " data-toggle="tooltip" data-placement="top" title="edit"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-outline-dark" href=" {{route('categories.edit', $category->id)}} " data-toggle="tooltip" data-placement="top" title="edit"><i class="fas fa-edit"></i></a>
 
-                            <button data-toggle="tooltip" data-placement="top" title="delete" class="btn btn-danger hvr-grow"><i class="fas fa-trash-alt"></i></button>
+                            <button data-toggle="tooltip" data-placement="top" title="delete" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
                         {{ Form::close() }}
 
-                        </th>
+                        </td>
                     </tr>
                 @endforeach
             </table>

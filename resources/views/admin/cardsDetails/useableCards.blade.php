@@ -14,8 +14,8 @@
     </div>
 
     <div class="row mt-2 p-4">
-        <table class="table table-hover shadow">
-            <thead class="top-bar text-light">
+        <table class="table table-hover">
+            <thead>
                 <tr>
                     <th>Pin</th>
                     <th>Value</th>
@@ -25,12 +25,15 @@
             <tbody>
                 @foreach ($useableCards as $card)  
                     <tr>
-                        <th>{{ $card->pin }}</th>
-                        <th>$ {{ $card->value }}</th>
-                        <th>{{ $card->created_at->format('d:M:Y | h:i:a') }}</th>
+                        <td>{{ $card->pin }}</td>
+                        <td>$ {{ $card->value }}</td>
+                        <td>{{ $card->created_at->format('d/M/Y, h:i:a') }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <div>
+            {{ $useableCards->links() }}
+        </div>
     </div>
 @endsection

@@ -13,28 +13,28 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-        <table class="table table-bordered table-hover shadow">
-            <thead class="top-bar text-light">
+        <table class="table table-hover">
+            <thead>
               <tr>
-                <th><h5>Product Name</h5></th>
-                <th><h5>Actions</h5></th>
+                <td>Product Name</td>
+                <td>Actions</td>
             </tr>
             </thead>
             @foreach($products as $product)
               <tr>
-                <th> {{$product->name}}</th>
-                <th> 
+                <td> {{$product->name}}</td>
+                <td> 
                   {{ Form::model($products, [
                     'route' => ['products.destroy', $product->id], 
                     'method' => "DELETE",
                     'class' => 'd-inline'
                       ]) }}
-                      <a class="btn btn-dark hvr-grow mr-2" href=" {{route('products.edit', $product->id)}} "data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                      <a class="btn btn-outline-dark mr-2" href=" {{route('products.edit', $product->id)}} "data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
 
-                     <button data-toggle="tooltip" data-placement="top" title="delete" class="btn btn-danger hvr-grow"><i class="fas fa-trash-alt"></i></button>
+                     <button data-toggle="tooltip" data-placement="top" title="delete" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
                   {{ Form::close() }}
 
-                </th>
+                </td>
               </tr>
             @endforeach
         </table>

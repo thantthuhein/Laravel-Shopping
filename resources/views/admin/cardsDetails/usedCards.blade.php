@@ -25,9 +25,9 @@
 
         <div class="row mt-2">
             <div class="col-md-12">
-                <div class="shadow">
+                <div>
                     <table class="table table-hover">
-                        <thead class="bg-dark text-light">
+                        <thead>
                             <tr>
                                 <th>Pin</th>
                                 <th>Value</th>
@@ -37,15 +37,18 @@
                         <tbody>
                             @foreach ($usedCards as $card)  
                                 <tr>
-                                    <th>{{ $card->pin }}</th>
-                                    <th>$ {{ $card->value }}</th>
-                                    <th>
-                                        <a class="btn btn-dark btn-sm" href="{{ url('/dashboard/usedCardDetails', $card->id) }}"><i class="fas fa-info-circle"></i></a>
-                                    </th>
+                                    <td>{{ $card->pin }}</td>
+                                    <td>$ {{ $card->value }}</td>
+                                    <td>
+                                        <a class="btn btn-outline-info" href="{{ url('/dashboard/usedCardDetails', $card->id) }}"><i class="fas fa-info-circle"></i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <div>
+                        {{ $usedCards->links() }}
+                    </div>
                 </div>
             </div>
         </div>

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css"> --}}
+  @yield('links')
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
@@ -36,6 +37,9 @@
         <li class='pt-3'>
           <a href="{{ url('/dashboard/orders') }}"><i class="fas fa-shopping-cart"></i> ORDERS</a>
         </li>
+        {{-- <li class='pt-3'>
+          <a href="#"> MONTHLY REPORTS?TO DO</a>
+        </li> --}}
         <li class='pt-3'>
           <a href="{{ url('/dashboard/getCreditcardsDetails') }}"><i class="fas fa-credit-card"></i> PREPAID CARDS</a>
         </li>
@@ -118,8 +122,9 @@
       $('[data-toggle="tooltip"]').tooltip()
     })
     // for items searching
-    
+    $('.alert').alert()
   </script>
+  @yield('scripts')
 
 </body>
 </html>

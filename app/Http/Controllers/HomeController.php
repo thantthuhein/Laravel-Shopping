@@ -72,7 +72,7 @@ class HomeController extends Controller
 
     public function showTotalOrders()
     {
-        $orders = Order::latest()->get();
+        $orders = Order::latest()->paginate(20);
         $orders->transform(function($order, $key) {
             $order->cart = unserialize(base64_decode($order->cart));
             return $order;
@@ -85,13 +85,20 @@ class HomeController extends Controller
         return view('/admin/orders');
     }
 
+    public function monthly_reports()
+    {
+        
+    }
+
     public function getDate(Request $request) 
     {
-        // dd($request->all());
+        // dd($request->date);
         $time = strtotime($request->date);
         $date = date('d: D : M : Y', $time);
         // dd($date);
         $orders = \App\Order::whereDate('created_at', $request->date)->latest()->get();
+        // $order = Order::first();
+        // dd($order->created_at);
         // dd($orders);
         $orders->transform(function($order, $key) {
             $order->cart = unserialize(base64_decode($order->cart));

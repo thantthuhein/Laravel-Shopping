@@ -17,13 +17,13 @@ class CreditpointsCardsController extends Controller
 
     public function getUseableCards()
     {
-        $useableCards = CreditpointsCard::where('useable', TRUE)->get();
+        $useableCards = CreditpointsCard::where('useable', TRUE)->paginate(20);
         return view('/admin/cardsDetails/useableCards', ['useableCards' => $useableCards]);
     }
 
     public function getUsedCards()
     {
-        $usedCards = CreditpointsCard::where('useable', FALSE)->latest('purchased_at')->get();
+        $usedCards = CreditpointsCard::where('useable', FALSE)->latest('purchased_at')->paginate(20);
         return view('/admin/cardsDetails/usedCards', ['usedCards' => $usedCards]);
     }
 

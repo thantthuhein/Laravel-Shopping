@@ -11,38 +11,38 @@
                 <h1 class="text-center text-uppercase">No Orders</h1>
             @else
                 <h3 class="mt-3 pb-3">Ordered Items & Details</h3>
-                <table class="table table-hover table-bordered">
-                    <thead class="bg-dark text-light">
+                <table class="table table-bordered table-hover">
+                    <thead>
                         <tr>
-                            <th>Customer Name</th>
-                            <th>Time</th>
-                            <th>Total Quantity</th>
-                            <th>Total Price</th>
-                            <th>Ordered Items</th>
-                            <th>Status</th>
+                            <td>Customer Name</td>
+                            <td>Time</td>
+                            <td>Total Quantity</td>
+                            <td>Total Price</td>
+                            <td>Ordered Items</td>
+                            <td>Status</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($orders as $order)    
                         <tr>
-                            <th>
+                            <td>
                                 <a href="{{ url('/dashboard/userDetails', $order->user->id) }}">{{ $order->user->name }}</a>
-                            </th>
-                            <th>
-                                {{ $order->created_at->format('D.d.M.Y | h:i:a') }}
-                            </th>
-                            <th>
+                            </td>
+                            <td>
+                                {{ $order->created_at->format('d/M/Y , h:i:a') }}
+                            </td>
+                            <td>
                                 {{ $order->cart->totalQty }} 
                                 @if ($order->cart->totalQty > 1)
                                     items 
                                 @else
                                     item
                                 @endif
-                            </th>
-                            <th>
+                            </td>
+                            <td>
                                 $ {{ $order->cart->totalPrice }}
-                            </th>
-                            <th>
+                            </td>
+                            <td>
                                 @foreach ($order->cart->items as $item)
                                 <p>
                                     {{ $item['item']['name'] }} |
@@ -50,54 +50,21 @@
                                     $ {{ $item['price'] }}  
                                 </p>
                                 @endforeach    
-                            </th>
-                            <th>
+                            </td>
+                            <td>
                                 @if ($order->is_delivered == TRUE)
-                                Delivered!
-                                    <span class="text-success"></span>
+                                    <span class="text-success">Delivered!</span>
                                 @else
                                     <span class="text-danger">Not Yet Delivered!</span>
                                 @endif
-                            </th>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                @foreach ($orders as $order)
-                    <div class="card shadow mb-5">
-                        <div class="card-header top-bar text-light">
-                            <div class="clearfix">
-                                <h3 class="float-left">{{ $order->created_at->format('D.d.M.Y | h:i:a') }}</h3>
-                                <h3 class="float-right">Customer Name: 
-                                    <a class="link text-light" href="{{ url('/dashboard/userDetails', $order->user->id) }}">{{ $order->user->name }}</a>
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            @foreach ($order->cart->items as $item)
-                            <p>
-                                {{ $item['item']['name'] }} |
-                                {{ $item['qty'] }} items |
-                                $ {{ $item['price'] }}  
-                            </p>
-                            @endforeach
-                        </div>
-                        <div class="card-footer">
-                            <div class="clearfix">
-                                <h5 class="float-left">Total Quantity: 
-                                |
-                                Total Price: $ {{ $order->cart->totalPrice }}
-                                </h5>
-                                @if ($order->is_delivered == TRUE)
-                                    <h5 class="text-success float-right">Delivered!</h5>
-                                @else
-                                    <h5 class="text-danger float-right">Not Yet Delivered!</h5>
-                                @endif
-
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                <div class="d-flex justify-content-center">
+                    {{ $orders->links()}}
+                </div>
             @endif
         </div>
     </div>

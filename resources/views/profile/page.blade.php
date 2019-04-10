@@ -27,12 +27,14 @@
                 Member Since: {{ $user->created_at->format('d. D. M. Y') }}
         </div>
     </div>
-            <div class="row justify-content-center">
-                <div class="col-md-4">
+            <div class="row justify-content-center  ">
+                <div class="col-md-5">
                     @if (Session::has('success'))
-                        <div id="charge-message" class="alert alert-success">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ Session::get('success') }} 
-                            <a href="" class="float-right text-danger"><i class="fas fa-times"></i></a>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     @endif
                 </div>
@@ -70,23 +72,23 @@
             </div>
         </div>
         <hr>
-        <div class="row pl-3">
-            <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6 pl-4">
                 <div>
-                    <a class="" href="{{ url('getChangeInfo') }}">Edit Info<i class="fas fa-edit"></i></a>
+                    <a class="btn btn-outline-info" href="{{ url('getChangeInfo') }}">Edit Info <i class="fas fa-edit"></i></a>
                 </div>
             </div>
             <div class="col-md-6">
-                <a href="{{ url('/getCreditDetails') }}">Credits Points & Orders</a>
+                <a class="btn btn-outline-info" href="{{ url('/getCreditDetails') }}">Credits Points & Orders</a>
             </div>
         </div>
         <hr>
         <div class="row justify-content-center">
-            <div class="col-md-12 text-left">
+            <div class="col-md-12 text-left pl-4">
                 @if (auth()->user()->is_Admin == TRUE)
-                    <a class="btn btn-danger" href="{{ url('/dashboard') }}">Go To Dashboard <i class="fas fa-chart-line"></i></a>
+                    <a class="btn btn-outline-danger" href="{{ url('/dashboard') }}">Go To Dashboard <i class="fas fa-chart-line"></i></a>
                 @else
-                    <a class="btn btn-dark" href="{{ url('/getFeedback') }}">Send Feedback <i class="fas fa-comment-alt"></i> </a>
+                    <a class="btn btn-outline-dark" href="{{ url('/getFeedback') }}">Send Feedback <i class="fas fa-comment-alt"></i> </a>
                 @endif
             </div>
         </div>

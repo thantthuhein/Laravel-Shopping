@@ -18,7 +18,7 @@
             </div>
         @else
             <div class="col-md-12">
-                <div class="card shadow">
+                <div >
                     <table class="table">
                         <tr>
                             <th>Customer Name</th>
@@ -28,11 +28,11 @@
                             <th>Purchased At</th>
                         </tr>
                         <tr>
-                            <th><a class="noTextDecoration" href="{{ url('/dashboard/userDetails', $card->user->id) }}">{{ $card->user->name }}</a></th>
-                            <th>{{ $card->user->email }}</th>
-                            <th>{{ $card->user->phone }}</th>
-                            <th>$ {{ $card->value }}</th>
-                            <th>{{ $card->purchased_at }}</th>
+                            <td><a class="noTextDecoration" href="{{ url('/dashboard/userDetails', $card->user->id) }}">{{ $card->user->name }}</a></td>
+                            <td>{{ $card->user->email }}</td>
+                            <td>{{ $card->user->phone }}</td>
+                            <td>$ {{ $card->value }}</td>
+                            <td>{{ $card->purchased_at }}</td>
                         </tr>
                     </table>
                 </div>

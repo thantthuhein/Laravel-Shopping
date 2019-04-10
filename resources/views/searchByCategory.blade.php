@@ -5,31 +5,32 @@
 @endsection
 
 @section('content')
+    <h5 class="mt-3">{{ $category->name }}</h5>
     <div class="row justify-content-center mt-3">
-        <div class="col-md-11">
+        <div class="col-md-12">
             @if ($products->isEmpty())
                 <h1 class="mt-5 text-center">
                     There is No Products ! <i class="fas fa-frown"></i>
                 </h1>
             @else    
-                <table class="table table-hover shadow">
-                    <thead class="bg-dark">
+                <table class="table table-hover">
+                    <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Quantity I Store</th>
-                            <th>Description</th>
+                            <td>Name</td>
+                            <td>Price</td>
+                            <td>Quantities In Store</th>
+                            <td>Description</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($products as $product)
                             <tr>
-                                <th>
+                                <td>
                                     <a href="{{ url('products', $product->id) }}">{{ $product->name }}</a>  
-                                </th>
-                                <th><span class="badge badge-success">$</span> {{ $product->price }}</th>
-                                <th>{{ $product->quantity }}</th>
-                                <th>{{ $product->description }}</th>
+                                </td>
+                                <td><span class="badge badge-success">$</span> {{ $product->price }}</td>
+                                <td>{{ $product->quantity }}</td>
+                                <td>{{ $product->description }}</td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -50,6 +50,11 @@ class WishListController extends Controller
     public function remove($id) 
     {
         $product = Product::find($id);
+        if(! $product) {
+            Wishlist::where('product_id', $id)->delete();
+            $wishlists = auth()->user()->wishlists;
+            return view('wishlist', ['wishlists' => $wishlists]);
+        }
         // dd($product->id);
         $wishlist = Wishlist::where('product_id', $product->id)->first();
         // dd($wishlist);

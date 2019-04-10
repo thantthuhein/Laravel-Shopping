@@ -5,18 +5,20 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="row mt-3 mb-3">
-            <div class="col-md-4">
+    <div class="container mb-5">
+        <div class="row mt-3">
+            <div class="col-md-4 p-4">
                 @if (Session::has('cart'))
-                    <h3 class="p-3">Shopping Cart </h3>    
+                    <h5>Shopping Cart </h5>    
                 @endif
             </div>
             <div class="col-md-8">
                 @if (Session::has('error'))
-                    <div class="alert alert-danger h-75">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ Session::get('error') }}
-                        <a href="" class="float-right text-danger pr-1"><i class="fas fa-times"></i></a>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 @endif
 
@@ -25,36 +27,36 @@
         
         
         @if(Session::has('cart'))
-        <div class="row mt-3 mb-0 pb-0">
+        <div class="row">
             <div class="col-md-12">
-                <table class="table table-bordered table-hover shadow">
-                    <thead class="top-bar text-light">
+                <table class="table table-hover">
+                    <thead>
                         <tr>
-                            <th>Product Name</th>
-                            <th>Item Price</th>
-                            <th>Quantity</th>
-                            <th>Action</th>
-                            <th>Total</th>
+                            <td>Product Name</td>
+                            <td>Item Price</td>
+                            <td>Quantity</td>
+                            <td>Action</td>
+                            <td>Total</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($products as $product)
                         <tr>
-                            <th>
+                            <td>
                                 <a href="{{ url('products', $product['item']['id']) }}">{{ $product['item']['name'] }} <span class="fas fa-arrow-circle-right"></span></a>
-                            </th>
-                            <th>
+                            </td>
+                            <td>
                                 <span class="badge badge-success"> $ </span> {{ $product['item']['price'] }}
-                            </th>
-                            <th>{{ $product['qty'] }}</th>
-                            <th>
-                                <a class="btn btn-sm btn-success" href="{{ route('addToCart', $product['item']['id'] ) }}"><i class="fas fa-chevron-up"></i></a>
-                                <a class="btn btn-sm btn-success" href="{{ url('/cart/reduceOne', $product['item']['id']) }}"><i class="fas fa-chevron-down"></i></a>
-                                <a class="btn btn-sm btn-danger" href="{{ url('/cart/reduceAll', $product['item']['id']) }}">Clear</a>
-                            </th>
-                            <th>
+                            </td>
+                            <td>{{ $product['qty'] }}</td>
+                            <td>
+                                <a class="btn btn-outline-success" href="{{ route('addToCart', $product['item']['id'] ) }}"><i class="fas fa-chevron-up"></i></a>
+                                <a class="btn btn-outline-success" href="{{ url('/cart/reduceOne', $product['item']['id']) }}"><i class="fas fa-chevron-down"></i></a>
+                                <a class="btn btn-outline-danger" href="{{ url('/cart/reduceAll', $product['item']['id']) }}">Clear</a>
+                            </td>
+                            <td>
                                 <span class="badge badge-success"> $ </span> {{ $product['price'] }}
-                            </th>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -71,7 +73,7 @@
                     </tr>
                     
                 </table>
-                <a class="btn btn-lg btn-success" href="{{ route('checkout') }}">Proceed to Checkout</a>
+                <a class="btn btn-success" href="{{ route('checkout') }}">Proceed to Checkout</a>
             </div>
         </div>
         @else

@@ -8,12 +8,12 @@
                 <div class="border text-center">
                     <img class="w-100" src="{{ $product->imagePath }}" alt="">
                        
-                    <div class="row">
+                    <div class="row pt-3 pb-3">
                         <div class="col-md-6 pr-0">
-                            <a href="{{ route('addToCart', $product->id) }}" class="btn btn-outline-primary button-square w-100 ">Add to cart</a>
+                            <a href="{{ route('addToCart', $product->id) }}" class="btn btn-outline-primary w-75">Add to cart</a>
                         </div>
                         <div class="col-md-6 pl-0 m-0">
-                            <a class="btn btn-square btn-outline-success button-square w-100" href="{{ url('wishlist', $product->id) }}">
+                            <a class="btn btn-outline-success w-75" href="{{ url('wishlist', $product->id) }}">
                                 @if (isset($list)) 
                                     @if ( in_array($product->id, $list) )
                                     Remove From Wishlist
@@ -28,10 +28,11 @@
                     </div>                    
                 </div>
             </div>
-            <div class="col-md-6 border pt-4">
-                <p>Colors: {{ $product->colors }}</p>
+            <div class="col-md-6">
+                {{-- <p>Colors: {{ $product->colors }}</p>
                 <hr>
-                <p>Description: {{ $product->description }}</p>
+                <div class="d-inline bg-primary">Description:</div> 
+                <div class="d-inline bg-warning">{{ $product->description }}</div>
                 <hr>
                 <p>Processors: {{ $product->processor }}</p>
                 <hr>
@@ -45,7 +46,45 @@
                 <hr>
                 <p>Display: {{ $product->display }}</p>
                 <hr>
-                <p>Ports: {{ $product->ports }}</p>
+                <p>Ports: {{ $product->ports }}</p> --}}
+                <ul class="list-group">
+                    <li class="list-group-item d-flex">
+                        Colors:
+                        <span class="pl-5">{{ $product->colors }}</span>
+                    </li>
+                    <li class="list-group-item d-flex">
+                        Description:
+                        <span class="pl-3">{{ $product->description }}</span>
+                    </li>
+                    <li class="list-group-item d-flex">
+                        Processors:
+                        <span class="pl-3">&nbsp;{{ $product->processor }}</span>
+                    </li>
+                    <li class="list-group-item d-flex">
+                        Ghz :
+                        <span class="pl-5 ">&nbsp;&nbsp;&nbsp;&nbsp;{{ $product->ghz }}</span>
+                    </li>
+                    <li class="list-group-item d-flex">
+                        Graphics:
+                        <span class="pl-4">&nbsp;&nbsp;{{ $product->graphics }}</span>
+                    </li>
+                    <li class="list-group-item d-flex">
+                        Memory:
+                        <span class="pl-4">&nbsp;&nbsp;&nbsp;{{ $product->memory }}</span>
+                    </li>
+                    <li class="list-group-item d-flex">
+                        Storage:
+                        <span class="pl-4">&nbsp;&nbsp;&nbsp;&nbsp;{{ $product->storage }}</span>
+                    </li>
+                    <li class="list-group-item d-flex">
+                        Display:
+                        <span class="pl-5">{{ $product->display }}</span>
+                    </li>
+                    <li class="list-group-item d-flex">
+                        Ports:
+                        <span class="pl-5">&nbsp;&nbsp;&nbsp;{{ $product->ports }}</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

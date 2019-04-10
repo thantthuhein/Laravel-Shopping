@@ -16,6 +16,10 @@ class CartController extends Controller
     public function getAddToCart(Request $request, $id)
     {
         $product = Product::find($id);
+        if(! $product) {
+            return redirect()->back()
+            ->with('error', "Item might be removed! Delete it from your List!");
+        }
         if( 0 == $product->quantity ) {
             return redirect()->back()->with('error', "Out of Stock!");
         }
