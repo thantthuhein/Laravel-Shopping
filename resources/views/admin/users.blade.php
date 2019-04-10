@@ -41,7 +41,7 @@
                     <tr>
                         <td>
                             <a href="{{ url('/dashboard/userDetails', $user->id) }}" class="text-uppercase d-inline noTextDecoration">{{ $user->name }}</a>
-                            <span class="badge badge-secondary">User</span>
+                            <span class="badge badge-secondary badge-pill">User</span>
                         </td>
                         <td>
                             <a class="btn btn-outline-warning mr-3 " href=" {{ url('user/promote', $user->id) }} " data-toggle="tooltip" data-placement="top" title="promote to admin">Appoint as Admin</a>
@@ -75,7 +75,7 @@
                     @foreach( $users as $user)
                         @if ($user->is_Admin == true)
                             <tr>
-                                <td> <a class="noTextDecoration" href="{{ url('/dashboard/userDetails', $user->id) }}">{{ $user->name }}</a><span class="badge badge-primary">Admin</span></td>
+                                <td> <a class="noTextDecoration" href="{{ url('/dashboard/userDetails', $user->id) }}">{{ $user->name }}</a><span class="badge badge-primary badge-pill">Admin</span></td>
                                 <td>
                                     <a class="btn btn-outline-danger" href=" {{ url('user/remove', $user->id) }} " data-toggle="tooltip" data-placement="top" title="remove from admin">Remove</a>
                                 </td>

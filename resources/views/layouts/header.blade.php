@@ -14,13 +14,13 @@
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link text-light" href="{{url('wishlist')}}">  
-                    <i class="fas fa-heart"></i> WISH LIST <span class="badge badge-success"></span></a></li>
+                    <i class="fas fa-heart"></i> WISH LIST <span class="badge badge-success badge-pill"></span></a></li>
                     </a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link text-light" href="{{ route('shoppingCart') }}">
                         <i class="fas fa-shopping-cart"></i> SHOPPING CART 
-                        <span class="badge badge-warning">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+                        <span class="badge badge-warning badge-pill">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
                     </a>
                 </li>
                 @guest
