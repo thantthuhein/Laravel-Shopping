@@ -50,9 +50,9 @@
                             </td>
                             <td>{{ $product['qty'] }}</td>
                             <td>
-                                <a class="btn btn-outline-success" href="{{ route('addToCart', $product['item']['id'] ) }}"><i class="fas fa-chevron-up"></i></a>
-                                <a class="btn btn-outline-success" href="{{ url('/cart/reduceOne', $product['item']['id']) }}"><i class="fas fa-chevron-down"></i></a>
-                                <a class="btn btn-outline-danger" href="{{ url('/cart/reduceAll', $product['item']['id']) }}">Clear</a>
+                                <a class="btn btn-sm btn-outline-success" href="{{ route('addToCart', $product['item']['id'] ) }}"><i class="fas fa-chevron-up"></i></a>
+                                <a class="btn btn-sm btn-outline-success" href="{{ url('/cart/reduceOne', $product['item']['id']) }}"><i class="fas fa-chevron-down"></i></a>
+                                <a class="btn btn-sm btn-outline-danger" href="{{ url('/cart/reduceAll', $product['item']['id']) }}">Clear</a>
                             </td>
                             <td>
                                 <span class="badge badge-success"> $ </span> {{ $product['price'] }}

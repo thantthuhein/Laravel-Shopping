@@ -85,7 +85,7 @@
                         <h5 class="float-left">{{ $order->created_at->format('d, D, M, Y') }}</h5>
                         <h5 class="float-right">{{ $order->created_at->format('g:i:A') }} </h5>
                     </div>
-                    <table class="table table-hover shadow">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <td>Ordered Items</td>

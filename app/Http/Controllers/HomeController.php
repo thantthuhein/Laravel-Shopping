@@ -49,7 +49,10 @@ class HomeController extends Controller
         foreach ($totalOrders as $order) {
             $totalPrice += $order->cart->totalPrice;
         }
-        return view('/admin/dashboard', ['products' => $products, 'totalUsers' => $totalUsers, 'totalOrders' => $totalOrders, 'totalPrice' => $totalPrice]);
+
+        $totalPrepaidCards = CreditpointsCard::all();
+
+        return view('/admin/dashboard', ['products' => $products, 'totalUsers' => $totalUsers, 'totalOrders' => $totalOrders, 'totalPrice' => $totalPrice, 'totalPrepaidCards' => $totalPrepaidCards]);
     }
 
     public function products()

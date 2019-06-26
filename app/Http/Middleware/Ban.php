@@ -17,6 +17,7 @@ class Ban
      */
     public function handle($request, Closure $next)
     {
+
         if(auth()->check()) {
             $user = User::find(Auth::user()->id);
             // dd($user->banned_at);
@@ -30,5 +31,7 @@ class Ban
             return redirect()->route('login')->with('banned', "Your account is blocked!");
         }
         return $next($request);
+        
     }
+    
 }

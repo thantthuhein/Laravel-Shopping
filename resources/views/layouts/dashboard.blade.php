@@ -14,93 +14,92 @@
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
-  <div id="wrapper" class="toggled">
-    <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <li class="sidebar-brand">
-          <a href="#">
-            MENU
-          </a>
-        </li>
-        <li class='pt-3'>
-          <a href="{{ url('/dashboard') }}"><i class="fas fa-chart-line"></i> DASHBOARD</a>
-        </li>
-        <li class='pt-3'>
-          <a href=" {{url('/dashboard/products')}} "><i class="fas fa-box-open"></i> PRODUCTS</a>
-        </li>
-        <li class='pt-3'>
-          <a href=" {{url('/dashboard/categories')}} "><i class="fas fa-book-open"></i> CATEGORIES</a>
-        </li>
-        <li class='pt-3'>
-          <a href=" {{url('/dashboard/users')}} "><i class="fas fa-users ml-0"></i> USERS</a>
-        </li>
-        <li class='pt-3'>
-          <a href="{{ url('/dashboard/orders') }}"><i class="fas fa-shopping-cart"></i> ORDERS</a>
-        </li>
-        {{-- <li class='pt-3'>
-          <a href="#"> MONTHLY REPORTS?TO DO</a>
-        </li> --}}
-        <li class='pt-3'>
-          <a href="{{ url('/dashboard/getCreditcardsDetails') }}"><i class="fas fa-credit-card"></i> PREPAID CARDS</a>
-        </li>
-        <li class='pt-3'>
-          <a href="{{ url('/dashboard/showUserFeedbacks') }}"><i class="fas fa-comments"></i> USER FEEDBACKS</a>
-        </li>
-      </ul>
-
-    </div>
-
-    <div id="page-content-wrapper pt-0">
-      <div class="dash-bar">
-        <nav class="navbar navbar-expand navbar-light p-0 ml-5">
-          <a class="navbar-brand text-light p-2" href="#menu-toggle" id="menu-toggle">
-            <i class="fas fa-bars"></i>
-          </a>
-          <a class="navbar-brand text-light p-2" href=" {{url('/')}} " id="menu-toggle">
-            <i class="fas fa-home"></i>
-          </a>
-          <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active d-none d-sm-block">
-                <a class="nav-link h3 text-light" href=" {{url('dashboard')}} ">DASHBOARD</a>
-              </li>  
-            </ul>
-            <ul class="navbar-nav navbar-right d-none d-sm-block"> 
-                @guest
-                <li class="nav-item mt-1">
-                    <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li>
-                <li class="nav-item mt-1">
-                    @if (Route::has('register'))
-                        <a class="nav-link text-light" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    @endif
-                </li>
-                  @else
-                <li class="nav-item mt-1 dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-              @endguest
-            </ul>
-          </div>
-        </nav>
+  <div class="container-fluid p-0">
+    <div id="wrapper" class="toggled">
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand">
+            <a href="{{url('dashboard')}}">
+              DASHBOARD
+            </a>
+          </li>
+          <li class='pt-1'>
+            <a href="{{ url('/dashboard') }}"><i class="fas fa-chart-line"></i> Dashboard</a>
+          </li>
+          <li class='pt-1'>
+            <a href=" {{url('/dashboard/products')}} "><i class="fas fa-box-open"></i> Products</a>
+          </li>
+          <li class='pt-1'>
+            <a href=" {{url('/dashboard/categories')}} "><i class="fas fa-book-open"></i> Categories</a>
+          </li>
+          <li class='pt-1'>
+            <a href=" {{url('/dashboard/users')}} "><i class="fas fa-users ml-0"></i> Users</a>
+          </li>
+          <li class='pt-1'>
+            <a href="{{ url('/dashboard/orders') }}"><i class="fas fa-shopping-cart"></i> Orders</a>
+          </li>
+          {{-- <li class='pt-3'>
+            <a href="#"> MONTHLY REPORTS?TO DO</a>
+          </li> --}}
+          <li class='pt-1'>
+            <a href="{{ url('/dashboard/getCreditcardsDetails') }}"><i class="fas fa-credit-card"></i> Prepaid Cards</a>
+          </li>
+          <li class='pt-1'>
+            <a href="{{ url('/dashboard/showUserFeedbacks') }}"><i class="fas fa-comments"></i> User Feedbacks</a>
+          </li>
+        </ul>
+  
       </div>
-    </div>
-    <div class="container-fluid mt-3">
-      @yield('content')
+  
+      <div id="page-content-wrapper pt-0">
+        <div class="dash-bar">
+          <nav class="navbar navbar-expand navbar-light p-0 ml-5">
+            <a class="navbar-brand text-light p-2" href="#menu-toggle" id="menu-toggle">
+              <i class="fas fa-bars"></i>
+            </a>
+            <a class="navbar-brand text-light p-2" href=" {{url('/')}} " id="menu-toggle">
+              <i class="fas fa-home"></i>
+            </a>
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav mr-auto">
+              </ul>
+              <ul class="navbar-nav navbar-right d-none d-sm-block p-1"> 
+                  @guest
+                  <li class="nav-item mt-1">
+                      <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
+                  </li>
+                  <li class="nav-item mt-1">
+                      @if (Route::has('register'))
+                          <a class="nav-link text-light" href="{{ route('register') }}">{{ __('Register') }}</a>
+                      @endif
+                  </li>
+                    @else
+                  <li class="nav-item mt-1 dropdown">
+                      <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                          {{ Auth::user()->name }} <span class="caret"></span>
+                      </a>
+  
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                              {{ __('Logout') }}
+                          </a>
+  
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                          </form>
+                      </div>
+                  </li>
+                @endguest
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="container-fluid p-0 mt-3">
+        @yield('content')
+      </div>
     </div>
   </div>
 

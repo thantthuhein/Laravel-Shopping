@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-{{-- 
-    <div class="container-fluid p-0">
+
+    {{-- <div class="container-fluid p-0">
         <div class="row p-0 mr-0">
             <div class="col-md-12 mainCover m-0">
                 <p class="text-light h1 text-center shadow-text text-uppercase align-middle font-weight-bold mb-3">
@@ -23,7 +23,8 @@
         </div>
     </div> --}}
 
-
+    <test-component></test-component>
+    
     <div class="container-fluid mt-0 p-0">
         <div class="row m-0">
             <div class="col-md-12 secondaryCover mt-0">
@@ -60,8 +61,9 @@
             @endif
         </div>
     </div>
-        
+    
     <div class="container">
+        
         <h3 class="mt-5 mb-3 text-uppercase">Featured Products</h3>
         <div class="d-flex justify-content-center">
             {{ $products->links()}}
@@ -126,8 +128,7 @@
         </div>
         
     </div>  
-
-
+    
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -169,8 +170,5 @@
             </div>
         </div>
     </div>
-
-
-
 
 @endsection

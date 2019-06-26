@@ -59,8 +59,8 @@
                                 </td>
                                 <td><span class="badge badge-success">$</span> {{ $wishlist->price }}</td>
                                 <td>
-                                    <a href="{{ route('addToCart', ['id' => $wishlist->product_id] ) }}" class="btn btn-outline-success" title="Add to Cart"> <i class="fas fa-shopping-cart"></i> </a>
-                                    <a href="{{ url( '/wishlist/remove', $wishlist->product_id ) }}" class="btn btn-outline-danger" title="Remove from Wishlists"><i class="fas fa-times"></i></a>
+                                    <a href="{{ route('addToCart', ['id' => $wishlist->product_id] ) }}" class="btn btn-sm btn-outline-success" title="Add to Cart"> <i class="fas fa-shopping-cart"></i> </a>
+                                    <a href="{{ url( '/wishlist/remove', $wishlist->product_id ) }}" class="btn btn-sm btn-outline-danger" title="Remove from Wishlists"><i class="fas fa-times"></i></a>
                                 </td>
                             </tr>
                         @endforeach

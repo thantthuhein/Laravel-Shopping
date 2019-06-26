@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.testlayout')
 
 @section('content')
     <example-component></example-component>

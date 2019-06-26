@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Product;
+
 use App\Category;
-// use App\Student;
+
 use App\Wishlist;
+
 use Illuminate\Support\Facades\DB;
+
 use App\Http\Requests\ProductStore;
 
 class ProductController extends Controller
@@ -24,21 +28,26 @@ class ProductController extends Controller
 
     public function home()
     {
+
         return view('home');
+
     }
 
     public function index()
     {
+
         if(auth()->check()) {
-            $list;
+            $list=[];
             $wishlists = auth()->user()->wishlists;
             foreach($wishlists as $wishlist) {
                 $list[] = $wishlist->product_id;
             }
         }
+
         // dd($list);
         $categories = Category::all();
         $products = Product::latest()->paginate(6);
+        
         if(isset($list)) {
             return view('products.index', ['products' => $products, 'categories' => $categories, 'list' => $list]);
         } else {
@@ -54,8 +63,10 @@ class ProductController extends Controller
      */
     public function create()
     {
+
         $categories = Category::pluck('name', 'id')->all();
         return view('products.create', ['categories' => $categories]);
+
     }
 
     /**
@@ -66,39 +77,20 @@ class ProductController extends Controller
      */
     public function store(ProductStore $request)
     {
-        // dd($request->all());
         // $request->validate([
         //     'name' => 'required',
         //     'description' => 'required',
         //     'price' => 'required',
         //     'quantity' => 'required'
         // ]);
-        
-        // $specifications = [
-        //     'releasedate' => $request->releasedate,            
-        //     'weight' => $request->weight,            
-        //     'colors' => $request->colors,            
-        //     'material' => $request->material,            
-        //     'os' => $request->os,            
-        //     'size' => $request->size,            
-        //     'resolution' => $request->resolution,            
-        //     'processor' => $request->processor,
-        //     'ram' => $request->ram,
-        //     'storage' => $request->storage,
-        //     'webcamera' => $request->webcamera,
-        //     'keyboardlight' => $request->keyboardlight,
-        //     'touchpad' => $request->touchpad,
-        //     'speakers' => $request->speakers,
-        //     'usbports' => $request->usbports,
-        //     'hdmpport' => $request->hdmpport,
-        //     'headphonejack' => $request->headphonejack,
-        // ];
+
         $product = Product::create( $request->all() );
 
         // dd($product->categories()->sync($request->category_id));
         $product->categories()->sync($request->category_id);
         
         return redirect('dashboard');
+
     }
 
     /**
@@ -109,6 +101,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+
         if(auth()->check()) {
             $list;
             $wishlists = auth()->user()->wishlists;
@@ -116,6 +109,7 @@ class ProductController extends Controller
                 $list[] = $wishlist->product_id;
             }
         }
+
         // dd($list);
         if(isset($list)) {
             return view('products.show', ['product' => $product, 'list' => $list]);
@@ -123,6 +117,7 @@ class ProductController extends Controller
             
             return view('products.show', ['product' => $product]);
         }
+
     }
 
     /**
@@ -158,11 +153,13 @@ class ProductController extends Controller
      */
     public function update(ProductStore $request, Product $product)
     {
-        // dd($request->all());
-        // dd($product);
+
         $product->update( $request->all() );
+
         $product->categories()->sync($request->category_id);
+        
         return redirect()->back();
+
     }
 
     /**
@@ -173,8 +170,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        // dd($product);
+
         $product->delete();
         return redirect()->back();
+
     }
 }
