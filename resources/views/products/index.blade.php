@@ -22,8 +22,6 @@
             </div>
         </div>
     </div> --}}
-
-    <test-component></test-component>
     
     <div class="container-fluid mt-0 p-0">
         <div class="row m-0">
